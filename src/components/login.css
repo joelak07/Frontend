@@ -1,6 +1,6 @@
 .container{
     background-color: #2B3499;
-    background-image: url("C:\Users\joela\OneDrive\Desktop\Project\frontend\src\Assets\backgroundlogin.jpg");
+    background-image: url("../Assets/backgroundlogin.jpg");
     background-size: cover;
     
     height: 100vh;
