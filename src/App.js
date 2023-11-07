@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
+import Login from './components/Login';
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <HashRouter>
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<Navbar/>} /> */}
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </HashRouter>
     </div>
