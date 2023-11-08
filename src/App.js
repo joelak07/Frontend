@@ -4,6 +4,9 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Home from './components/Home';
 import Footer from './components/Footjer';
+import Status from './components/Status';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -12,8 +15,9 @@ function App() {
       <HashRouter>
         <Navbar />
         <Routes>
-        <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/status" element={ <Status /> } />
         </Routes>
         <Footer />
       </HashRouter>

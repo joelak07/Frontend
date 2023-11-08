@@ -1,0 +1,11 @@
+
+.statusContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statusLogBox{
+    width: 40%;
+}
