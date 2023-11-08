@@ -29,7 +29,7 @@ function Home() {
     <div className="Home">
       <div
         className="headerContainer"
-        style={{ backgroundImage: `linear-gradient(white, black),url(${BannerImage})`, backgroundBlendMode:"screen" }}
+        style={{ backgroundImage: `linear-gradient(white, black),url(${BannerImage})`, backgroundBlendMode: "screen" }}
       >
         <div className="intro">
           <h1></h1>
@@ -40,8 +40,9 @@ function Home() {
             of humanity with quality health care, realizing that dream becomes a
             mission.
           </p> */}
+
           <br />
-          <Link to="/appointment" className="linkh">Book your appointment now</Link>
+          <Link to="/appointment" className="linkh">Book Your <br /> Appointment Now</Link>
         </div>
       </div>
     </div>
@@ -66,8 +67,8 @@ function Home() {
   //     </div>
   //   </div>
   // );
-  
-  
+
+
 }
 
 export default Home;

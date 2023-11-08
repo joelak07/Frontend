@@ -18,13 +18,13 @@ h1{
 
 .intro {
   text-align: start;
-  font-size: 50px;
+  font-size: 40px;
   color:rgb(57, 49, 193);
   margin-bottom: 25px;
   width: 100%;
   box-sizing: border-box;
   padding: 30px 40px;
-  min-height: 400px;
+  min-height: 41%;
 }
 
 .desc {
@@ -64,7 +64,7 @@ h1{
 
 .linkh {
   position: relative;
-  right: 7%;
+  right: 3%;
   bottom: 10%;
   text-decoration: none;
   color: white;
@@ -85,9 +85,12 @@ h1{
 }
 
 .linkh:hover {
-  background-color: #FF6C00; /* Change the background color on hover */
-  color: white; /* Change the text color on hover */
+  background-color: #ffd099; /* Change the background color on hover */
+  color: #2B3499; /* Change the text color on hover */
   transform: scale(1.05); /* Increase the size on hover */
+  border: 10px solid #2B3499;
+  position: relative;
+  right: 2.5%;
 }
 
 
