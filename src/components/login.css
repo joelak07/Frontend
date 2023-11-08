@@ -37,7 +37,7 @@
   }
   
   /* Style form labels */
-  label {
+  .loginlbl {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -45,7 +45,7 @@
   }
   
 
-  input {
+  .loginipt {
     width: 95%;
     padding: 10px;
     margin-bottom: 15px;
@@ -54,7 +54,7 @@
     
   }
   
-  button {
+  .loginbtn {
     width: 100%;
     padding: 10px;
     background-color: mediumseagreen;
@@ -65,7 +65,7 @@
     transition: background-color 0.3s;
   }
   
-  button:hover {
+  .loginbtn :hover {
     background-color:  green;
   }
   

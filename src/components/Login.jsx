@@ -19,27 +19,29 @@ function Login() {
                 <h2>Employee Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label>Email:</label>
+                        <label className='loginlbl'>Email:</label>
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                            className='loginipt'
                         />
                     </div>
                     <br />
                     <div>
-                        <label>Password:</label>
+                        <label className='loginlbl'>Password:</label>
                         <input
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            className='loginipt'
                         />
                     </div>
                     <br />
                     <div>
-                        <button type="submit">Login</button>
+                        <button type="submit" className='loginbtn'>Login</button>
                     </div>
                 </form>
             </div>
