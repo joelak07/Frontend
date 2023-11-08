@@ -4,12 +4,6 @@ import './login.css'
 
 function Login() {
 
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = 'visible';
-        };
-    }, []);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

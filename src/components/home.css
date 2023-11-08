@@ -81,14 +81,13 @@ h1{
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: #2B3499;
+  color: white;
 }
 
 .linkh:hover {
   background-color: #ffd099; /* Change the background color on hover */
   color: #2B3499; /* Change the text color on hover */
   transform: scale(1.05); /* Increase the size on hover */
-  border: 10px solid #2B3499;
   position: relative;
   right: 2.5%;
 }
