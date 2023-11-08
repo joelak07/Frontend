@@ -20,9 +20,11 @@ h1{
   text-align: start;
   font-size: 50px;
   color:rgb(57, 49, 193);
-  margin-bottom: 100px;
-  margin-left: 10px;
+  margin-bottom: 25px;
   width: 100%;
+  box-sizing: border-box;
+  padding: 30px 40px;
+  min-height: 400px;
 }
 
 .desc {
@@ -32,9 +34,9 @@ h1{
   justify-content: space-between;
   width: 100%;
   color: #FF6C22;
-  margin-bottom: 20px;
-  margin-left: 20px;
   word-wrap: break-word;
+  box-sizing: border-box;
+  padding: 30px;
 }
 
 .desc p{
@@ -61,7 +63,7 @@ h1{
 }
 
 .linkh {
-  position: fixed;
+  position: relative;
   right: 7%;
   bottom: 10%;
   text-decoration: none;

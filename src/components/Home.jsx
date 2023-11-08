@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import BannerImage from "../Assets/hospital.jpg";
 import { Link } from "react-router-dom";
+import BannerImage from "../Assets/hospital.jpg";
 import "../components/home.css";
 import "./home.css";
 
@@ -25,51 +25,47 @@ function Home() {
     typeText(textToType, 0);
   }, []);
 
-  // return (
-  //   // <div className="Home">
-  //   //   <div
-  //   //     className="headerContainer"
-  //   //     style={{ backgroundImage: `url(${BannerImage})` }}
-  //   //   >
-  //   //     <div className="intro">
-  //   //       <h1></h1>
-  //   //     </div>
-  //   //     <div className="desc">
-  //   //       <p>
-  //   //         We connect health to happiness. When the dream is to provide a slice
-  //   //         of humanity with quality health care, realizing that dream becomes a
-  //   //         mission.
-  //   //       </p>
-  //   //       <br />
-  //   //       <Link to="/appointment" className="linkc">Appointment</Link>
-  //   //     </div>
-
-
-  //   //   </div>
-  //   // </div>
-
-    
-  // );
-
   return (
     <div className="Home">
-      <div className="headerContainer">
-        <div className="background-image"></div>
+      <div
+        className="headerContainer"
+        style={{ backgroundImage: `linear-gradient(white, black),url(${BannerImage})`, backgroundBlendMode:"screen" }}
+      >
         <div className="intro">
           <h1></h1>
         </div>
         <div className="desc">
-          <p>
+          {/* <p>
             We connect health to happiness. When the dream is to provide a slice
             of humanity with quality health care, realizing that dream becomes a
             mission.
-          </p>
+          </p> */}
           <br />
-          <Link to="/appointment" className="linkh">Book your Consulation Today</Link>
+          <Link to="/appointment" className="linkh">Book your appointment now</Link>
         </div>
       </div>
     </div>
   );
+
+  // return (
+  //   <div className="Home">
+  //     <div className="headerContainer">
+  //       <div className="background-image"></div>
+  //       <div className="intro">
+  //         <h1></h1>
+  //       </div>
+  //       <div className="desc">
+  //         <p>
+  //           We connect health to happiness. When the dream is to provide a slice
+  //           of humanity with quality health care, realizing that dream becomes a
+  //           mission.
+  //         </p>
+  //         <br />
+  //         <Link to="/appointment" className="linkh">Book your Consulation Today</Link>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
   
   
 }
