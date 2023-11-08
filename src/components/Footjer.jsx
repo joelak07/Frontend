@@ -31,7 +31,7 @@ function Footer() {
 
         <LinkedInIcon />
       </div>
-      <p>&copy; {new Date().getFullYear()} sunrisehospital.com</p>
+      <p>All rights reserved by &copy; {new Date().getFullYear()} sunrisehospital.com</p>
     </div>
   );
 }
