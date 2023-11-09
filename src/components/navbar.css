@@ -57,15 +57,15 @@
 }
 
 #loginNav {
-    background-color: mediumseagreen;
+    background-color: green;
 }
 
 #loginNav:hover {
     cursor: pointer;
-    background-color: green;
+    background-color: mediumseagreen;
     transform: scale(1.1);
     color: #FFD099;
-    border: 1px solid green;
+    border: 1px solid mediumseagreen;
 }
 
 *{
