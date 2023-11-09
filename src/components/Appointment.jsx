@@ -8,40 +8,87 @@ class Appointment extends Component {
       email: '',
       date: '',
       time: '',
+      specialty: '',
       doctor: '',
       reason: '',
     };
   }
 
   handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.name === 'specialty') {
+      // If the specialty changes, reset the selected doctor
+      this.setState({
+        [event.target.name]: event.target.value,
+        doctor: '',
+      });
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value,
+      });
+    }
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission here, e.g., send the data to a server for booking.
-    console.log('Form data:', this.state);
-  }
+
+    try {
+      const response = await fetch('http://localhost:4000/appointment/createAppointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.state),
+      });
+
+      if (response.ok) {
+        console.log('Appointment booked successfully!');
+      } else {
+        console.error('Failed to book appointment');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   render() {
+    const { name, email, date, time, specialty, doctor, reason } = this.state;
+
+    const doctorOptions = {
+      Cardiology: [
+        'Dr Joel Abraham Koshy',
+        'Dr Faheema Kattakath Sanil',
+      ],
+      Neurology: [
+        'Dr Shankar Jyothish',
+        'Dr Jithu Joji',
+      ],
+      Urology: [
+        'Dr Allen Roy',
+        'Dr Oshin Raphael',
+      ],
+      Gastroentrology: [
+        'Dr Naveed Hafeez Mohammed',
+        'Dr Sumayya Fathima',
+      ],
+    }[specialty] || [];
+
     return (
       <div>
         <h2>Appointment</h2>
         <h3>Book an Appointment</h3>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} required/><br/><br/>
+          <input type="text" id="name" name="name" value={name} onChange={this.handleChange} required/><br/><br/>
 
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} required/><br/><br/>
+          <input type="email" id="email" name="email" value={email} onChange={this.handleChange} required/><br/><br/>
 
           <label htmlFor="date">Date:</label>
-          <input type="date" id="date" name="date" value={this.state.date} onChange={this.handleChange} required/><br/><br/>
+          <input type="date" id="date" name="date" value={date} onChange={this.handleChange} required/><br/><br/>
 
           <label htmlFor="time">Time Slot:</label>
           <select id="time" name="time" value={this.state.time} onChange={this.handleChange} required>
+            <option value="" disabled>Select a Time Slot</option>
             <option value="9:00 AM - 9:20 AM">9:00 AM - 9:20 AM</option>
             <option value="9:20 AM - 9:40 AM">9:20 AM - 9:40 AM</option>
             <option value="9:40 AM - 10:00 AM">9:40 AM - 10:00 AM</option>
@@ -49,14 +96,39 @@ class Appointment extends Component {
             <option value="10:20 AM - 10:40 AM">10:20AM - 10:40 AM</option>
             <option value="10:40 AM - 11:00 AM">10:20AM - 10:40 AM</option>
             
-            {/* Add more time slots as needed */}
+          </select><br/><br/>
+
+          <label htmlFor="specialty">Specialty:</label>
+          <select
+            id="specialty"
+            name="specialty"
+            value={specialty}
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled>Select a Specialty</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Urology">Urology</option>
+            <option value="Gastroentrology">Gastroentrology</option>
           </select><br/><br/>
 
           <label htmlFor="doctor">Doctor:</label>
-          <input type="text" id="doctor" name="doctor" value={this.state.doctor} onChange={this.handleChange} required/><br/><br/>
+          <select
+            id="doctor"
+            name="doctor"
+            value={doctor}
+            onChange={this.handleChange}
+            required
+          >
+            <option value="" disabled>Select a Doctor</option>
+            {doctorOptions.map((doctorName) => (
+              <option key={doctorName} value={doctorName}>{doctorName}</option>
+            ))}
+          </select><br/><br/>
 
           <label htmlFor="reason">Reason for Appointment:</label>
-          <textarea id="reason" name="reason" value={this.state.reason} onChange={this.handleChange} required></textarea><br/><br/>
+          <textarea id="reason" name="reason" value={reason} onChange={this.handleChange} required></textarea><br/><br/>
 
           <button type="submit">Book Appointment</button>
         </form>
