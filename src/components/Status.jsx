@@ -1,18 +1,40 @@
 import React, { useState } from 'react';
 import './status.css';
 import { toast, ToastContainer } from 'react-toastify';
+import {Link, useNavigate} from 'react-router-dom';
+import Axios from "axios";
 
 const Status = () => {
-  const [email, setEmail] = useState('');
-  console.log(email);
 
-  const sendOTP = (e)=>{
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+
+  const sendOTP = async(e)=>{
     e.preventDefault();
     if (email==="") {
       toast.error("Enter your email");
     }
     else if(!email.includes('@')) {
       toast.error("Enter valid email");
+    }
+    else {
+      const data = {"email":email};
+      console.log(data);
+      Axios.post("http://localhost:4000/patientOtp/sendOtp", data)
+      .then((res)=>{
+        if (res.status===200) {
+          toast.success("OTP has been sent");
+          navigate("/patient/otp",{state:email});
+        }
+        else {
+          toast.error(res.response.data.error);
+        }
+      })
+      .catch((err)=>{
+        console.log(err);
+        toast.error("error");
+      });
     }
   }
 
@@ -25,9 +47,10 @@ const Status = () => {
         <form>
           <div class="statusFormInput">
             <label htmlFor='email'>Email</label>
-            <input type='email' name='email' id='' onChange={(e)=>{setEmail(e.target.value)}} />
+            <input type='email' name='email' onChange={(e)=>{setEmail(e.target.value)}} placeholder='Enter your email' />
           </div>
           <button class="btn" onClick={sendOTP}>Send OTP</button>
+          <p>Don't have an appointment <Link to="/appointment">Book now</Link></p>
         </form>
       </div>
       <ToastContainer />
