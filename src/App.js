@@ -6,6 +6,7 @@ import Appointment from './components/Appointment';
 import Home from './components/Home';
 import Footer from './components/Footjer';
 import Status from './components/Status';
+import Error from './components/Error';
 import Otp from './components/Otp';
 import VerifiedStatus from './components/VerifiedStatus';
 import { ToastContainer, toast } from 'react-toastify';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/status" element={ <Status /> } />
           <Route path="/appointment" element={ <Appointment/>} />
+          <Route path="/error" element={ <Error/>} />
           <Route path="/patient/otp" element={ <Otp /> } />
           <Route path="verifiedStatus" element={<VerifiedStatus />} />
         </Routes>
