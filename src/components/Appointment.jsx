@@ -54,7 +54,7 @@ class Appointment extends Component {
     const { name, email, date, time, specialty, doctor, reason } = this.state;
 
     const doctorOptions = {
-      Cardiology: [
+      Nephrology: [
         'Dr Joel Abraham Koshy',
         'Dr Faheema Kattakath Sanil',
       ],
@@ -107,7 +107,7 @@ class Appointment extends Component {
             required
           >
             <option value="" disabled>Select a Specialty</option>
-            <option value="Cardiology">Cardiology</option>
+            <option value="Nephrology">Nephrology</option>
             <option value="Neurology">Neurology</option>
             <option value="Urology">Urology</option>
             <option value="Gastroentrology">Gastroentrology</option>
