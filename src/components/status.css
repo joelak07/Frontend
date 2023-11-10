@@ -86,14 +86,14 @@
   z-index: 1000;
 }
 
-.links {
+.linkst {
   color: #0C356A;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.links:hover {
+.linkst:hover {
   color: #3498db;
   text-decoration: underline;
 }

@@ -51,7 +51,7 @@ const Status = () => {
               <input type='email' name='email' onChange={(e) => { setEmail(e.target.value) }} placeholder='Enter your email' />
             </div>
             <button class="stbtn" onClick={sendOTP}>Send OTP</button>
-            <p>Don't have an appointment ? <Link to="/appointment" className='links'>Book now</Link></p>
+            <p>Don't have an appointment ? <Link to="/appointment" className='linkst'>Book now</Link></p>
           </form>
           <ToastContainer />
         </div>
