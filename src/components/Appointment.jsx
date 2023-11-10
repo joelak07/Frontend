@@ -66,119 +66,138 @@ class Appointment extends Component {
       }[specialty] || [];
 
     return (
-      <div>
-        <h2>Appointment</h2>
-        <h3>Book an Appointment</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-            required
-          />
-          <br />
-          <br />
+      <div className="appcont">
+        <div className="appcon">
+          <div className="heading">
+            <h1>
+              Book <br /> an <br /> appointment
+            </h1>
+          </div>
+          <div className="statLog">
+            <form className="appointForm" onSubmit={this.handleSubmit}>
+              <div className="subdiv1">
+                <label htmlFor="name">Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={name}
+                  onChange={this.handleChange}
+                  required
+                />
+                <br />
+                <br />
 
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            required
-          />
-          <br />
-          <br />
+                <label htmlFor="email">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
+                  required
+                />
+                <br />
+                <br />
 
-          <label htmlFor="date">Date:</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={date}
-            onChange={this.handleChange}
-            required
-          />
-          <br />
-          <br />
+                <label htmlFor="date">Date:</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  value={date}
+                  onChange={this.handleChange}
+                  required
+                />
+                <br />
+                <br />
 
-          <label htmlFor="time">Time Slot:</label>
-          <select
-            id="time"
-            name="time"
-            value={this.state.time}
-            onChange={this.handleChange}
-            required
-          >
-            <option value="" disabled>
-              Select a Time Slot
-            </option>
-            <option value="9:00 AM - 9:20 AM">9:00 AM - 9:20 AM</option>
-            <option value="9:20 AM - 9:40 AM">9:20 AM - 9:40 AM</option>
-            <option value="9:40 AM - 10:00 AM">9:40 AM - 10:00 AM</option>
-            <option value="10:00 AM - 10:20 AM">10:00AM - 10:20 AM</option>
-            <option value="10:20 AM - 10:40 AM">10:20AM - 10:40 AM</option>
-            <option value="10:40 AM - 11:00 AM">10:20AM - 10:40 AM</option>
-          </select>
-          <br />
-          <br />
+                <label htmlFor="time">Time Slot:</label>
+                <select
+                  id="time"
+                  name="time"
+                  value={this.state.time}
+                  onChange={this.handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a Time Slot
+                  </option>
+                  <option value="9:00 AM - 9:20 AM">9:00 AM - 9:20 AM</option>
+                  <option value="9:20 AM - 9:40 AM">9:20 AM - 9:40 AM</option>
+                  <option value="9:40 AM - 10:00 AM">9:40 AM - 10:00 AM</option>
+                  <option value="10:00 AM - 10:20 AM">
+                    10:00AM - 10:20 AM
+                  </option>
+                  <option value="10:20 AM - 10:40 AM">
+                    10:20AM - 10:40 AM
+                  </option>
+                  <option value="10:40 AM - 11:00 AM">
+                    10:20AM - 10:40 AM
+                  </option>
+                </select>
+                <br />
+                <br />
+              </div>
 
-          <label htmlFor="specialty">Specialty:</label>
-          <select
-            id="specialty"
-            name="specialty"
-            value={specialty}
-            onChange={this.handleChange}
-            required
-          >
-            <option value="" disabled>
-              Select a Specialty
-            </option>
-            <option value="Nephrology">Nephrology</option>
-            <option value="Neurology">Neurology</option>
-            <option value="Urology">Urology</option>
-            <option value="Gastroentrology">Gastroentrology</option>
-          </select>
-          <br />
-          <br />
+              <div className="subdiv2">
+                <label htmlFor="specialty">Specialty:</label>
+                <select
+                  id="specialty"
+                  name="specialty"
+                  value={specialty}
+                  onChange={this.handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a Specialty
+                  </option>
+                  <option value="Nephrology">Nephrology</option>
+                  <option value="Neurology">Neurology</option>
+                  <option value="Urology">Urology</option>
+                  <option value="Gastroentrology">Gastroentrology</option>
+                </select>
+                <br />
+                <br />
 
-          <label htmlFor="doctor">Doctor:</label>
-          <select
-            id="doctor"
-            name="doctor"
-            value={doctor}
-            onChange={this.handleChange}
-            required
-          >
-            <option value="" disabled>
-              Select a Doctor
-            </option>
-            {doctorOptions.map((doctorName) => (
-              <option key={doctorName} value={doctorName}>
-                {doctorName}
-              </option>
-            ))}
-          </select>
-          <br />
-          <br />
+                <label htmlFor="doctor">Doctor:</label>
+                <select
+                  id="doctor"
+                  name="doctor"
+                  value={doctor}
+                  onChange={this.handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a Doctor
+                  </option>
+                  {doctorOptions.map((doctorName) => (
+                    <option key={doctorName} value={doctorName}>
+                      {doctorName}
+                    </option>
+                  ))}
+                </select>
+                <br />
+                <br />
 
-          <label htmlFor="reason">Reason for Appointment:</label>
-          <textarea
-            id="reason"
-            name="reason"
-            value={reason}
-            onChange={this.handleChange}
-            required
-          ></textarea>
-          <br />
-          <br />
+                <label htmlFor="reason">Reason for Appointment:</label>
+                <textarea
+                  id="reason"
+                  name="reason"
+                  value={reason}
+                  onChange={this.handleChange}
+                  required
+                ></textarea>
+                <br />
+                <br />
 
-          <button type="submit">Book Appointment</button>
-        </form>
+                <button className="appointButton" type="submit">
+                  Book Appointment
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,38 +1,3 @@
-body,
-h2 {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: rgb(227, 227, 227);
-}
-
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h3 {
-  color: #333;
-  margin-bottom: 10px;
-  margin-left: 10px;
-}
-
-.form-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
 .input-group {
   margin-bottom: 20px;
 }
@@ -56,8 +21,7 @@ textarea {
   box-sizing: border-box;
 }
 
-/* Button styling */
-button {
+.appointButton {
   background-color: #0c356a;
   color: #fff;
   padding: 12px 20px;
@@ -70,20 +34,60 @@ button {
   margin-left: 10px;
 }
 
-button:hover {
+.appointButton:hover {
   background-color: green;
 }
 
 @media (max-width: 600px) {
-  .container {
-    width: 100%;
-    padding: 10px;
-  }
-
   input,
   select,
   textarea,
   button {
     font-size: 14px;
   }
+}
+
+.appcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #eceeef;
+  border-radius: 30px;
+  opacity: 0.9;
+}
+
+.appcont {
+  align-items: center;
+  padding: 80px;
+  background-image: url("../Assets/app1.jpg");
+}
+
+.statLog {
+  background-color: #eed6bb;
+  border: 1px solid #ced4da;
+  padding-right: 50px;
+  width: 40%;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  font-family: "Almarai", sans-serif;
+  font-size: 2rem;
+}
+
+.appointForm {
+  width: 100%;
 }
