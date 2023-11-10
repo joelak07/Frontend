@@ -6,6 +6,7 @@ import "./home.css";
 
 function Home() {
   useEffect(() => {
+    localStorage.removeItem("patientdbtoken");
     function typeText(text, index) {
       if (index < text.length) {
         h1Element.textContent += text.charAt(index);

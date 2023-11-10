@@ -11,6 +11,10 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+    
+    useEffect(()=>{
+        localStorage.removeItem("patientdbtoken");
+      },[]);
 
     return (
 

@@ -15,7 +15,7 @@ function VerifiedStatus() {
             }
         }
         patientValid();
-    }, []);
+    }, [navigate]);
 
     return (
         <div>I did this at 3 am I swear to God if this doesn't work-</div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './status.css';
 import { toast, ToastContainer } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,6 +9,10 @@ const Status = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
+
+  useEffect(()=>{
+    localStorage.removeItem("patientdbtoken");
+  },[]);
 
   const sendOTP = async (e) => {
     e.preventDefault();
