@@ -11,6 +11,7 @@ function VerifiedStatus() {
                 console.log("User valid");
             } else {
                 console.log("invalid user");
+                navigate("*");
             }
         }
         patientValid();

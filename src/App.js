@@ -24,9 +24,9 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/status" element={ <Status /> } />
           <Route path="/appointment" element={ <Appointment/>} />
-          <Route path="/error" element={ <Error/>} />
+          <Route path="/*" element={ <Error/>} />
           <Route path="/patient/otp" element={ <Otp /> } />
-          <Route path="verifiedStatus" element={<VerifiedStatus />} />
+          <Route path="/verifiedStatus" element={<VerifiedStatus />} />
         </Routes>
         <Footer />
       </HashRouter>
