@@ -2,7 +2,7 @@
   margin-bottom: 20px;
 }
 
-label {
+.statlog label {
   display: block;
   margin-bottom: 8px;
   color: #333;
@@ -10,9 +10,9 @@ label {
   margin-left: 10px;
 }
 
-input,
-select,
-textarea {
+.statlog input,
+.statlog select,
+.statlog textarea {
   width: 100%;
   padding: 12px;
   margin-bottom: 10px;

@@ -29,6 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: 110px;
   }
 
   .sent {
@@ -89,10 +90,9 @@
   
   
   .errimg img {
-    width: 120%;
+    width: 100%;
     height: auto;
     border-radius: 10px;
-    
   }
 
   
