@@ -14,7 +14,6 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
     
-        // Assuming you have an API endpoint for user login in the backend
         try {
             const response = await fetch('http://localhost:4000/login', {
               method: 'POST',
@@ -29,21 +28,18 @@ function Login() {
 
             if (response.status === 401) {
                 console.error('Unauthorized:', data);
-                // Handle unauthorized access (e.g., show a specific error message)
                 setError('User not found');
                 return;
               }
             
               if (response.status === 402) {
                 console.error('Unauthorized:', data);
-                // Handle unauthorized access (e.g., show a specific error message)
                 setError('Invalid password');
                 return;
               }  
 
             if (response.status >= 400 && response.status <= 599) {
                 console.error('Server error:', data);
-                // Redirect to Error.jsx if an unexpected error occurs
                 navigate('/error');
                 return;
               }
@@ -58,7 +54,6 @@ function Login() {
               // Clear any previous error
               setError('');
       
-              // Assuming you get a token and role in the response
               const { token, role } = data;
       
               // Store the token and role in a secure way (e.g., localStorage, cookies)
