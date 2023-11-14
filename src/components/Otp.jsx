@@ -24,13 +24,14 @@ const Otp = () =>{
             const data = {
                 otp,email:location.state
             }
+            console.log(data);
             Axios.post("http://localhost:4000/patientOtp/status", data)
             .then((res)=>{
               if (res.status===200) {
                 localStorage.setItem("patientdbtoken",res.data.userToken);
                 toast.success(res.data.message);
                 setTimeout(()=>{
-                    navigate("/verifiedStatus");
+                    navigate("/verifiedStatus",{state:data.email});
                 },5000);
               }
               else {
@@ -51,7 +52,7 @@ const Otp = () =>{
             </div>
             <form>
               <div class="otpFormInput">
-                <input type='text' name='otp' onChange={(e)=>setOtp(e.target.value)} placeholder='Enter your email' />
+                <input type='text' name='otp' onChange={(e)=>setOtp(e.target.value)} placeholder='Enter otp' />
               </div>
               <button class="btn" onClick={loginPatient}>Submit</button>
             </form>
