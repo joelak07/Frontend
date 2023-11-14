@@ -122,7 +122,7 @@ const Appointment = () => {
                 value={date}
                 onChange={handleChange}
                 required
-                className="appointselect"
+                className="appointdate"
               />
               <br />
               <br />
