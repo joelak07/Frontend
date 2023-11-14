@@ -77,10 +77,12 @@ const Appointment = () => {
             Book <br /> an <br /> appointment
           </h1>
         </div>
-        <div className="statLog">
+        <div className="appointLog">
           <form className="appointForm" onSubmit={handleSubmit}>
             <div className="subdiv1">
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name" className="appointlbl">
+                Name:
+              </label>
               <input
                 type="text"
                 id="name"
@@ -88,11 +90,14 @@ const Appointment = () => {
                 value={name}
                 onChange={handleChange}
                 required
+                className="appointinp"
               />
               <br />
               <br />
 
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email" className="appointlbl">
+                Email:
+              </label>
               <input
                 type="email"
                 id="email"
@@ -100,11 +105,14 @@ const Appointment = () => {
                 value={email}
                 onChange={handleChange}
                 required
+                className="appointinp"
               />
               <br />
               <br />
 
-              <label htmlFor="date">Date:</label>
+              <label htmlFor="date" className="appointlbl">
+                Date:
+              </label>
               <input
                 type="date"
                 id="date"
@@ -112,17 +120,21 @@ const Appointment = () => {
                 value={date}
                 onChange={handleChange}
                 required
+                className="appointselect"
               />
               <br />
               <br />
 
-              <label htmlFor="time">Time Slot:</label>
+              <label htmlFor="time" className="appointlbl">
+                Time Slot:
+              </label>
               <select
                 id="time"
                 name="time"
                 value={time}
                 onChange={handleChange}
                 required
+                className="appointselect"
               >
                 <option value="" disabled>
                   Select a Time Slot
@@ -130,9 +142,7 @@ const Appointment = () => {
                 <option value="9:00 AM - 9:20 AM">9:00 AM - 9:20 AM</option>
                 <option value="9:20 AM - 9:40 AM">9:20 AM - 9:40 AM</option>
                 <option value="9:40 AM - 10:00 AM">9:40 AM - 10:00 AM</option>
-                <option value="10:00 AM - 10:20 AM">
-                  10:00AM - 10:20 AM
-                </option>
+                <option value="10:00 AM - 10:20 AM">10:00AM - 10:20 AM</option>
                 <option value="10:20 AM - 10:40 AM">10:20AM - 10:40 AM</option>
                 <option value="10:40 AM - 11:00 AM">10:20AM - 10:40 AM</option>
               </select>
@@ -141,13 +151,16 @@ const Appointment = () => {
             </div>
 
             <div className="subdiv2">
-              <label htmlFor="specialty">Specialty:</label>
+              <label htmlFor="specialty" className="appointlbl">
+                Specialty:
+              </label>
               <select
                 id="specialty"
                 name="specialty"
                 value={specialty}
                 onChange={handleChange}
                 required
+                className="appointselect"
               >
                 <option value="" disabled>
                   Select a Specialty
@@ -160,13 +173,16 @@ const Appointment = () => {
               <br />
               <br />
 
-              <label htmlFor="doctor">Doctor:</label>
+              <label htmlFor="doctor" className="appointlbl">
+                Doctor:
+              </label>
               <select
                 id="doctor"
                 name="doctor"
                 value={doctor}
                 onChange={handleChange}
                 required
+                className="appointselect"
               >
                 <option value="" disabled>
                   Select a Doctor
@@ -180,13 +196,16 @@ const Appointment = () => {
               <br />
               <br />
 
-              <label htmlFor="reason">Reason for Appointment:</label>
+              <label htmlFor="reason" className="appointlbl">
+                Reason for Appointment:
+              </label>
               <textarea
                 id="reason"
                 name="reason"
                 value={reason}
                 onChange={handleChange}
                 required
+                className="appointtext"
               ></textarea>
               <br />
               <br />

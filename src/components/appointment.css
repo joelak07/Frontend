@@ -2,7 +2,7 @@
   margin-bottom: 20px;
 }
 
-.statlog label {
+.appointlog label {
   display: block;
   margin-bottom: 8px;
   color: #333;
@@ -10,15 +10,41 @@
   margin-left: 10px;
 }
 
-.statlog input,
-.statlog select,
-.statlog textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
+.appointlbl {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.appointselect {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
   border: 1px solid #ccc;
+  padding: 5px;
   border-radius: 4px;
-  box-sizing: border-box;
+  width: 450px;
+}
+
+.appointtext {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  width: 450px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.appointinp {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .appointButton {
@@ -70,7 +96,7 @@
   background-image: url("../Assets/app1.jpg");
 }
 
-.statLog {
+.appointLog {
   background-color: #eed6bb;
   border: 1px solid #ced4da;
   padding-right: 50px;
