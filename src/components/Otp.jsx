@@ -67,6 +67,9 @@ const Otp = () => {
     <div className="otpContainer">
       <div className="otpBox">
         <form>
+          <h1>Enter your OTP</h1>
+          <br />
+          <br />
           <div className="otpFormInput">
             {otp.map((value, index) => (
               <input
@@ -81,7 +84,6 @@ const Otp = () => {
               />
             ))}
           </div>
-          <br />
           <br />
           <br />
           <button className="btnotp" onClick={loginPatient}>
