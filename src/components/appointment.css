@@ -19,7 +19,7 @@
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
-  width: 100%;
+  width: 90%;
 }
 
 .appointtext {
@@ -27,14 +27,14 @@
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
-  width: 133.33%;
+  width: 180%;
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
 }
 
 .appointinp {
-  width: 500px;
+  width: 90%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -68,7 +68,7 @@
 }
 
 .appcon {
-  display: contentss;
+  display: contents;
   align-items: center;
   justify-content: space-between;
   padding-left: 50px;
@@ -82,6 +82,7 @@
   background-color: #eceeef;
   border-radius: 30px;
   opacity: 0.9;
+  gap: 10px;
 }
 
 .appcont {
@@ -93,14 +94,15 @@
 .appointLog {
   background-color: #eed6bb;
   border: 1px solid #ced4da;
-  padding-right: 50px;
-  width: 100%;
+
+  width: 70%;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 200px;
 }
 
 .heading {
@@ -111,27 +113,47 @@
 
 .appointForm {
   width: 100%;
-}
-.subdiv1 {
-  float: left;
-  width: 33.33%;
-}
-.subdiv2 {
-  float: right;
-  width: 45%;
-}
-.subdiv3 {
-  float: none;
-  width: 33.33%;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: auto auto;
+  display: grid;
+  gap: 10px;
 }
 
-.appointdate {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #555;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 4px;
-  width: 133.33%;
+.subdiv1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.subdiv2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.subdiv3 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.subdiv4 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.subdiv5 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.subdiv6 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.subdiv7 {
+  grid-column: 1/2;
+  grid-row: 4;
+}
+.subdiv8 {
+  grid-column: 1/2;
+  grid-row: 5;
 }

@@ -92,7 +92,9 @@ const Appointment = () => {
               />
               <br />
               <br />
+            </div>
 
+            <div className="subdiv2">
               <label htmlFor="email" className="appointlbl">
                 Email:
               </label>
@@ -107,7 +109,9 @@ const Appointment = () => {
               />
               <br />
               <br />
+            </div>
 
+            <div className="subdiv3">
               <label htmlFor="date" className="appointlbl">
                 Date:
               </label>
@@ -118,12 +122,13 @@ const Appointment = () => {
                 value={date}
                 onChange={handleChange}
                 required
-                className="appointdate"
+                className="appointselect"
               />
               <br />
               <br />
             </div>
-            <div className="subdiv2">
+
+            <div className="subdiv4">
               <label htmlFor="time" className="appointlbl">
                 Time Slot:
               </label>
@@ -147,7 +152,9 @@ const Appointment = () => {
               </select>
               <br />
               <br />
+            </div>
 
+            <div className="subdiv5">
               <label htmlFor="specialty" className="appointlbl">
                 Specialty:
               </label>
@@ -169,7 +176,9 @@ const Appointment = () => {
               </select>
               <br />
               <br />
+            </div>
 
+            <div className="subdiv6">
               <label htmlFor="doctor" className="appointlbl">
                 Doctor:
               </label>
@@ -194,7 +203,7 @@ const Appointment = () => {
               <br />
             </div>
 
-            <div className="subdiv3">
+            <div className="subdiv7">
               <label htmlFor="reason" className="appointlbl">
                 Reason for Appointment:
               </label>
@@ -208,7 +217,9 @@ const Appointment = () => {
               ></textarea>
               <br />
               <br />
+            </div>
 
+            <div className="subdiv8">
               <button className="appointButton" type="submit">
                 Book Appointment
               </button>
