@@ -5,6 +5,20 @@ function PatientObj(props) {
     const { _id, appointmentDate, email, patientName, slot, doctorId, reasonforappointment } = props.obj;
     const [patientDetails, setPatientDetails] = useState(null);
     const [doctorDetails, setDoctorDetails] = useState(null);
+    const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
+
+    const cancelAppointment = () => {
+        Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
+            .then((res) => {
+                if (res.status === 200) {
+                    alert("Deleted successfully");
+                    window.location.reload();
+                } else {
+                    Promise.reject();
+                }
+            })
+            .catch((err) => alert(err));
+    };
 
     useEffect(() => {
         Axios.get("http://localhost:4000/patient/getPatient", { params: { email: email, patientName: patientName } })
@@ -22,12 +36,27 @@ function PatientObj(props) {
                 }
             })
             .catch((err) => console.error("Error fetching doctor details:", err));
-    }, [email, doctorId]);
+
+        const previousDay = new Date();
+        previousDay.setDate(previousDay.getDate() - 1);
+        previousDay.setHours(0, 0, 0, 0);
+
+        const appointmentDateTime = new Date(appointmentDate);
+        appointmentDateTime.setHours(0, 0, 0, 0);
+
+        const isBeforePreviousDay = appointmentDateTime < previousDay;
+        setIsCancelButtonDisabled(isBeforePreviousDay);
+    }, [email, doctorId, patientName, appointmentDate]);
+
+    const formatDate = (dateString) => {
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        return new Date(dateString).toLocaleDateString("en-US", options);
+    };
 
     return (
         <div className="appointment-details">
             {_id && <div className="field">Appointment ID: {_id}</div>}
-            {appointmentDate && <div className="field">Appointment Date: {appointmentDate}</div>}
+            {appointmentDate && <div className="field">Appointment Date: {formatDate(appointmentDate)}</div>}
             {slot && <div className="field">Slot: {slot}</div>}
 
             {patientDetails && (
@@ -37,7 +66,7 @@ function PatientObj(props) {
                     {patientDetails.email && <div className="field">Email: {patientDetails.email}</div>}
                     {patientDetails.phoneNo && <div className="field">Phone Number: {patientDetails.phoneNo}</div>}
                     {patientDetails.address && <div className="field">Address: {patientDetails.address}</div>}
-                    {patientDetails.dob && <div className="field">Date of Birth: {patientDetails.dob}</div>}
+                    {patientDetails.dob && <div className="field">Date of Birth: {formatDate(patientDetails.dob)}</div>}
                 </div>
             )}
 
@@ -57,6 +86,9 @@ function PatientObj(props) {
                     <div className="field">{reasonforappointment}</div>
                 </div>
             )}
+            <button onClick={cancelAppointment} disabled={isCancelButtonDisabled} className="">
+                Cancel
+            </button>
 
             <br /><br /><br />
         </div>
