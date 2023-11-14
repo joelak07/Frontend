@@ -12,7 +12,7 @@ const Error = () => {
       <div className='errbox'>
         <div className="sent">
           <h1>Uh Oh!</h1>
-          <p>You do not have access to this page</p>
+          <p>This page is not available 😔</p>
         </div>
         <div className="errbut">
           <Link to="/login" className="linke">Login</Link>
