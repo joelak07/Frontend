@@ -19,7 +19,7 @@
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
-  width: 90%;
+  width: 92%;
 }
 
 .appointtext {
@@ -27,16 +27,15 @@
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
-  width: 180%;
+  width: 178%;
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
 }
 
 .appointinp {
-  width: 90%;
+  width: 80%;
   padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -82,7 +81,7 @@
   background-color: #eceeef;
   border-radius: 30px;
   opacity: 0.9;
-  gap: 10px;
+  gap: 0px;
 }
 
 .appcont {
@@ -94,7 +93,6 @@
 .appointLog {
   background-color: #eed6bb;
   border: 1px solid #ced4da;
-
   width: 70%;
   border-radius: 8px;
   padding: 20px;
@@ -116,7 +114,8 @@
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: auto auto;
   display: grid;
-  gap: 10px;
+  grid-column-gap: 10px;
+  grid-row-gap: -15px;
 }
 
 .subdiv1 {
@@ -156,4 +155,26 @@
 .subdiv8 {
   grid-column: 1/2;
   grid-row: 5;
+}
+
+.subdiv1,
+.subdiv2,
+.subdiv3,
+.subdiv4,
+.subdiv5,
+.subdiv6,
+.subdiv7,
+.subdiv8 {
+  margin: -10px;
+}
+
+.appointdate {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  width: 82%;
 }
