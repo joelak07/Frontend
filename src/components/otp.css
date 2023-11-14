@@ -8,6 +8,16 @@
     background-size: cover;
     background-position: center;
   }
+
+  .otpContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.3); 
+  }
   
   .otpBox {
     width: 400px;
@@ -16,14 +26,14 @@
     background-color: #eed6bb;
     padding: 50px;
     border-radius: 5%;
-    height: 15%;
+    height: 25%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0.9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    border: 10px solid #edc89d;
+    border: 5px solid #edc89d;;
   }
   
   .otpFormInput {
@@ -34,7 +44,7 @@
   .otpFormInput input {
     padding: 10px;
     font-size: 26px;
-    border: 1px solid #ccc;
+    border: 2px solid #2B3499;
     border-radius: 5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     width: 40px;
@@ -43,7 +53,7 @@
   
   .otpFormInput input:focus {
     outline: none;
-    border-color: #2B3499;
+    border: 5px solid #2B3499;
     box-shadow: 0 0 8px rgba(43, 52, 153, 0.8);
   }
   
@@ -59,12 +69,12 @@
     font-size: 1rem;
     text-align: center;
     justify-self: center;
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-left: 27%;
   }
   
   .btnotp:hover {
@@ -75,3 +85,9 @@
     border: 1px solid #FFD099;
   }
   
+  .otpBox form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

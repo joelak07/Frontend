@@ -82,6 +82,8 @@ const Otp = () => {
             ))}
           </div>
           <br />
+          <br />
+          <br />
           <button className="btnotp" onClick={loginPatient}>
             Verify OTP
           </button>
