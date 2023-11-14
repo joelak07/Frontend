@@ -47,14 +47,12 @@ const Otp = () =>{
     return(
         <div class="otpContainer">
           <div class="otpBox">
-            <div class="otpFormHeading">
-              Enter otp
-            </div>
             <form>
               <div class="otpFormInput">
-                <input type='text' name='otp' onChange={(e)=>setOtp(e.target.value)} placeholder='Enter otp' />
+                <input type='text' name='otp' onChange={(e)=>setOtp(e.target.value)} placeholder='Enter OTP' />
               </div>
-              <button class="btn" onClick={loginPatient}>Submit</button>
+              <br />
+              <button class="btnotp" onClick={loginPatient}>Verify OTP</button>
             </form>
           </div>
           <ToastContainer />
