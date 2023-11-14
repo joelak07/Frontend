@@ -73,9 +73,7 @@ const Appointment = () => {
     <div className="appcont">
       <div className="appcon">
         <div className="heading">
-          <h1>
-            Book <br /> an <br /> appointment
-          </h1>
+          <h1>Book An Appointment</h1>
         </div>
         <div className="appointLog">
           <form className="appointForm" onSubmit={handleSubmit}>

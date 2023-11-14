@@ -2,19 +2,13 @@
   margin-bottom: 20px;
 }
 
-.appointlog label {
-  display: block;
-  margin-bottom: 8px;
-  color: #333;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
 .appointlbl {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .appointselect {
@@ -25,7 +19,7 @@
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
-  width: 450px;
+  width: 100%;
 }
 
 .appointtext {
@@ -40,7 +34,7 @@
 }
 
 .appointinp {
-  width: 95%;
+  width: 500px;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -74,7 +68,7 @@
 }
 
 .appcon {
-  display: flex;
+  display: contentss;
   align-items: center;
   justify-content: space-between;
   padding-left: 50px;
@@ -100,7 +94,7 @@
   background-color: #eed6bb;
   border: 1px solid #ced4da;
   padding-right: 50px;
-  width: 40%;
+  width: 100%;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -112,8 +106,16 @@
 .heading {
   font-family: "Almarai", sans-serif;
   font-size: 2rem;
+  text-align: center;
 }
 
 .appointForm {
   width: 100%;
+}
+.subdiv1 {
+  float: left;
+}
+
+.subdiv2 {
+  float: right;
 }
