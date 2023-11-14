@@ -118,11 +118,12 @@ const Appointment = () => {
                 value={date}
                 onChange={handleChange}
                 required
-                className="appointselect"
+                className="appointdate"
               />
               <br />
               <br />
-
+            </div>
+            <div className="subdiv2">
               <label htmlFor="time" className="appointlbl">
                 Time Slot:
               </label>
@@ -146,9 +147,7 @@ const Appointment = () => {
               </select>
               <br />
               <br />
-            </div>
 
-            <div className="subdiv2">
               <label htmlFor="specialty" className="appointlbl">
                 Specialty:
               </label>
@@ -193,7 +192,9 @@ const Appointment = () => {
               </select>
               <br />
               <br />
+            </div>
 
+            <div className="subdiv3">
               <label htmlFor="reason" className="appointlbl">
                 Reason for Appointment:
               </label>
