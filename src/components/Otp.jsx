@@ -58,7 +58,7 @@ const Otp = () => {
         })
         .catch((err) => {
           console.error(err);
-          toast.error('Error during OTP verification');
+          toast.error('Incorrect OTP');
         });
     }
   };
