@@ -1,22 +1,4 @@
-/* .error-page{
-    height: 100vh;
-    background-color: gray;
-    display: flex;
-    justify-content: space-between;
-}
-
-.sent h1{
-    font-size: 8rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: beige;
-}
-
-.sent{
-    padding: 50px;
-} */
-
-.error-page {
+.confirmed-page {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -24,7 +6,7 @@
   background-color: #d7d7d7;
 }
 
-.errbox {
+.confirmbox {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,24 +14,25 @@
   margin-left: 110px;
 }
 
-.sent {
+.confirmmessage {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.sent h1 {
+.confirmmessage h1 {
   color: #333;
-  font-size: 10rem;
+  font-size: 7rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
-.sent p {
+.confirmmessage p {
   color: #777;
   font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.errbut {
+.confirmbut {
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
@@ -64,7 +47,7 @@
     transition: background-color 0.3s ease;
   } */
 
-.linke {
+.confirmlinke {
   margin-right: 10px;
   text-decoration: none;
   color: white;
@@ -79,7 +62,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.linke:hover {
+.confirmlinke:hover {
   cursor: pointer;
   background-color: #ffd099;
   transform: scale(1.1);
@@ -87,7 +70,7 @@
   border: 1px solid #ffd099;
 }
 
-.errimg img {
+.confirmimg img {
   width: 100%;
   height: auto;
   border-radius: 10px;
