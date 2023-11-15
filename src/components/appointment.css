@@ -95,7 +95,7 @@
   border: 1px solid #ced4da;
   width: 70%;
   border-radius: 8px;
-  padding: 20px;
+  padding: 40px 20px 20px 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -180,3 +180,10 @@
   border-radius: 4px;
   width: 82%;
 }
+
+.heading h1{
+  color: #0c356a;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
