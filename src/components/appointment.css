@@ -17,9 +17,9 @@
   font-weight: bold;
   color: #555;
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 10px;
   border-radius: 4px;
-  width: 92%;
+  width: 100%;
 }
 
 .appointtext {
@@ -27,14 +27,14 @@
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
-  width: 178%;
+  width: 100%;
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
 }
 
 .appointinp {
-  width: 80%;
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -48,9 +48,9 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  margin: 24px 0;
   transition: background-color 0.3s ease;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  width: 100%;
 }
 
 .appointButton:hover {
@@ -95,7 +95,7 @@
   border: 1px solid #ced4da;
   width: 70%;
   border-radius: 8px;
-  padding: 40px 20px 20px 40px;
+  padding: 40px 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -113,11 +113,11 @@
 
 .appointForm {
   width: 100%;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: auto auto;
+  /*grid-template-rows: repeat(5, 1fr);*/
+  grid-template-columns: 1fr 1fr;
   display: grid;
   grid-column-gap: 10px;
-  grid-row-gap: -15px;
+  grid-row-gap: 5px;
 }
 
 .subdiv1 {
@@ -151,11 +151,12 @@
 }
 
 .subdiv7 {
-  grid-column: 1/2;
+  grid-column: 1 / span 2;
   grid-row: 4;
 }
+
 .subdiv8 {
-  grid-column: 1/2;
+  grid-column: 1 / span 2;
   grid-row: 5;
 }
 
@@ -167,7 +168,9 @@
 .subdiv6,
 .subdiv7,
 .subdiv8 {
-  margin: -10px;
+  box-sizing: border-box;
+  padding: 0 32px;
+  height: 100px;
 }
 
 .appointdate {
@@ -176,9 +179,9 @@
   font-weight: bold;
   color: #555;
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 10px;
   border-radius: 4px;
-  width: 82%;
+  width: 100%;
 }
 
 .heading h1{
@@ -186,4 +189,3 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
-
