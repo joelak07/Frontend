@@ -50,7 +50,7 @@ const Otp = () => {
             toast.success(res.data.message);
             setTimeout(() => {
               navigate('/verifiedStatus', { state: data.email });
-            }, 5000);
+            }, 2000);
           } else {
             // Handle other status codes if needed
             toast.error('Error during OTP verification');
