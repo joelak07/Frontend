@@ -38,7 +38,7 @@ function Login() {
         const { token, role } = data;
 
         // Store the token and role in a secure way (e.g., localStorage, cookies)
-        localStorage.setItem('patientdbtoken', token);
+        localStorage.setItem('doctordbtoken', token);
 
         // Redirect based on the user's role
         if (role === 'admin') {

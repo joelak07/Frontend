@@ -31,7 +31,7 @@ function AdminDashboard() {
     const token = localStorage.getItem('doctordbtoken');
     if (!token) {
       // Redirect to login if token not present
-      navigate('/error');
+      navigate('/login');
     } else {
       // Fetch user role from token (assuming it's stored as decoded in your case)
       const decodedToken = decodeToken(token);
