@@ -64,8 +64,6 @@ function PatientObj(props) {
                     <p className="section-title"><b>Patient Details</b></p>
                     {patientDetails.patientName && <div className="field">Patient Name: {patientDetails.patientName}</div>}
                     {patientDetails.email && <div className="field">Email: {patientDetails.email}</div>}
-                    {patientDetails.phoneNo && <div className="field">Phone Number: {patientDetails.phoneNo}</div>}
-                    {patientDetails.address && <div className="field">Address: {patientDetails.address}</div>}
                     {patientDetails.dob && <div className="field">Date of Birth: {formatDate(patientDetails.dob)}</div>}
                 </div>
             )}
