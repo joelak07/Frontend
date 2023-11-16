@@ -2,23 +2,42 @@
   margin-bottom: 20px;
 }
 
-label {
+.appointlbl {
   display: block;
-  margin-bottom: 8px;
-  color: #333;
+  margin-bottom: 5px;
   font-weight: bold;
+  color: #555;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
+.appointselect {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
   border: 1px solid #ccc;
+  padding: 10px;
   border-radius: 4px;
-  box-sizing: border-box;
+  width: 100%;
+}
+
+.appointtext {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.appointinp {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .appointButton {
@@ -29,9 +48,9 @@ textarea {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  margin: 24px 0;
   transition: background-color 0.3s ease;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  width: 100%;
 }
 
 .appointButton:hover {
@@ -48,7 +67,7 @@ textarea {
 }
 
 .appcon {
-  display: flex;
+  display: contents;
   align-items: center;
   justify-content: space-between;
   padding-left: 50px;
@@ -62,6 +81,7 @@ textarea {
   background-color: #eceeef;
   border-radius: 30px;
   opacity: 0.9;
+  gap: 0px;
 }
 
 .appcont {
@@ -70,24 +90,106 @@ textarea {
   background-image: url("../Assets/app1.jpg");
 }
 
-.statLog {
+.appointLog {
   background-color: #eed6bb;
   border: 1px solid #ced4da;
-  padding-right: 50px;
-  width: 40%;
+  width: 70%;
   border-radius: 8px;
-  padding: 20px;
+  padding: 40px 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 200px;
+  margin-right: 0px;
 }
 
 .heading {
   font-family: "Almarai", sans-serif;
   font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .appointForm {
   width: 100%;
+  /*grid-template-rows: repeat(5, 1fr);*/
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
+}
+
+.subdiv1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.subdiv2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.subdiv3 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.subdiv4 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.subdiv5 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.subdiv6 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.subdiv7 {
+  grid-column: 1 / span 2;
+  grid-row: 4;
+}
+
+.subdiv8 {
+  grid-column: 1 / span 2;
+  grid-row: 5;
+}
+
+.subdiv1,
+.subdiv2,
+.subdiv3,
+.subdiv4,
+.subdiv5,
+.subdiv6,
+.subdiv7,
+.subdiv8 {
+  box-sizing: border-box;
+  padding: 0 32px;
+  height: 100px;
+}
+
+.appointdate {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.heading h1{
+  color: #0c356a;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.subdiv7 textarea{
+  width: 98.2%;
 }
