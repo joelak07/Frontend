@@ -16,9 +16,11 @@ const Appointment = () => {
     doctors: [],
     doctorOptions: [],
     bookedSlots: [],
+    specialty: ""
   });
 
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const [availabilityMessage, setAvailabilityMessage] = useState("");
 
   useEffect(() => {
     fetchSpecialties();
@@ -88,41 +90,79 @@ const Appointment = () => {
     }
   };
 
+  const checkAvailability = async () => {
+    try {
+      const availabilityResponse = await Axios.get("http://localhost:4000/appointment/checkAvailability", {
+        params: {
+          doctorId: selectedDoctorId,
+          appointmentDate: state.appointmentDate,
+          slot: state.slot,
+        },
+      });
+  
+      if (availabilityResponse.status === 200) {
+        const { available, message } = availabilityResponse.data;
+        return { available, message };
+      } else {
+        throw new Error("Failed to check availability");
+      }
+    } catch (error) {
+      console.error("Error checking availability:", error);
+      throw error;
+    }
+  };
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
-        patientName: state.patientName,
-        email: state.email,
-        dob: state.dob,
-        address: state.address,
-      });
-
-      if (patientResponse.status === 200) {
-
-        const appointmentResponse = await Axios.post("http://localhost:4000/appointment/createAppointment", {
-          appointmentDate: state.appointmentDate,
+      const availabilityResponse = await checkAvailability(); 
+  
+      if (availabilityResponse && availabilityResponse.available) {
+        // Proceed to create the patient and appointment if the slot is available
+        const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
           patientName: state.patientName,
           email: state.email,
-          slot: state.slot,
-          doctorId: selectedDoctorId,
-          reasonforappointment: state.reasonforappointment,
+          dob: state.dob,
+          address: state.address,
         });
-
-        console.log("Server Response (Appointment):", appointmentResponse);
-
-        if (appointmentResponse.status === 200) {
-          console.log("Appointment booked successfully!");
+  
+        if (patientResponse.status === 200) {
+          const appointmentResponse = await Axios.post("http://localhost:4000/appointment/createAppointment", {
+            appointmentDate: state.appointmentDate,
+            patientName: state.patientName,
+            email: state.email,
+            slot: state.slot,
+            doctorId: selectedDoctorId,
+            reasonforappointment: state.reasonforappointment,
+          });
+  
+          if (appointmentResponse.status === 200) {
+            console.log("Server Response (Appointment):", appointmentResponse);
+            setAvailabilityMessage("Appointment booked successfully!");
+          } else {
+            const unavailabilityMessage = availabilityResponse && availabilityResponse.message ? availabilityResponse.message : "Slot not available for this doctor at this time.";
+            console.log("Unavailability Message:", unavailabilityMessage); 
+            setAvailabilityMessage(unavailabilityMessage);
+          }
         } else {
-          console.error("Failed to book appointment");
+          console.error("Failed to create patient");
+          setAvailabilityMessage("Failed to create patient");
         }
       } else {
-        console.error("Failed to create patient");
+        // Slot is unavailable
+        const unavailabilityMessage = availabilityResponse && availabilityResponse.message ? availabilityResponse.message : "Slot not available for this doctor at this time.";
+        console.log(unavailabilityMessage);
+        setAvailabilityMessage(unavailabilityMessage);
       }
     } catch (error) {
       console.error("Error:", error);
+      setAvailabilityMessage("An error occurred. Please try again.");
     }
   };
+  
+  
+  
 
   const { patientName, email, dob, address, appointmentDate, slot, reasonforappointment, specialties, doctors, doctorOptions } = state;
 
@@ -227,6 +267,10 @@ const Appointment = () => {
             <button className="appointButton" type="submit">
               Book Appointment
             </button>
+          </div>
+
+          <div className="formGroup messages">
+            <p>{availabilityMessage}</p>
           </div>
         </form>
       </div>
