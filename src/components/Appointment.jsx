@@ -144,7 +144,7 @@ const Appointment = () => {
         // Slot is unavailable
         const unavailabilityMessage = availabilityResponse && availabilityResponse.message ? availabilityResponse.message : "Slot not available for this doctor at this time.";
         console.log(unavailabilityMessage);
-        setAvailabilityMessage(unavailabilityMessage);
+        toast.error(unavailabilityMessage);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -156,111 +156,99 @@ const Appointment = () => {
 
   return (
     <div className="appcont">
-      <div className="appointLog">
-        <form className="appointForm" onSubmit={handleSubmit}>
-          <div className="formSection">
-            <div className="formGroup">
-              <label htmlFor="patientName">Name:</label>
-              <input type="text" id="patientName" name="patientName" value={patientName} onChange={handleChange} required />
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" value={email} onChange={handleChange} required />
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="dob">Date of Birth:</label>
-              <input type="date" id="dob" name="dob" value={dob} onChange={handleChange} max={today} required />
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="address">Address:</label>
-              <input type="text" id="address" name="address" value={address} onChange={handleChange} required />
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="appointmentDate">Date:</label>
-              <input type="date" id="appointmentDate" name="appointmentDate" value={appointmentDate} min={today} onChange={handleChange} required />
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="slot">Time Slot:</label>
-              <select id="slot" name="slot" value={slot} onChange={handleChange} required>
-                <option value="" disabled>
-                  Select a Time Slot
-                </option>
-                {generateTimeSlots()}
-              </select>
-            </div>
-          </div>
-
-          <div className="formSection">
-            <div className="formGroup">
-              <label htmlFor="specialty">Specialty:</label>
-              <select id="specialty" name="specialty" value={state.specialty} onChange={handleChange} required>
-                <option value="" disabled>
-                  Select a Specialty
-                </option>
-                {specialties.map((specialty, index) => (
-                  <option key={index} value={specialty}>
-                    {specialty}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="doctorName">Doctor:</label>
-              <select
-                id="doctorName"
-                name="doctorName"
-                value={state.doctorName}
-                onChange={(event) => {
-                  const selectedDoctor = JSON.parse(event.target.value);
-                  handleChange(event);
-                  setSelectedDoctorId(selectedDoctor.doctorId);
-                }}
-                required
-              >
-                <option value="" disabled>
-                  Select a Doctor
-                </option>
-                {doctors.map((doctor, index) => (
-                  <option key={index} value={JSON.stringify(doctor)}>
-                    {doctor.doctorName}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {doctorOptions.length > 0 && (
-              <div className="formGroup">
-                <label>Availability Slots:</label>
-                <ul>
-                  {doctorOptions.map((slot, index) => (
-                    <li key={index}>{slot}</li>
-                  ))}
-                </ul>
+      <div className="appcon">
+        <div className="heading">
+          <h1>Book An Appointment</h1>
+        </div>
+        <div className="appointLog">
+          <form className="appointForm" onSubmit={handleSubmit}>
+              <div className="subdiv1">
+                <label htmlFor="patientName" className="appointlbl">Name:</label>
+                <input type="text" id="patientName" name="patientName" value={patientName} onChange={handleChange} required className="appointinp" />
               </div>
-            )}
-
-            <div className="formGroup">
-              <label htmlFor="reasonforappointment">Reason for Appointment:</label>
-              <textarea id="reasonforappointment" name="reasonforappointment" value={reasonforappointment} onChange={handleChange} required></textarea>
+              <div className="subdiv2">
+                <label htmlFor="email" className="appointlbl">Email:</label>
+                <input type="email" id="email" name="email" value={email} onChange={handleChange} required className="appointinp" />
+              </div>
+              <div className="subdiv3">
+                <label htmlFor="dob" className="appointlbl">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" value={dob} onChange={handleChange} max={today} required className="appointdate" />
+              </div>
+              <div className="subdiv4">
+                <label htmlFor="address" className="appointlbl">Address:</label>
+                <input type="text" id="address" name="address" value={address} onChange={handleChange} required className="appointinp" />
+              </div>
+              <div className="subdiv5">
+                <label htmlFor="specialty" className="appointlbl">Specialty:</label>
+                <select id="specialty" name="specialty" value={state.specialty} onChange={handleChange} required className="appointselect">
+                  <option value="" disabled>
+                    Select a Specialty
+                  </option>
+                  {specialties.map((specialty, index) => (
+                    <option key={index} value={specialty}>
+                      {specialty}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="subdiv6">
+                <label htmlFor="doctorName" className="appointlbl">Doctor:</label>
+                <select
+                  id="doctorName"
+                  name="doctorName"
+                  value={state.doctorName}
+                  onChange={(event) => {
+                    const selectedDoctor = JSON.parse(event.target.value);
+                    handleChange(event);
+                    setSelectedDoctorId(selectedDoctor.doctorId);
+                  }}
+                  required
+                  className="appointselect"
+                >
+                  <option value="" disabled>
+                    Select a Doctor
+                  </option>
+                  {doctors.map((doctor, index) => (
+                    <option key={index} value={JSON.stringify(doctor)}>
+                      {doctor.doctorName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="subdiv7">
+                <label htmlFor="appointmentDate" className="appointlbl">Date:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" value={appointmentDate} min={today} onChange={handleChange} required className="appointdate" />
+              </div>
+              <div className="subdiv8">
+                <label htmlFor="slot" className="appointlbl">Time Slot:</label>
+                <select id="slot" name="slot" value={slot} onChange={handleChange} required className="appointselect">
+                  <option value="" disabled>
+                    Select a Time Slot
+                  </option>
+                  {generateTimeSlots()}
+                </select>
+              </div>
+              {doctorOptions.length > 0 && (
+                <div className="formGroup">
+                  <label>Availability Slots:</label>
+                  <ul>
+                    {doctorOptions.map((slot, index) => (
+                      <li key={index}>{slot}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className="subdiv9">
+                <label htmlFor="reasonforappointment" className="appointlbl">Reason for Appointment:</label>
+                <textarea id="reasonforappointment" name="reasonforappointment" value={reasonforappointment} onChange={handleChange} required className="appointtext"></textarea>
+              </div>
+            <div className="subdiv10">
+              <button className="appointButton" type="submit">
+                Book Appointment
+              </button>
             </div>
-          </div>
-
-          <div className="formGroup">
-            <button className="appointButton" type="submit">
-              Book Appointment
-            </button>
-          </div>
-
-          <div className="formGroup messages">
-            <p>{availabilityMessage}</p>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       <ToastContainer />
     </div>

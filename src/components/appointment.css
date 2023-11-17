@@ -1,7 +1,3 @@
-.input-group {
-  margin-bottom: 20px;
-}
-
 .appointlbl {
   display: block;
   margin-bottom: 5px;
@@ -12,32 +8,32 @@
 }
 
 .appointselect {
-  display: block;
   margin-bottom: 5px;
-  font-weight: bold;
   color: #555;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 4px;
   width: 100%;
+  background-color: #fff;
 }
 
 .appointtext {
-  display: block;
   margin-bottom: 5px;
-  font-weight: bold;
   color: #555;
   width: 100%;
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .appointinp {
   width: 100%;
+  color: #555;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .appointButton {
@@ -126,23 +122,23 @@
 }
 
 .subdiv2 {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.subdiv3 {
-  grid-column: 1;
-  grid-row: 3;
-}
-
-.subdiv4 {
   grid-column: 2;
   grid-row: 1;
 }
 
-.subdiv5 {
+.subdiv3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.subdiv4 {
   grid-column: 2;
   grid-row: 2;
+}
+
+.subdiv5 {
+  grid-column: 1;
+  grid-row: 3;
 }
 
 .subdiv6 {
@@ -151,13 +147,23 @@
 }
 
 .subdiv7 {
-  grid-column: 1 / span 2;
+  grid-column: 1;
   grid-row: 4;
 }
 
 .subdiv8 {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.subdiv9 {
   grid-column: 1 / span 2;
   grid-row: 5;
+}
+
+.subdiv10 {
+  grid-column: 1 / span 2;
+  grid-row: 6;
 }
 
 .subdiv1,
@@ -167,7 +173,9 @@
 .subdiv5,
 .subdiv6,
 .subdiv7,
-.subdiv8 {
+.subdiv8,
+.subdiv9,
+.subdiv10 {
   box-sizing: border-box;
   padding: 0 32px;
   height: 100px;
@@ -176,12 +184,12 @@
 .appointdate {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
   color: #555;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 4px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .heading h1 {
@@ -190,6 +198,6 @@
   font-weight: 400;
 }
 
-.subdiv7 textarea {
-  width: 98.2%;
+.subdiv9 textarea {
+  width: 100%;
 }
