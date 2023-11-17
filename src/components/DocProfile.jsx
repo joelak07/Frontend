@@ -102,11 +102,6 @@ const DocProfile = () => {
         </div>
         <br />
         <div>
-          <label>Email:</label>
-          <p>{doctorDetails.email}</p>
-        </div>
-        <br />
-        <div>
           <label>Speciality:</label>
           <p>{doctorDetails.specialization}</p>
         </div>
