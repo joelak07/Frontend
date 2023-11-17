@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import PatientObj from "./PatientObj";
+import "./verifiedStatus.css";
 
 function VerifiedStatus() {
     const navigate = useNavigate();
@@ -36,8 +37,8 @@ function VerifiedStatus() {
         })
     }
     return (
-        <div>
-            <div>
+        <div className="verifiedcont">
+            <div className="verifiedcon">
                 <div>{ListItems()}</div>
             </div>
         </div>
