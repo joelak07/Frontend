@@ -40,6 +40,9 @@ function VerifiedStatus() {
   return (
     <div className="verifiedcont">
       <div className="verifiedcon">
+        <div className="headingverified">
+          <h1>View your Appointments</h1>
+        </div>
         <div>{ListItems()}</div>
       </div>
     </div>
