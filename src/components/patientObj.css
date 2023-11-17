@@ -1,0 +1,75 @@
+.appointment-details {
+  justify-content: space-between;
+  width: 80%;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #e3fdfd;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.patientobjbutton {
+  background-color: #0c356a;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 24px 0;
+  transition: background-color 0.3s ease;
+  width: 200%;
+}
+.patientobjbutton:hover {
+  background-color: green;
+}
+
+.section-title {
+  font-size: 25px;
+  font-weight: 600;
+  background-image: radial-gradient(ellipse, #553c9a, #ee4b2b);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.field {
+  color: #777;
+  font-size: 1rem;
+}
+
+.gridcontainer {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.griditem1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.griditem2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.griditem3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.griditem4 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.griditem5 {
+  grid-column: 1-2;
+  grid-row: 3;
+}
