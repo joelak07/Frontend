@@ -14,6 +14,7 @@ import AdminDashboard from './components/AdminDashboard';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocDashboard from "./components/DocDashboard";
+import DocProfile from "./DocProfile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/doctorprofile" element={<DocProfile/>} />
           <Route path="/doctordashboard" element={<DocDashboard/>} />
           <Route path="/status" element={<Status />} />
           <Route path="/appointment" element={<Appointment />} />

@@ -13,6 +13,8 @@ const DocDashboard = () => {
               <AppointmentObj/>
               <AppointmentObj/>
               <AppointmentObj/>
+              <AppointmentObj/>
+              <AppointmentObj/>
             </div>
         </div>
     </div>
