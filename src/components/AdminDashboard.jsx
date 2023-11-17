@@ -157,10 +157,10 @@ function AdminDashboard() {
       _id: doctor._id,
     });
     setDisplayUpdateForm(true);
+    setDisplayDoctors(false);
   };
-
+  
   const handleCancelUpdate = () => {
-    // Clear the form fields and hide the update form
     setUpdatingDoctor({
       doctorId: "",
       doctorName: "",
@@ -168,6 +168,7 @@ function AdminDashboard() {
       qualification: "",
     });
     setDisplayUpdateForm(false);
+    setDisplayDoctors(true);
   };
 
   const handleDeleteDoctor = async (id) => {
@@ -372,7 +373,7 @@ function AdminDashboard() {
             </div>
           </div>
           <button onClick={handleUpdateDoctor} className="docupd">Update Doctor</button>
-          <button onClick={handleCancelUpdate} className="updclose">Close</button>
+          <button onClick={handleCancelUpdate} className="updclose">Cancel Update</button>
         </div>
       )}
       <br />
