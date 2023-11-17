@@ -191,6 +191,7 @@ function AdminDashboard() {
   };
 
   const handleSearchPatients = async () => {
+    
     try {
       const response = await fetch(
         `http://localhost:4000/patient/getPatient?patientName=${searchCriteria}`
@@ -198,6 +199,7 @@ function AdminDashboard() {
       const data = await response.json();
       setPatients(data);
       setDisplaySearch(false);
+      setShowDetails(true);
     } catch (error) {
       console.error("Error searching patients:", error);
     }
