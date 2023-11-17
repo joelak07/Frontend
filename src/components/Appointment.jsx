@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./appointment.css";
+import { ToastContainer ,toast } from "react-toastify";
 
 const Appointment = () => {
+  const navigate = useNavigate();
+
   const [state, setState] = useState({
     appointmentDate: "",
     patientName: "",
@@ -99,7 +103,6 @@ const Appointment = () => {
           slot: state.slot,
         },
       });
-  
       if (availabilityResponse.status === 200) {
         const { available, message } = availabilityResponse.data;
         return { available, message };
@@ -111,43 +114,31 @@ const Appointment = () => {
       throw error;
     }
   };
-  
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const availabilityResponse = await checkAvailability(); 
-  
+      const availabilityResponse = await checkAvailability();
+
       if (availabilityResponse && availabilityResponse.available) {
-        // Proceed to create the patient and appointment if the slot is available
-        const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
-          patientName: state.patientName,
-          email: state.email,
-          dob: state.dob,
-          address: state.address,
-        });
-  
-        if (patientResponse.status === 200) {
-          const appointmentResponse = await Axios.post("http://localhost:4000/appointment/createAppointment", {
-            appointmentDate: state.appointmentDate,
-            patientName: state.patientName,
-            email: state.email,
-            slot: state.slot,
-            doctorId: selectedDoctorId,
-            reasonforappointment: state.reasonforappointment,
+        const data = {"email":state.email};
+        const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp",data);
+        if (res.status===200) {
+          navigate('/patient/otp', {
+            state: {
+              patientName: state.patientName,
+              email: state.email,
+              dob: state.dob,
+              address: state.address,
+              appointmentDate: state.appointmentDate,
+              slot: state.slot,
+              reasonforappointment: state.reasonforappointment,
+              doctorId: selectedDoctorId,
+              option: "2"
+            },
           });
-  
-          if (appointmentResponse.status === 200) {
-            console.log("Server Response (Appointment):", appointmentResponse);
-            setAvailabilityMessage("Appointment booked successfully!");
-          } else {
-            const unavailabilityMessage = availabilityResponse && availabilityResponse.message ? availabilityResponse.message : "Slot not available for this doctor at this time.";
-            console.log("Unavailability Message:", unavailabilityMessage); 
-            setAvailabilityMessage(unavailabilityMessage);
-          }
-        } else {
-          console.error("Failed to create patient");
-          setAvailabilityMessage("Failed to create patient");
+        }
+        else {
+          toast.error(res.response.data.error);
         }
       } else {
         // Slot is unavailable
@@ -157,12 +148,9 @@ const Appointment = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      setAvailabilityMessage("An error occurred. Please try again.");
+      toast.error("Error has occurred");
     }
   };
-  
-  
-  
 
   const { patientName, email, dob, address, appointmentDate, slot, reasonforappointment, specialties, doctors, doctorOptions } = state;
 
@@ -274,6 +262,7 @@ const Appointment = () => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

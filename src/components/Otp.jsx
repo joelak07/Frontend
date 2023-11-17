@@ -40,26 +40,60 @@ const Otp = () => {
     } else {
       const data = {
         otp: enteredOtp,
-        email: location.state,
+        email: location.state.email,
       };
-
-      Axios.post('http://localhost:4000/patientOtp/status', data)
-        .then((res) => {
-          if (res.status === 200) {
-            localStorage.setItem('patientdbtoken', res.data.userToken);
-            toast.success(res.data.message);
+      console.log(data);
+      try {
+        const response = await Axios.post('http://localhost:4000/patientOtp/status', data);
+      
+        if (response.status === 200) {
+          if (location.state.option==="1") {
+            localStorage.setItem('patientdbtoken', response.data.userToken);
+            toast.success(response.data.message);
+        
             setTimeout(() => {
               navigate('/verifiedStatus', { state: data.email });
             }, 2000);
-          } else {
-            // Handle other status codes if needed
-            toast.error('Error during OTP verification');
           }
-        })
-        .catch((err) => {
-          console.error(err);
-          toast.error('Incorrect OTP');
-        });
+          else if (location.state.option==="2") {
+            console.log(location.state);
+            const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
+            patientName: location.state.patientName,
+            email: location.state.email,
+            dob: location.state.dob,
+            address: location.state.address,
+            });
+            if (patientResponse.status === 200) {
+              const appointmentResponse = await Axios.post("http://localhost:4000/appointment/createAppointment", {
+                appointmentDate: location.state.appointmentDate,
+                patientName: location.state.patientName,
+                email: location.state.email,
+                slot: location.state.slot,
+                doctorId: location.state.doctorId,
+                reasonforappointment: location.state.reasonforappointment,
+              });
+              if (appointmentResponse.status === 200) {
+                localStorage.setItem('patientdbtoken', response.data.userToken);
+                toast.success("Appointment has been scheduled");
+                setTimeout(() => {
+                  navigate('/confirmed', { state: data.email });
+                }, 2000);
+              }
+              else {
+                toast.error("Appointment not created");
+              }
+            }
+            else {
+              toast.error("Patient not created");
+            }
+          }
+        } else {
+          toast.error('Error during OTP verification');
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error('Incorrect OTP');
+      }
     }
   };
 
