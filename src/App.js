@@ -14,7 +14,7 @@ import AdminDashboard from './components/AdminDashboard';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocDashboard from "./components/DocDashboard";
-import DocProfile from "./DocProfile";
+import DocProfile from "./components/DocProfile";
 
 function App() {
   return (
