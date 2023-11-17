@@ -384,17 +384,20 @@ function AdminDashboard() {
           onChange={(e) => setSearchCriteria(e.target.value)}
         />
         {displaySearch ? (
-          <button onClick={handleSearchPatients} className="patsearch" >Search</button>
-        ) : (
-          <button onClick={handleClearSearch}>Clear Search</button>
-        )}
-        
-          <button onClick={toggleDetails} className="patbtn">
-            {showDetails ? 'Hide Patients' : 'Display All Patients'}
+          <button onClick={() => { handleSearchPatients(); toggleDetails(); }} className="patsearch">
+            Search
           </button>
 
-          {showDetails && (
-            <div className="patdetails">
+        ) : (
+          <button onClick={() => { handleClearSearch(); toggleDetails(); }} className="patsearch">Clear Search</button>
+        )}
+
+        <button onClick={toggleDetails} className="patbtn">
+          {showDetails ? 'Hide Patients' : 'Display All Patients'}
+        </button>
+
+        {showDetails && (
+          <div className="patdetails">
             <ul>
               {patients.map((patient) => (
                 <li key={patient._id}>
@@ -402,8 +405,8 @@ function AdminDashboard() {
                 </li>
               ))}
             </ul>
-            </div>
-          )}
+          </div>
+        )}
       </div>
     </div>
   );
