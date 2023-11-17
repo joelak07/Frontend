@@ -1,9 +1,21 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import doctor from "../Assets/doctor.png";
 import "./confirmed.css";
 
 function Confirmed() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(()=>{
+    const validity = () =>{
+      let token = localStorage.getItem("patientdbtoken");
+      if (!token) {
+        navigate("*");
+      }
+    }
+    validity();
+  })
   return (
     <div className="confirmed-page">
       <div className="confirmbox">
