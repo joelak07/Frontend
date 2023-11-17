@@ -41,11 +41,11 @@ const Otp = () => {
       const data = {
         otp: enteredOtp,
         email: location.state.email,
+        option: location.state.option
       };
       console.log(data);
       try {
         const response = await Axios.post('http://localhost:4000/patientOtp/status', data);
-      
         if (response.status === 200) {
           if (location.state.option==="1") {
             localStorage.setItem('patientdbtoken', response.data.userToken);
@@ -76,7 +76,7 @@ const Otp = () => {
               });
               if (appointmentResponse.status === 200) {
                 localStorage.setItem('patientdbtoken', response.data.userToken);
-                toast.success("Appointment has been scheduled");
+                toast.success(response.data.message);
                 setTimeout(() => {
                   navigate('/confirmed', { state: data.email });
                 }, 2000);
