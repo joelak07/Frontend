@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AdminNav from './AdminNav';
 
 function AdminDashboard() {
     const navigate = useNavigate();
@@ -210,6 +211,7 @@ function AdminDashboard() {
 
   return (
     <div>
+      <AdminNav/>
       <h2>Admin Dashboard</h2>
       <div>
         <h3>Create New Doctor</h3>

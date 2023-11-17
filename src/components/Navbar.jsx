@@ -4,7 +4,7 @@ import '../components/navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
-  if (location.pathname === '/doctordashboard' || location.pathname==='/doctorprofile') {
+  if (location.pathname === '/doctordashboard' || location.pathname==='/doctorprofile' || location.pathname==='/admin/dashboard') {
     return null; 
   }
 
