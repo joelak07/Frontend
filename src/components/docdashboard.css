@@ -1,0 +1,25 @@
+.doccontainer{
+    margin: 5%;
+    background-color: rgb(181, 172, 172);
+    border-radius: 5%;
+    height: 70%;
+    opacity: 0.9;
+}
+
+.maindoc{
+   background-color: aqua   ;
+   height: 140vh;
+}
+
+.doccontainer h2{
+    text-align: left;
+    padding: 50px 0px 10px 50px;
+    font-size: 2.1rem;
+}
+
+.dailyap{
+    margin: 20px 50px 20px 50px;
+    height: 70%;
+    border: 5px solid black;
+    border-radius: 1%;
+}

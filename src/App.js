@@ -12,6 +12,7 @@ import VerifiedStatus from "./components/VerifiedStatus";
 import Confirmed from "./components/Confirmed";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DocDashboard from "./components/DocDashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/doctordashboard" element={<DocDashboard/>} />
           <Route path="/status" element={<Status />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/*" element={<Error />} />

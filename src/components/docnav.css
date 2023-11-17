@@ -1,0 +1,12 @@
+/* In a CSS file */
+.butc {
+    background-color: red;
+    border: none;
+  }
+  
+  .butc:hover {
+    background-color: tomato;
+    color: white;
+    border: none;
+  }
+  
