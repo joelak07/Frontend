@@ -27,7 +27,7 @@ const Status = () => {
         const res = await Axios.post("http://localhost:4000/patientOtp/sendOtp", data);
         if (res.status === 200) {
           toast.success("OTP has been sent");
-          navigate("/patient/otp", { state: email });
+          navigate("/patient/otp", { state: {email:email, option:"1"} });
         } else {
           toast.error(res.response.data.error);
         }
