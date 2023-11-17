@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './DocProfile.css'
+import './docprofile.css'
 import DocNav from './DocNav';
 
 
