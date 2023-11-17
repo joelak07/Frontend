@@ -29,7 +29,7 @@ const Appointment = () => {
   useEffect(() => {
     fetchSpecialties();
   }, []);
-
+  const today = new Date().toISOString().split("T")[0];
   const fetchSpecialties = async () => {
     try {
       const response = await fetch("http://localhost:4000/doctor/specialties");
@@ -171,7 +171,7 @@ const Appointment = () => {
 
             <div className="formGroup">
               <label htmlFor="dob">Date of Birth:</label>
-              <input type="date" id="dob" name="dob" value={dob} onChange={handleChange} required />
+              <input type="date" id="dob" name="dob" value={dob} onChange={handleChange} max={today} required />
             </div>
 
             <div className="formGroup">
@@ -181,7 +181,7 @@ const Appointment = () => {
 
             <div className="formGroup">
               <label htmlFor="appointmentDate">Date:</label>
-              <input type="date" id="appointmentDate" name="appointmentDate" value={appointmentDate} onChange={handleChange} required />
+              <input type="date" id="appointmentDate" name="appointmentDate" value={appointmentDate} min={today} onChange={handleChange} required />
             </div>
 
             <div className="formGroup">
