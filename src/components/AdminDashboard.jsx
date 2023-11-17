@@ -9,6 +9,7 @@ function AdminDashboard() {
       doctorName: '',
       specialization: '',
       qualification: '',
+      password: '',
     });
     const [displayDoctors, setDisplayDoctors] = useState(true);
     const [searchCriteria, setSearchCriteria] = useState('');
@@ -92,6 +93,7 @@ function AdminDashboard() {
 
       if (response.ok) {
         // If the doctor is created successfully, fetch the updated list
+        console.log('Doctor created successfully!');
         await fetchDoctors();
         // Clear the form fields
         setNewDoctor({
@@ -99,6 +101,7 @@ function AdminDashboard() {
           doctorName: '',
           specialization: '',
           qualification: '',
+          password: '', 
         });
       } else {
         console.error('Error creating doctor:', await response.json());
@@ -236,6 +239,13 @@ function AdminDashboard() {
           type="text"
           name="qualification"
           value={newDoctor.qualification}
+          onChange={handleInputChange}
+        />
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={newDoctor.password}
           onChange={handleInputChange}
         />
         <button onClick={handleCreateDoctor}>Create Doctor</button>
