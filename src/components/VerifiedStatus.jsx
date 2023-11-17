@@ -32,7 +32,7 @@ function VerifiedStatus() {
     }, [navigate]);
     const ListItems = () => {
         return arr.map((val,ind)=>{
-            return <PatientObj key={val._id} obj={val} />
+            return (<PatientObj key={val._id} obj={val} />)
         })
     }
     return (
