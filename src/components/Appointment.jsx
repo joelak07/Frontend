@@ -163,11 +163,11 @@ const Appointment = () => {
           <form className="appointForm" onSubmit={handleSubmit}>
               <div className="subdiv1">
                 <label htmlFor="patientName" className="appointlbl">Name:</label>
-                <input type="text" id="patientName" name="patientName" value={patientName} onChange={handleChange} required className="appointinp" />
+                <input type="text" id="patientName" name="patientName" value={patientName} onChange={handleChange} required className="appointinp" placeholder="Enter Patient Name" />
               </div>
               <div className="subdiv2">
                 <label htmlFor="email" className="appointlbl">Email:</label>
-                <input type="email" id="email" name="email" value={email} onChange={handleChange} required className="appointinp" />
+                <input type="email" id="email" name="email" value={email} onChange={handleChange} required className="appointinp" placeholder="Enter Patient Email" />
               </div>
               <div className="subdiv3">
                 <label htmlFor="dob" className="appointlbl">Date of Birth:</label>
@@ -175,11 +175,11 @@ const Appointment = () => {
               </div>
               <div className="subdiv4">
                 <label htmlFor="address" className="appointlbl">Address:</label>
-                <input type="text" id="address" name="address" value={address} onChange={handleChange} required className="appointinp" />
+                <input type="text" id="address" name="address" value={address} onChange={handleChange} required className="appointinp" placeholder="Enter Patient Address"/>
               </div>
               <div className="subdiv5">
                 <label htmlFor="specialty" className="appointlbl">Specialty:</label>
-                <select id="specialty" name="specialty" value={state.specialty} onChange={handleChange} required className="appointselect">
+                <select id="specialty" name="specialty" value={state.specialty} onChange={handleChange} required className="appointselect" >
                   <option value="" disabled>
                     Select a Specialty
                   </option>
@@ -204,7 +204,7 @@ const Appointment = () => {
                   required
                   className="appointselect"
                 >
-                  <option value="" disabled>
+                  <option value="" disabled selected>
                     Select a Doctor
                   </option>
                   {doctors.map((doctor, index) => (
@@ -239,7 +239,7 @@ const Appointment = () => {
               )}
               <div className="subdiv9">
                 <label htmlFor="reasonforappointment" className="appointlbl">Reason for Appointment:</label>
-                <textarea id="reasonforappointment" name="reasonforappointment" value={reasonforappointment} onChange={handleChange} required className="appointtext"></textarea>
+                <textarea id="reasonforappointment" name="reasonforappointment" value={reasonforappointment} onChange={handleChange} required className="appointtext" placeholder="Why have you booked this appointment?"></textarea>
               </div>
             <div className="subdiv10">
               <button className="appointButton" type="submit">
