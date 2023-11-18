@@ -24,6 +24,7 @@ const Appointment = () => {
   });
 
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchSpecialties();
@@ -119,6 +120,7 @@ const Appointment = () => {
       const availabilityResponse = await checkAvailability();
 
       if (availabilityResponse && availabilityResponse.available) {
+        setLoading(true);   
         const data = {"email":state.email};
         const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp",data);
         if (res.status===200) {
@@ -148,6 +150,9 @@ const Appointment = () => {
     } catch (error) {
       console.error("Error:", error);
       toast.error("Error has occurred");
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -242,8 +247,8 @@ const Appointment = () => {
                 <textarea id="reasonforappointment" name="reasonforappointment" value={reasonforappointment} onChange={handleChange} required className="appointtext" placeholder="Why have you booked this appointment?"></textarea>
               </div>
             <div className="subdiv10">
-              <button className="appointButton" type="submit">
-                Book Appointment
+              <button className="appointButton" type="submit" disabled={loading}>
+              {loading ? <div className="spinnerapo"></div> : 'Book Appointment'}
               </button>
             </div>
           </form>
