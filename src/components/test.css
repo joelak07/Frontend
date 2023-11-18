@@ -1,85 +1,108 @@
 .testBookingForm {
-    background-color: #eed6bb;
-    border: 1px solid #ced4da;
-    width: 70%;
-    border-radius: 8px;
-    padding: 40px 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  
-  .testBookingForm h1 {
-    font-family: "Almarai", sans-serif;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0c356a;
-  }
-  
-  .testBookingForm form {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 5px;
-  }
-  
-  .testBookingForm label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
+  background-color: #eed6bb;
+  border: 1px solid #ced4da;
+  width: 70%;
+  border-radius: 8px;
+  padding: 40px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.testBookingForm h1 {
+  font-family: "Almarai", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0c356a;
+}
+
+.testBookingForm form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
+}
+
+.testBookingForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.testBookingForm select,
+.testBookingForm input[type="text"],
+.testBookingForm input[type="email"],
+.testBookingForm input[type="date"],
+.testBookingForm textarea {
+  margin-bottom: 5px;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.testBookingForm select {
+  appearance: none;
+}
+
+.testBookingForm button {
+  background-color: #0c356a;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 24px 0;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.testBookingForm button:hover {
+  background-color: green;
+}
+
+@media (max-width: 600px) {
+
   .testBookingForm select,
   .testBookingForm input[type="text"],
   .testBookingForm input[type="email"],
   .testBookingForm input[type="date"],
-  .testBookingForm textarea {
-    margin-bottom: 5px;
-    color: #555;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    width: 100%;
-    background-color: #fff;
-  }
-  
-  .testBookingForm select {
-    appearance: none;
-  }
-  
+  .testBookingForm textarea,
   .testBookingForm button {
-    background-color: #0c356a;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 24px 0;
-    transition: background-color 0.3s ease;
-    width: 100%;
+    font-size: 14px;
   }
-  
-  .testBookingForm button:hover {
-    background-color: green;
+}
+
+.spinnertest {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-left: 48.5%;
+
+}
+
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @media (max-width: 600px) {
-    .testBookingForm select,
-    .testBookingForm input[type="text"],
-    .testBookingForm input[type="email"],
-    .testBookingForm input[type="date"],
-    .testBookingForm textarea,
-    .testBookingForm button {
-      font-size: 14px;
-    }
+
+  100% {
+    transform: rotate(360deg);
   }
-  
+}

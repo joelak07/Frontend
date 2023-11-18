@@ -252,7 +252,7 @@ const Test = () => {
 
               <div className="subdiv10">
                 <button className="testButton" type="submit" disabled={loading}>
-                  {loading ? <div className="spinnerapo"></div> : 'Book Test'}
+                  {loading ? <div className="spinnertest"></div> : 'Book Test'}
                 </button>
               </div>
             </form>
