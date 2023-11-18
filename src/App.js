@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DocDashboard from "./components/DocDashboard";
 import DocProfile from "./components/DocProfile";
 import Test from "./components/Test";
+import MyAppointments from './components/MyAppointments';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/verifiedStatus" element={<VerifiedStatus />} />
           <Route path="/confirmed" element={<Confirmed />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/myappointment" element={<MyAppointments />} />
         </Routes>
         <Footer />
       </HashRouter>

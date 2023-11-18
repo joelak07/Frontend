@@ -27,7 +27,7 @@ const DocNav = () => {
       <div className="links">
         <ul>
           <Link to="/doctorprofile" className="linkc">My Profile</Link>
-          <Link to="/appointment" className="linkc">My Appointments</Link>
+          <Link to="/myappointment" className="linkc">My Appointments</Link>
           <button className="linkc butc" onClick={handleLogout}>Logout</button>
         </ul>
       </div>
