@@ -9,14 +9,12 @@
 .verifiedcon {
   align-items: center;
   justify-content: space-between;
-  padding-left: 50px;
-  padding-right: 50px;
   border: 1px solid #ced4da;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding-right: 110px;
-  padding-left: 110px;
+  padding-right: 40px;
+  padding-left: 100px;
 
-  padding-bottom: 100px;
+  padding-bottom: 20px;
   background-color: #cbf1f5;
   border-radius: 30px;
   opacity: 0.9;
