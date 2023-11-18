@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./test.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const Test = () => {
   const navigate = useNavigate();
@@ -30,7 +31,6 @@ const Test = () => {
         return;
       }
 
-      // Perform slot availability check only when a slot is selected
       const isAvailable = await checkSlotAvailability(selectedSlot);
 
       if (isAvailable) {
@@ -51,27 +51,30 @@ const Test = () => {
     });
 
     if (!response.data.available) {
-      console.log("Slot not available for this date and time.");
+      toast.error("Sorry, slot not available");
       return;
     }
 
     const dataToSend = {
-      testName,
-      email,
+      testName:testName,
+      email:email,
       testDate: formattedTestDate,
       slot: selectedSlot,
       dob: formattedDOB,
       patientName: state.patientName,
       address: state.address,
+      option:"3"
     };
-
-    const appointmentResponse = await Axios.post("http://localhost:4000/test/createTestAppointment", dataToSend);
-
-    // Handle successful booking
-    console.log("Succesfully added test record.");
+    const data = {"email":email};
+    const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp",data);
+    if (res.status===200) {
+      navigate('/patient/otp',{state:dataToSend});
+    }
+    else {
+      toast.error("Error has occured");
+    }
   } catch (error) {
     console.error("Error:", error);
-    // Handle error
   }
 };
   const checkSlotAvailability = async (selectedSlot) => {
@@ -250,6 +253,7 @@ const Test = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };  

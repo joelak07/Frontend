@@ -79,7 +79,7 @@ const Otp = () => {
                 localStorage.setItem('patientdbtoken', response.data.userToken);
                 toast.success(response.data.message);
                 setTimeout(() => {
-                  navigate('/confirmed', { state: data.email });
+                  navigate('/confirmed', { state:{option: "2"} });
                 }, 2000);
               }
               else {
@@ -88,6 +88,27 @@ const Otp = () => {
             }
             else {
               toast.error("Patient not created");
+            }
+          }
+          else if (location.state.option==="3") {
+            const testResponse = await Axios.post("http://localhost:4000/test/createTestAppointment", {
+              testName:location.state.testName,
+              email:location.state.email,
+              testDate: location.state.testDate,
+              slot: location.state.slot,
+              dob: location.state.dob,
+              patientName: location.state.patientName,
+              address: location.state.address,
+            });
+            if (testResponse.status===200) {
+              localStorage.setItem('patientdbtoken', response.data.userToken);
+              toast.success("Test successfully scheduled");
+              setTimeout(() => {
+                navigate('/confirmed', { state:{option: "3"} });
+              }, 2000);
+            }
+            else {
+              toast.error("Test not created");
             }
           }
         } else {
