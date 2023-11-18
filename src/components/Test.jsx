@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const Test = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [state, setState] = useState({
     testName: "",
@@ -14,7 +15,7 @@ const Test = () => {
     dob: "",
     address: "",
     testDate: "",
-    availableSlots: [], 
+    availableSlots: [],
   });
 
   const [selectedSlot, setSelectedSlot] = useState("");
@@ -42,41 +43,46 @@ const Test = () => {
       const formattedDOB = new Date(dob).toISOString();
 
       const response = await Axios.get("http://localhost:4000/test/checkAvailability", {
-      params: {
-        testName,
+        params: {
+          testName,
+          testDate: formattedTestDate,
+          dob: formattedDOB,
+          slot: selectedSlot,
+        },
+      });
+
+      if (!response.data.available) {
+        toast.error("Sorry, slot not available");
+        return;
+      }
+      else {
+        setLoading(true);
+      }
+
+      const dataToSend = {
+        testName: testName,
+        email: email,
         testDate: formattedTestDate,
-        dob: formattedDOB,
         slot: selectedSlot,
-      },
-    });
-
-    if (!response.data.available) {
-      toast.error("Sorry, slot not available");
-      return;
+        dob: formattedDOB,
+        patientName: state.patientName,
+        address: state.address,
+        option: "3"
+      };
+      const data = { "email": email };
+      const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp", data);
+      if (res.status === 200) {
+        navigate('/patient/otp', { state: dataToSend });
+      }
+      else {
+        toast.error("Error has occured");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
-
-    const dataToSend = {
-      testName:testName,
-      email:email,
-      testDate: formattedTestDate,
-      slot: selectedSlot,
-      dob: formattedDOB,
-      patientName: state.patientName,
-      address: state.address,
-      option:"3"
-    };
-    const data = {"email":email};
-    const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp",data);
-    if (res.status===200) {
-      navigate('/patient/otp',{state:dataToSend});
-    }
-    else {
-      toast.error("Error has occured");
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
+  };
   const checkSlotAvailability = async (selectedSlot) => {
     try {
       const { testName, testDate, dob } = state;
@@ -243,10 +249,10 @@ const Test = () => {
                   <option value="08:50">08:50 - 09:00</option>
                 </select>
               </div>
-  
+
               <div className="subdiv10">
-                <button className="testButton" type="submit">
-                  Book Test
+                <button className="testButton" type="submit" disabled={loading}>
+                  {loading ? <div className="spinnerapo"></div> : 'Book Test'}
                 </button>
               </div>
             </form>
@@ -256,7 +262,7 @@ const Test = () => {
       <ToastContainer />
     </div>
   );
-};  
+};
 
 
 
