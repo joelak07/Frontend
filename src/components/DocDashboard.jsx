@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const DocDashboard = () => {
   const [arr, setArr] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,6 +19,7 @@ const DocDashboard = () => {
             const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorToday", {
               params: { doctorId: decodedToken.empId }
             });
+
             if (response.status === 200) {
               setArr(response.data);
             } else {
@@ -32,10 +34,11 @@ const DocDashboard = () => {
         alert("An error occurred while fetching data");
       }
     };
+
     fetchData();
   }, [navigate]);
 
-  const ListItems = ()=>{
+  const ListItems = () => {
     return arr.map((val, ind) => {
       return <AppointmentObj key={val._id} obj={val} />;
     });
@@ -48,14 +51,17 @@ const DocDashboard = () => {
     return decoded;
   };
 
-
   return (
     <div className='maindoc'>
       <DocNav />
       <div className="doccontainer">
         <h2>Appointments for the day</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '70%' }}>
-          {ListItems()}
+          {arr.length === 0 ? (
+            <p style={{ color: 'gray', textAlign: 'center' }}>No appointments for the day</p>
+          ) : (
+            ListItems()
+          )}
         </div>
       </div>
     </div>
