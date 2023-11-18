@@ -36,7 +36,7 @@ function App() {
           <Route path="/verifiedStatus" element={<VerifiedStatus />} />
           <Route path="/confirmed" element={<Confirmed />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/myappointment" element={<MyAppointments />} />
+          <Route path="/doctor/appointments" element={<MyAppointments />} />
         </Routes>
         <Footer />
       </HashRouter>

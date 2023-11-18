@@ -1,6 +1,8 @@
 // MyAppointments Component - Frontend
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
+import DocNav from './DocNav';
+
 
 const MyAppointments = () => {
   const [doctorId, setDoctorId] = useState('');
@@ -49,6 +51,7 @@ const MyAppointments = () => {
 
   return (
     <div>
+      <DocNav />
       <h2>My Appointments</h2>
       <div>
         {/* Date selection input */}
