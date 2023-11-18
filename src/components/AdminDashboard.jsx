@@ -240,6 +240,7 @@ function AdminDashboard() {
               name="doctorId"
               value={newDoctor.doctorId}
               onChange={handleInputChange}
+              placeholder="Enter Doctor ID"
             />
           </div>
           <div className="crdoc2">
@@ -249,6 +250,7 @@ function AdminDashboard() {
               name="doctorName"
               value={newDoctor.doctorName}
               onChange={handleInputChange}
+              placeholder="Enter Doctor Name"
             />
           </div>
           <div className="crdoc3">
@@ -259,6 +261,7 @@ function AdminDashboard() {
               name="specialization"
               value={newDoctor.specialization}
               onChange={handleInputChange}
+              placeholder="Enter Specialization"
             />
           </div>
         </div>
@@ -271,6 +274,7 @@ function AdminDashboard() {
               name="qualification"
               value={newDoctor.qualification}
               onChange={handleInputChange}
+              placeholder="Enter Qualification"
             />
           </div>
           <div className="crdoc5">
@@ -280,6 +284,7 @@ function AdminDashboard() {
               name="password"
               value={newDoctor.password}
               onChange={handleInputChange}
+              placeholder="Enter Password"
             />
           </div>
         </div>
