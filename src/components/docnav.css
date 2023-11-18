@@ -2,6 +2,14 @@
 .butc {
     background-color: red;
     border: none;
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    margin: 8px;
   }
   
   .butc:hover {
@@ -11,7 +19,7 @@
   }
 
   .docnavbar{
-    background-color: #b5b1b1;
+    background-color:#394867;
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -19,3 +27,37 @@
     align-items: center ;
   }
   
+  .linkdc{
+    margin-right: 10px;
+    text-decoration: none;
+    color: #394867;
+    background-color: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    margin: 8px;
+    border: none;
+}
+
+.linkdc:hover {
+    cursor: pointer;
+    background-color: #cad9e2;
+    transform: scale(1.1);
+    color: #0C356A;
+    border: 1px solid #FFD099;
+}   
+
+.titledoc h1{
+  color:  #F1F6F9;
+  font-size: 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+} 
+
+.titledoc h2{
+  color:#9BA4B5;
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}

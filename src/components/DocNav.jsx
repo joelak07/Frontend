@@ -19,16 +19,16 @@ const DocNav = () => {
 
   return (
     <div className='docnavbar'>
-      <div className="title">
+      <div className="titledoc">
         <Link to="/doctor/dashboard" style={{ textDecoration: "none", fontSize: "12px" }}>
           <div className='tt'><h1>Sunrise</h1><h2>Healthcare</h2></div>
         </Link>
       </div>
       <div className="links">
         <ul>
-          <Link to="/doctor/profile" className="linkc">My Profile</Link>
-          <Link to="/doctor/appointments" className="linkc">My Appointments</Link>
-          <button className="linkc butc" onClick={handleLogout}>Logout</button>
+          <Link to="/doctor/profile" className="linkdc">My Profile</Link>
+          <Link to="/doctor/appointments" className="linkdc">My Appointments</Link>
+          <button className=" butc" onClick={handleLogout}>Logout</button>
         </ul>
       </div>
     </div>
