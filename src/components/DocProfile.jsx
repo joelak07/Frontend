@@ -12,8 +12,6 @@ const DocProfile = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('doctordbtoken');
-
-    // Decode the token to extract empId (assuming it's in the token payload)
     if (token) {
       const decodedToken = decodeToken(token);
       if (decodedToken && decodedToken.empId) {
@@ -23,10 +21,7 @@ const DocProfile = () => {
     }
   }, []);
 
-  // Function to decode the token (You might want to use your decoding mechanism)
   const decodeToken = (token) => {
-    // Implement token decoding logic here (if not already implemented)
-    // JWT decoding
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const decoded = JSON.parse(window.atob(base64));
@@ -63,26 +58,23 @@ const DocProfile = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: token, // Send the token in the header for authentication
+          Authorization: token,
         },
-        body: JSON.stringify({ empId, newPassword: password }), // Send the new password and user ID
+        body: JSON.stringify({ empId, newPassword: password }),
       });
 
       if (response.ok) {
         console.log('Password changed successfully');
-        // Optionally, you might want to clear the password field or show a success message here
       } else {
         console.error('Failed to change password');
-        // Handle error scenarios if password change fails
       }
     } catch (error) {
       console.error('An error occurred:', error);
-      // Handle other potential errors during the password change process
     }
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Toggle the showPassword state
+    setShowPassword(!showPassword);
   };
   
 
