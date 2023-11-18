@@ -62,4 +62,12 @@
   .loginbtn:hover {
     background-color:  green;
   }
+  .password-toggle-icon{
+    position:absolute;
+    top: 220px;
+    right:55px;
+    z-index: 1000;
+    cursor: pointer;
+    font-size: 19px;
+  }
   

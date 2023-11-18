@@ -2,12 +2,14 @@ import React from 'react'
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import usePasswordToggle from './usePasswordToggle';
 
 function Login() {
   const [empId, setEmpId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [PasswordInputType,ToggleIcon]=usePasswordToggle();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,12 +75,15 @@ function Login() {
           <div>
             <label className="loginlbl">Password:</label>
             <input
-              type="password"
+              type={PasswordInputType}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               className="loginipt"
             />
+            <span className="password-toggle-icon">
+              {ToggleIcon}
+            </span>
           </div>
           <br />
           {error && <div style={{ color: 'red' }}>{error}</div>}
