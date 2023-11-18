@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocDashboard from "./components/DocDashboard";
 import DocProfile from "./components/DocProfile";
+import Test from "./components/Test";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/patient/otp" element={<Otp />} />
           <Route path="/verifiedStatus" element={<VerifiedStatus />} />
           <Route path="/confirmed" element={<Confirmed />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
         <Footer />
       </HashRouter>
