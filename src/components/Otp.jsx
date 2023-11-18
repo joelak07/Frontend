@@ -72,7 +72,7 @@ const Otp = () => {
                 doctorId: location.state.doctorId,
                 reasonforappointment: location.state.reasonforappointment,
                 isCompleted: false,
-                isModified: false
+                isChanged: false
               });
               if (appointmentResponse.status === 200) {
                 localStorage.setItem('patientdbtoken', response.data.userToken);

@@ -24,7 +24,6 @@ const Appointment = () => {
   });
 
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
-  const [availabilityMessage, setAvailabilityMessage] = useState("");
 
   useEffect(() => {
     fetchSpecialties();
