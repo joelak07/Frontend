@@ -18,7 +18,7 @@ const DocNav = () => {
   };
 
   return (
-    <div className='navbar'>
+    <div className='docnavbar'>
       <div className="title">
         <Link to="/doctor/dashboard" style={{ textDecoration: "none", fontSize: "12px" }}>
           <div className='tt'><h1>Sunrise</h1><h2>Healthcare</h2></div>

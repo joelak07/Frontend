@@ -1,43 +1,43 @@
 .doccontainer{
-    margin: 5%;
-    background-color:#ffd099;
-    border-radius: 15px;
+    margin: 20px;
+    margin-top: 50px;
+    background-color: #cac9c9;
+    border-radius: 5px;
     height: 70%;
     opacity: 0.9;
 }
 
 .maindoc{
-   background-color: #e3e3e3;
+  background-color: #e3e3e3;
    height: 140vh;
 }
 
 .doccontainer h2{
     text-align: left;
-    padding: 50px 0px 10px 50px;
-    font-size: 2.1rem;
+    padding: 50px 0px 0px 50px;
+    font-size: 2.5rem;
+    color: #0C356A;
 }
 
 .dailyap{
-    margin: 20px 50px 20px 50px;
-    height: 70%;
-    border: 3px solid #8a8075;
-    border-radius: 15px;
+    margin: 10px 20px 20px 20px;
+    height: 80%;
 }
 
-/* CSS for AppointmentObj component */
+
 .appobj {
-    border: 2px solid #3498db;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 20px;
     margin: 20px;
     width:auto;
-    background-color: #ecf0f1;
+    background-color: #f1f1f1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .appobj h3 {
-    color: #3498db;
+    color: #454da5;
     margin-bottom: 10px;
+    font-size: 1.3rem;
   }
   
   .appobj p {
@@ -46,7 +46,7 @@
   }
   
   .appobj button {
-    background-color: #e74c3c;
+    background-color: #0C356A;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -58,7 +58,7 @@
   }
   
   .appobj button:hover {
-    background-color: #c0392b;
+    background-color: #104385;
   }
   
   .diag {
@@ -71,6 +71,8 @@
     box-sizing: border-box;
     resize: vertical;
     margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
   }
   
 

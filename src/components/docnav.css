@@ -9,4 +9,13 @@
     color: white;
     border: none;
   }
+
+  .docnavbar{
+    background-color: #b5b1b1;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 50px;
+    align-items: center ;
+  }
   

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import DocNav from './DocNav';
+import "./myappointments.css";
 
 
 const MyAppointments = () => {
@@ -41,7 +42,7 @@ const MyAppointments = () => {
   const fetchAppointments = async (date) => {
     try {
       const response = await Axios.get(`http://localhost:4000/appointment/getAppointmentForDoctorByDate/${doctorId}/${date}`);
-      console.log("API Response:", response.data); 
+      console.log("API Response:", response.data);
       setAppointments(response.data); // Assuming response.data is an array of appointments
     } catch (error) {
       console.error('Error fetching appointments:', error);
@@ -50,36 +51,53 @@ const MyAppointments = () => {
   };
 
   return (
-    <div>
+    <div className='myappscont'>
       <DocNav />
       <h2>My Appointments</h2>
-      <div>
-        {/* Date selection input */}
-        <label htmlFor="appointmentDate">Select Date:</label>
-        <input
-          type="date"
-          id="appointmentDate"
-          value={selectedDate}
-          onChange={handleDateChange}
-        />
-        {/* Button to explicitly fetch appointments */}
-        <button onClick={handleSubmit}>Fetch Appointments</button>
+      <div className="myappsbox">
+        <div className="searchcont">
+          <div className="flexingsearch">
+            <div className="datesearch">
+              <label htmlFor="appointmentDate">Select Date:</label>
+              <input
+                type="date"
+                id="appointmentDate"
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            </div>
+            <div className="patnamesearch">
+              <label htmlFor="searchPatient">Search by Patient Name:</label>
+              <input
+                type="text"
+                id="searchPatient"
+              />
+            </div>
+          </div>
+          <button onClick={handleSubmit}>Search Appointments</button>
+        </div>
+
+
         {appointments.length > 0 ? (
-          <ul>
-            {appointments.map((appointment) => (
-              <li key={appointment._id}>
-                <p>Date: {appointment.appointmentDate}</p>
-                <p>Patient: {appointment.patientName}</p>
-                <p>Email: {appointment.email}</p>
-                <p>Slot: {appointment.slot}</p>
-                <p>Reason: {appointment.reasonforappointment}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="appsearchres">
+            <ul>
+              {appointments.map((appointment) => (
+                <li key={appointment._id}>
+                  <p>Date: {appointment.appointmentDate}</p>
+                  <p>Patient: {appointment.patientName}</p>
+                  <p>Email: {appointment.email}</p>
+                  <p>Slot: {appointment.slot}</p>
+                  <p>Reason: {appointment.reasonforappointment}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : (
           <p>No appointments found</p>
         )}
+
       </div>
+
     </div>
   );
 };

@@ -60,8 +60,8 @@ const DocDashboard = () => {
     <div className='maindoc'>
       <DocNav />
       <div className="doccontainer">
-        <h2>Appointments for the day</h2>
-        <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '70%' }}>
+        <h2>Appointments for the day!</h2>
+        <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '80%' }}>
           {arr.length===0 ? (
             <p style={{ color: 'gray', textAlign: 'center' }}>No appointments for the day</p>
           ) : (

@@ -103,9 +103,9 @@ const AppointmentObj = (props) => {
   return (
     <div className='appobj'>
       <h3>Patient Name: {patientName}</h3>
-      <p>Age: {patientAge !== null ? patientAge : 'N/A'}</p>
-      <p>Reason for Appointment: {reasonforappointment}</p>
-      <p>Slot Time: {slot}</p>
+      <p><b>Age: </b>{patientAge !== null ? patientAge : 'N/A'}</p>
+      <p><b>Reason for Appointment:</b> {reasonforappointment}</p>
+      <p><b>Slot Time:</b> {slot}</p>
 
       {showDiagnosis && (
         <div className='diag'>
@@ -128,9 +128,9 @@ const AppointmentObj = (props) => {
         </div>
       )}
 
-      <button onClick={cancelAppointment}>Cancel</button>
+      <button onClick={cancelAppointment}>Cancel Appointment</button>
       <button onClick={() => setShowDiagnosis(!showDiagnosis)}>
-        {showDiagnosis ? 'Close Appointment' : 'View Appointment'}
+        {showDiagnosis ? 'Close' : 'View Appointment'}
       </button>
       <ToastContainer />
     </div>
