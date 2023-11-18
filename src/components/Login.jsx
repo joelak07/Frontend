@@ -69,6 +69,7 @@ function Login() {
               onChange={(e) => setEmpId(e.target.value)}
               required
               className="loginipt"
+              placeholder='Enter Employee ID'
             />
           </div>
           <br />
@@ -80,6 +81,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="loginipt"
+              placeholder='Enter Password'
             />
             <span className="password-toggle-icon">
               {ToggleIcon}
