@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import './docdashboard.css'
+import './docdashboard.css';
+import {toast,ToastContainer} from 'react-toastify';
 import Axios from 'axios';
 
 const AppointmentObj = (props) => {
   const {
     _id,
-    doctorId,
-    appointmentDate,
     patientName,
     email,
     slot,
-    reasonforappointment,
-    isCompleted,
-    isChanged
+    reasonforappointment
   } = props.obj;
   const [showDiagnosis, setShowDiagnosis] = useState(false);
   const [patientDetails, setPatientDetails] = useState(null);
   const [patientAge, setPatientAge] = useState(null);
+  const [diagnosisMessage, setDiagnosisMessage] = useState('');
 
   const calculateAge = (dob) => {
     const currentDate = new Date();
@@ -31,11 +29,12 @@ const AppointmentObj = (props) => {
 
     return age;
   };
+
   const cancelAppointment = () => {
     Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
-          alert("Deleted successfully");
+          alert('Deleted successfully');
           window.location.reload();
         } else {
           Promise.reject();
@@ -43,8 +42,47 @@ const AppointmentObj = (props) => {
       })
       .catch((err) => alert(err));
   };
+
+  const handleDiagnosisChange = (event) => {
+    setDiagnosisMessage(event.target.value);
+  };
+
+  const sendDiagnosis = async() =>{
+    try{
+      const response = await Axios.post(`http://localhost:4000/appointment/sendDiagnosis/${_id}`, { message: diagnosisMessage })
+      if (response.status===200) {
+        toast.success("Diagnosis sent successfully");
+        setDiagnosisMessage('');
+      }
+      else {
+        toast.error("Failed to send");
+      }
+    }
+    catch (err) {
+      toast.error("Failed to send");
+    }
+  }
+
+  const completeAppointment = async() => {
+    try{
+      const response = await Axios.put(`http://localhost:4000/appointment/completeAppointment/${_id}`);
+      if (response.status===200) {
+        toast.success("Appointment completed");
+        setTimeout(()=>{
+          window.location.reload();
+        },3000);
+      }
+      else {
+        toast.error("Error has occured");
+      }
+    }
+    catch(err){
+      toast.error("Error has occured")
+    }
+  }
+
   useEffect(() => {
-    Axios.get("http://localhost:4000/patient/getPatient", {
+    Axios.get('http://localhost:4000/patient/getPatient', {
       params: { email: email, patientName: patientName },
     })
       .then((res) => {
@@ -52,7 +90,7 @@ const AppointmentObj = (props) => {
           setPatientDetails(res.data[0]);
         }
       })
-      .catch((err) => console.error("Error fetching patient details:", err));
+      .catch((err) => console.error('Error fetching patient details:', err));
   }, [email, patientName]);
 
   useEffect(() => {
@@ -70,11 +108,21 @@ const AppointmentObj = (props) => {
       <p>Slot Time: {slot}</p>
 
       {showDiagnosis && (
-        <div className="diag">
+        <div className='diag'>
           <h3>Your diagnosis</h3>
-          <textarea name="" id="" cols="159" rows="7"></textarea>
-          <button className="send-report-button" style={{ backgroundColor: "green" }}>Send Report</button>
-          <button className="session-completed-button" style={{ backgroundColor: "green" }}>Session Completed</button>
+          <textarea
+            name='diagnosisMessage'
+            value={diagnosisMessage}
+            onChange={handleDiagnosisChange}
+            cols='159'
+            rows='7'
+          ></textarea>
+          <button className='send-report-button' style={{ backgroundColor: 'green' }} onClick={sendDiagnosis}>
+            Send Report
+          </button>
+          <button className='session-completed-button' style={{ backgroundColor: 'green' }} onClick={completeAppointment}>
+            Session Completed
+          </button>
           <br />
           <br />
         </div>
@@ -84,8 +132,9 @@ const AppointmentObj = (props) => {
       <button onClick={() => setShowDiagnosis(!showDiagnosis)}>
         {showDiagnosis ? 'Close Appointment' : 'View Appointment'}
       </button>
+      <ToastContainer />
     </div>
   );
-}
+};
 
 export default AppointmentObj;

@@ -6,7 +6,6 @@ import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const DocDashboard = () => {
-  const [empId, setEmpId] = useState('');
   const [arr, setArr] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -16,8 +15,7 @@ const DocDashboard = () => {
         if (token) {
           const decodedToken = decodeToken(token);
           if (decodedToken && decodedToken.empId) {
-            setEmpId(decodedToken.empId);
-            const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctor", {
+            const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorToday", {
               params: { doctorId: decodedToken.empId }
             });
             if (response.status === 200) {
