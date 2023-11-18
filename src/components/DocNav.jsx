@@ -20,13 +20,13 @@ const DocNav = () => {
   return (
     <div className='navbar'>
       <div className="title">
-        <Link to="/" style={{ textDecoration: "none", fontSize: "12px" }}>
+        <Link to="/doctor/dashboard" style={{ textDecoration: "none", fontSize: "12px" }}>
           <div className='tt'><h1>Sunrise</h1><h2>Healthcare</h2></div>
         </Link>
       </div>
       <div className="links">
         <ul>
-          <Link to="/doctorprofile" className="linkc">My Profile</Link>
+          <Link to="/doctor/profile" className="linkc">My Profile</Link>
           <Link to="/myappointment" className="linkc">My Appointments</Link>
           <button className="linkc butc" onClick={handleLogout}>Logout</button>
         </ul>
