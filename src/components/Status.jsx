@@ -9,7 +9,7 @@ const Status = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { 
     localStorage.removeItem("patientdbtoken");
   }, []);
 

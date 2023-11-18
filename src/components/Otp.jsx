@@ -9,7 +9,7 @@ const Otp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const inputRefs = useRef([]);
-
+  const [loading, setLoading] = useState(false);
   const handleInputChange = (index, value) => {
     const newOtp = [...otp];
     newOtp[index] = value;
@@ -38,6 +38,7 @@ const Otp = () => {
     } else if (enteredOtp.length !== 6) {
       toast.error('OTP length should be 6');
     } else {
+      setLoading(true);
       const data = {
         otp: enteredOtp,
         email: location.state.email,
@@ -47,21 +48,21 @@ const Otp = () => {
       try {
         const response = await Axios.post('http://localhost:4000/patientOtp/status', data);
         if (response.status === 200) {
-          if (location.state.option==="1") {
+          if (location.state.option === "1") {
             localStorage.setItem('patientdbtoken', response.data.userToken);
             toast.success(response.data.message);
-        
+
             setTimeout(() => {
               navigate('/verifiedStatus', { state: data.email });
             }, 2000);
           }
-          else if (location.state.option==="2") {
+          else if (location.state.option === "2") {
             console.log(location.state);
             const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
-            patientName: location.state.patientName,
-            email: location.state.email,
-            dob: location.state.dob,
-            address: location.state.address,
+              patientName: location.state.patientName,
+              email: location.state.email,
+              dob: location.state.dob,
+              address: location.state.address,
             });
             if (patientResponse.status === 200) {
               const appointmentResponse = await Axios.post("http://localhost:4000/appointment/createAppointment", {
@@ -95,6 +96,8 @@ const Otp = () => {
       } catch (error) {
         console.error(error);
         toast.error('Incorrect OTP');
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -122,8 +125,8 @@ const Otp = () => {
           </div>
           <br />
           <br />
-          <button className="btnotp" onClick={loginPatient}>
-            Verify OTP
+          <button className="btnotp" onClick={loginPatient} disabled={loading}>
+            {loading ? <div className="spinnerotp"></div> : 'Verify OTP'}
           </button>
         </form>
       </div>
