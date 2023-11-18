@@ -17,7 +17,6 @@ const Navbar = () => {
       </div>
       <div className="links">
         <ul>
-          <Link to="/doctordashboard" className="linkc">Doctor</Link>
           <Link to="/status" className="linkc">Status</Link>
           <Link to="/appointment" className="linkc">Appointment</Link>
           <Link to="/test" className="linkc">Test</Link>
