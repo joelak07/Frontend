@@ -13,7 +13,7 @@ const Test = () => {
     dob: "",
     address: "",
     testDate: "",
-    availableSlots: [], // Removed 'slot' from state
+    availableSlots: [], 
   });
 
   const [selectedSlot, setSelectedSlot] = useState("");
@@ -109,138 +109,141 @@ const Test = () => {
   const { testName, patientName, email, dob, address, testDate } = state;
 
   return (
-    
-    <div className="testBookingContainer">
-        <div className="heading">
-          <h1>Book A Test</h1>
-        </div>
-      <div className="testBookingForm">
-        <form onSubmit={handleSubmit}>
-          <div className="subdiv1">
-            <label htmlFor="testName" className="testlbl">
-              Select Test:
-            </label>
-            <select
-              id="testName"
-              name="testName"
-              value={testName}
-              onChange={handleChange}
-              required
-              className="testselect"
-            >
-              <option value="" disabled>
-                Select Test
-              </option>
-              <option value="Sugar Test">Sugar Test</option>
-              <option value="BP Test">BP Test</option>
-              <option value="Cholesterol Test">Cholesterol Test</option>
-              <option value="Corona Test">Corona Test</option>
-              {/* Add more test options as needed */}
-            </select>
-          </div>
-          <div className="subdiv2">
-            <label htmlFor="patientName" className="testlbl">
-              Patient Name:
-            </label>
-            <input
-              type="text"
-              id="patientName"
-              name="patientName"
-              value={patientName}
-              onChange={handleChange}
-              required
-              className="testinp"
-            />
-          </div>
-          <div className="subdiv3">
-            <label htmlFor="email" className="testlbl">
-              Email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              required
-              className="testinp"
-            />
-          </div>
-          <div className="subdiv4">
-            <label htmlFor="dob" className="testlbl">
-              Date of Birth:
-            </label>
-            <input
-              type="date"
-              id="dob"
-              name="dob"
-              value={dob}
-              max={today}
-              onChange={handleChange}
-              required
-              className="testdate"
-            />
-          </div>
-          <div className="subdiv5">
-            <label htmlFor="address" className="testlbl">
-              Address:
-            </label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              value={address}
-              onChange={handleChange}
-              required
-              className="testinp"
-            />
-          </div>
-          <div className="subdiv6">
-            <label htmlFor="testDate" className="testlbl">
-              Test Date:
-            </label>
-            <input
-              type="date"
-              id="testDate"
-              name="testDate"
-              value={testDate}
-              min={today}
-              onChange={handleChange}
-              required
-              className="testdate"
-            />
-          </div>
-          <div className="subdiv7">
-            <label htmlFor="slot" className="testlbl">
-                Time Slot:
-            </label>
-            <select
-            id="selectedSlot"
-            name="selectedSlot"
-            value={selectedSlot}
-            onChange={handleSlotSelection}
-            required
-            className="testselect"
-            >
-            <option value="" disabled>
-                Select Slot
-            </option>
-            <option value="08:00">08:00 - 08:10</option>
-            <option value="08:10">08:10 - 08:20</option>
-            <option value="08:20">08:20 - 08:30</option>
-            <option value="08:30">08:30 - 08:40</option>
-            <option value="08:40">08:40 - 08:50</option>
-            <option value="08:50">08:50 - 09:00</option>
-            </select>
+    <div className="appcont">
+        <div className="appcon">
+            <div className="testBookingContainer">
+                <div className="heading">
+                <h1>Book A Test</h1>
+                </div>
+                <div className="testBookingForm">
+                    <form onSubmit={handleSubmit}>
+                    <div className="subdiv1">
+                        <label htmlFor="testName" className="testlbl">
+                        Select Test:
+                        </label>
+                        <select
+                        id="testName"
+                        name="testName"
+                        value={testName}
+                        onChange={handleChange}
+                        required
+                        className="testselect"
+                        >
+                        <option value="" disabled>
+                            Select Test
+                        </option>
+                        <option value="Sugar Test">Sugar Test</option>
+                        <option value="BP Test">BP Test</option>
+                        <option value="Cholesterol Test">Cholesterol Test</option>
+                        <option value="Corona Test">Corona Test</option>
+                        {/* Add more test options as needed */}
+                        </select>
+                    </div>
+                    <div className="subdiv2">
+                        <label htmlFor="patientName" className="testlbl">
+                        Patient Name:
+                        </label>
+                        <input
+                        type="text"
+                        id="patientName"
+                        name="patientName"
+                        value={patientName}
+                        onChange={handleChange}
+                        required
+                        className="testinp"
+                        />
+                    </div>
+                    <div className="subdiv3">
+                        <label htmlFor="email" className="testlbl">
+                        Email:
+                        </label>
+                        <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                        required
+                        className="testinp"
+                        />
+                    </div>
+                    <div className="subdiv4">
+                        <label htmlFor="dob" className="testlbl">
+                        Date of Birth:
+                        </label>
+                        <input
+                        type="date"
+                        id="dob"
+                        name="dob"
+                        value={dob}
+                        max={today}
+                        onChange={handleChange}
+                        required
+                        className="testdate"
+                        />
+                    </div>
+                    <div className="subdiv5">
+                        <label htmlFor="address" className="testlbl">
+                        Address:
+                        </label>
+                        <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value={address}
+                        onChange={handleChange}
+                        required
+                        className="testinp"
+                        />
+                    </div>
+                    <div className="subdiv6">
+                        <label htmlFor="testDate" className="testlbl">
+                        Test Date:
+                        </label>
+                        <input
+                        type="date"
+                        id="testDate"
+                        name="testDate"
+                        value={testDate}
+                        min={today}
+                        onChange={handleChange}
+                        required
+                        className="testdate"
+                        />
+                    </div>
+                    <div className="subdiv7">
+                        <label htmlFor="slot" className="testlbl">
+                            Time Slot:
+                        </label>
+                        <select
+                        id="selectedSlot"
+                        name="selectedSlot"
+                        value={selectedSlot}
+                        onChange={handleSlotSelection}
+                        required
+                        className="testselect"
+                        >
+                        <option value="" disabled>
+                            Select Slot
+                        </option>
+                        <option value="08:00">08:00 - 08:10</option>
+                        <option value="08:10">08:10 - 08:20</option>
+                        <option value="08:20">08:20 - 08:30</option>
+                        <option value="08:30">08:30 - 08:40</option>
+                        <option value="08:40">08:40 - 08:50</option>
+                        <option value="08:50">08:50 - 09:00</option>
+                        </select>
+                        </div>
+                    
+                    <div className="subdiv10">
+                        <button className="testButton" type="submit">
+                        Book Test
+                        </button>
+                    </div>
+                    </form>
+                </div>
             </div>
-          
-          <div className="subdiv10">
-            <button className="testButton" type="submit">
-              Book Test
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
   );
 };
