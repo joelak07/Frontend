@@ -68,59 +68,29 @@ function PatientObj(props) {
 
   return (
     <div className="appointment-details">
+      <div className="headingappoint">
+        <p className="section-title">
+          <b> Appointment Details</b>
+        </p>
+      </div>
       <div className="gridcontainer">
         <div className="griditem1">
-          <p className="section-title">
-            <b> Appointment Details</b>
-          </p>
           {appointmentDate && (
             <div className="field">
               Appointment Date: {formatDate(appointmentDate)}
             </div>
           )}
-          {slot && <div className="field">Slot: {slot}</div>}
         </div>
         <div className="griditem2">
-          {patientDetails && (
-            <div className="patient-details">
-              <p className="section-title">
-                <b>Patient Details</b>
-              </p>
-              {patientDetails.patientName && (
-                <div className="field">
-                  Patient Name: {patientDetails.patientName}
-                </div>
-              )}
-
-              {patientDetails.dob && (
-                <div className="field">
-                  Date of Birth: {formatDate(patientDetails.dob)}
-                </div>
-              )}
-            </div>
-          )}
+          {slot && <div className="field">Slot: {slot}</div>}
         </div>
 
         <div className="griditem3">
-          {doctorDetails && (
-            <div className="doctor-details">
-              <p className="section-title">
-                <b>Doctor Details</b>
-              </p>
-              {doctorDetails.doctorName && (
+          {patientDetails && (
+            <div className="patient-details">
+              {patientDetails.patientName && (
                 <div className="field">
-                  Doctor Name: {doctorDetails.doctorName}
-                </div>
-              )}
-
-              {doctorDetails.specialization && (
-                <div className="field">
-                  Specialization: {doctorDetails.specialization}
-                </div>
-              )}
-              {doctorDetails.qualification && (
-                <div className="field">
-                  Qualification: {doctorDetails.qualification}
+                  Patient Name: {patientDetails.patientName}
                 </div>
               )}
             </div>
@@ -128,17 +98,45 @@ function PatientObj(props) {
         </div>
 
         <div className="griditem4">
-          {reasonforappointment && (
-            <div className="additional-details">
-              <p className="section-title">
-                <b>Additional Appointment Details</b>
-              </p>
-              <div className="field">{reasonforappointment}</div>
+          {doctorDetails && (
+            <div className="doctor-details">
+              {doctorDetails.doctorName && (
+                <div className="field">
+                  Doctor Name: {doctorDetails.doctorName}
+                </div>
+              )}
             </div>
           )}
         </div>
 
         <div className="griditem5">
+          {doctorDetails && (
+            <div className="doctor-details">
+              {doctorDetails.specialization && (
+                <div className="field">
+                  Specialization: {doctorDetails.specialization}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="griditem6">
+          {reasonforappointment && (
+            <div className="additional-details">
+              <div className="field">
+                {" "}
+                Additional Details: {reasonforappointment}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="griditem7">
+          <button className="patientobjbutton">Reschedule</button>
+        </div>
+
+        <div className="griditem8">
           <button
             onClick={cancelAppointment}
             disabled={isCancelButtonDisabled}
@@ -147,9 +145,9 @@ function PatientObj(props) {
             Cancel
           </button>
         </div>
-
-        <br />
       </div>
+
+      <br />
     </div>
   );
 }
