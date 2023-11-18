@@ -87,7 +87,6 @@ function Login() {
           </div>
           <br />
           {error && <div style={{ color: 'red' }}>{error}</div>}
-          <br />
           <div>
             <button type="submit" className="loginbtn">
               Login
