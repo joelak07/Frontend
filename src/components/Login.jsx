@@ -46,7 +46,7 @@ function Login() {
         if (role === 'admin') {
           navigate('/admin/dashboard');
         } else if (role === 'doctor') {
-          navigate('/doctordashboard');
+          navigate('/doctor/dashboard');
         }
       }
     } catch (error) {
@@ -69,6 +69,7 @@ function Login() {
               onChange={(e) => setEmpId(e.target.value)}
               required
               className="loginipt"
+              placeholder='Enter Employee ID'
             />
           </div>
           <br />
@@ -80,6 +81,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="loginipt"
+              placeholder='Enter Password'
             />
             <span className="password-toggle-icon">
               {ToggleIcon}
@@ -87,7 +89,6 @@ function Login() {
           </div>
           <br />
           {error && <div style={{ color: 'red' }}>{error}</div>}
-          <br />
           <div>
             <button type="submit" className="loginbtn">
               Login

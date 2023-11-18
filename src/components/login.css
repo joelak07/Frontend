@@ -17,7 +17,6 @@
     align-items: center;
     padding-left: 50px;
     margin: auto;
-    opacity: 0.9;
 }
 
   
@@ -63,11 +62,8 @@
     background-color:  green;
   }
   .password-toggle-icon{
-    position:absolute;
-    top: 220px;
-    right:55px;
-    z-index: 1000;
-    cursor: pointer;
-    font-size: 19px;
+    position:relative;
+    bottom: 48px;
+    left: 94%;
   }
   

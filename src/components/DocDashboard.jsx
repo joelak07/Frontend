@@ -39,10 +39,15 @@ const DocDashboard = () => {
   }, [navigate]);
 
   const ListItems = () => {
+    // Check if arr is an array before mapping
+    if (!Array.isArray(arr)) {
+      return []; // or any other handling you prefer when arr is not an array
+    }
+
     return arr.map((val, ind) => {
       return <AppointmentObj key={val._id} obj={val} />;
     });
-  }
+  };
 
   const decodeToken = (token) => {
     const base64Url = token.split('.')[1];
@@ -57,7 +62,7 @@ const DocDashboard = () => {
       <div className="doccontainer">
         <h2>Appointments for the day</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '70%' }}>
-          {arr.length === 0 ? (
+          {arr.length===0 ? (
             <p style={{ color: 'gray', textAlign: 'center' }}>No appointments for the day</p>
           ) : (
             ListItems()

@@ -20,7 +20,7 @@ function Confirmed() {
     <div className="confirmed-page">
       <div className="confirmbox">
         <div className="confirmmessage">
-          <h1>Appointment Confirmed</h1>
+          <h1>{location.state.option==="2"?"Appointment":"Test"} Confirmed</h1>
           <p>Your health journey starts with us at Sunrise 😊 </p>
         </div>
         <div className="confimrbut">

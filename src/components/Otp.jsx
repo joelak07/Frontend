@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './otp.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +10,11 @@ const Otp = () => {
   const navigate = useNavigate();
   const inputRefs = useRef([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    inputRefs.current[0].focus();
+  }, []);
+
   const handleInputChange = (index, value) => {
     const newOtp = [...otp];
     newOtp[index] = value;
@@ -25,6 +30,13 @@ const Otp = () => {
     if (event.key === 'Backspace' && index > 0 && !otp[index]) {
       inputRefs.current[index - 1].focus();
     }
+  };
+
+  const handlePaste = (event) => {
+    const clipboardData = event.clipboardData || window.clipboardData;
+    const pastedText = clipboardData.getData('Text').trim().slice(0, 6).split('');
+    setOtp(pastedText);
+    event.preventDefault();
   };
 
   const loginPatient = async (e) => {
@@ -44,7 +56,6 @@ const Otp = () => {
         email: location.state.email,
         option: location.state.option
       };
-      console.log(data);
       try {
         const response = await Axios.post('http://localhost:4000/patientOtp/status', data);
         if (response.status === 200) {
@@ -57,7 +68,6 @@ const Otp = () => {
             }, 2000);
           }
           else if (location.state.option === "2") {
-            console.log(location.state);
             const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
               patientName: location.state.patientName,
               email: location.state.email,
@@ -79,7 +89,7 @@ const Otp = () => {
                 localStorage.setItem('patientdbtoken', response.data.userToken);
                 toast.success(response.data.message);
                 setTimeout(() => {
-                  navigate('/confirmed', { state: data.email });
+                  navigate('/confirmed', { state:{option: "2"} });
                 }, 2000);
               }
               else {
@@ -88,6 +98,27 @@ const Otp = () => {
             }
             else {
               toast.error("Patient not created");
+            }
+          }
+          else if (location.state.option==="3") {
+            const testResponse = await Axios.post("http://localhost:4000/test/createTestAppointment", {
+              testName:location.state.testName,
+              email:location.state.email,
+              testDate: location.state.testDate,
+              slot: location.state.slot,
+              dob: location.state.dob,
+              patientName: location.state.patientName,
+              address: location.state.address,
+            });
+            if (testResponse.status===200) {
+              localStorage.setItem('patientdbtoken', response.data.userToken);
+              toast.success("Test successfully scheduled");
+              setTimeout(() => {
+                navigate('/confirmed', { state:{option: "3"} });
+              }, 2000);
+            }
+            else {
+              toast.error("Test not created");
             }
           }
         } else {
@@ -119,6 +150,7 @@ const Otp = () => {
                 onChange={(e) => handleInputChange(index, e.target.value)}
                 onKeyDown={(e) => handleInputKeyDown(index, e)}
                 maxLength="1"
+                onPaste={handlePaste}
                 ref={(input) => (inputRefs.current[index] = input)}
               />
             ))}
