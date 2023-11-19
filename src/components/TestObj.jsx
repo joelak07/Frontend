@@ -15,8 +15,8 @@ function PatientObj(props) {
   } = props.obj;
   const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
 
-  const cancelAppointment = () => {
-    Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
+  const cancelTest = () => {
+    Axios.delete(`http://localhost:4000/test/deleteTestAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
           alert("Deleted successfully");
@@ -85,7 +85,7 @@ function PatientObj(props) {
 
         <div className="griditem8">
           <button
-            onClick={cancelAppointment}
+            onClick={cancelTest}
             disabled={isCancelButtonDisabled}
             className="patientobjbutton"
           >
