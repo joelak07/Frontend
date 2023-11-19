@@ -16,7 +16,7 @@ function Footer() {
           <PhoneIcon /> <span>123-456-7890</span>
         </div>
         <div className="contactItem">
-          <MailOutlineIcon /> <span>queries@sunrisehospital.com</span>
+          <MailOutlineIcon /> <span>sunrisehealthcareforyou@gmail.com</span>
         </div>
         <div className="contactItem">
           <LocationOnIcon /> <span>123 Main Street, Kochi, Kerala, 682301</span>
