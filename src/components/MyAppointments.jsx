@@ -1,26 +1,13 @@
-// MyAppointments Component - Frontend
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import DocNav from './DocNav';
+import AppointmentObj from './AppointmentObj';
 import "./myappointments.css";
 
-
 const MyAppointments = () => {
-  const [doctorId, setDoctorId] = useState('');
   const [appointments, setAppointments] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Initialize with current date
-
-  useEffect(() => {
-    console.log("MyAppointments component mounted");
-    const token = localStorage.getItem('doctordbtoken');
-    if (token) {
-      const decodedToken = decodeToken(token);
-      if (decodedToken && decodedToken.doctorId) {
-        setDoctorId(decodedToken.doctorId);
-      }
-    }
-    fetchAppointments(selectedDate); // Fetch appointments for the selected date
-  }, [doctorId]); // Run once on component mount and whenever doctorId changes
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+  const [patientName, setPatientName] = useState('');
 
   const decodeToken = (token) => {
     const base64Url = token.split('.')[1];
@@ -29,25 +16,42 @@ const MyAppointments = () => {
     return decoded;
   };
 
-  const handleDateChange = async (event) => {
-    const selectedDate = event.target.value;
-    setSelectedDate(selectedDate);
-    await fetchAppointments(selectedDate); // Fetch appointments for the selected date
-  };
-
-  const handleSubmit = async () => {
-    await fetchAppointments(selectedDate); // Fetch appointments for the selected date
-  };
-
-  const fetchAppointments = async (date) => {
+  const fetchAppointments = async () => {
     try {
-      const response = await Axios.get(`http://localhost:4000/appointment/getAppointmentForDoctorByDate/${doctorId}/${date}`);
-      console.log("API Response:", response.data);
-      setAppointments(response.data); // Assuming response.data is an array of appointments
+      console.log('Fetching appointments for date:', selectedDate);
+
+      const token = localStorage.getItem('doctordbtoken');
+      if (token) {
+        const decodedToken = decodeToken(token);
+        if (decodedToken && decodedToken.doctorId) {
+          const response = await Axios.get(`http://localhost:4000/appointment/getAppointmentForDoctorByDate/${decodedToken.doctorId}/${selectedDate}/${patientName}`);
+
+          console.log('Response:', response.data);
+
+          if (response.status === 200) {
+            setAppointments(response.data);
+          } else {
+            console.error("Failed to fetch data");
+          }
+        }
+      }
     } catch (error) {
       console.error('Error fetching appointments:', error);
-      // Handle error
     }
+  };
+
+  useEffect(() => {
+    fetchAppointments();
+  }, [selectedDate, patientName]);
+
+  const handleDateChange = (event) => {
+    const date = event.target.value;
+    setSelectedDate(date);
+  };
+
+  const handlePatientNameChange = (event) => {
+    const name = event.target.value;
+    setPatientName(name);
   };
 
   return (
@@ -72,33 +76,26 @@ const MyAppointments = () => {
                 type="text"
                 id="searchPatient"
                 placeholder='Enter patient name'
+                value={patientName}
+                onChange={handlePatientNameChange}
               />
             </div>
-            <button onClick={handleSubmit} className='myappbutt'>Search</button>
+            <button onClick={fetchAppointments} className='myappbutt'>Search</button>
           </div>
         </div>
-
 
         {appointments.length > 0 ? (
           <div className="appsearchres">
             <ul>
               {appointments.map((appointment) => (
-                <li key={appointment._id}>
-                  <p>Date: {appointment.appointmentDate}</p>
-                  <p>Patient: {appointment.patientName}</p>
-                  <p>Email: {appointment.email}</p>
-                  <p>Slot: {appointment.slot}</p>
-                  <p>Reason: {appointment.reasonforappointment}</p>
-                </li>
+                <AppointmentObj key={appointment._id} obj={appointment} />
               ))}
             </ul>
           </div>
         ) : (
           <p>No appointments found</p>
         )}
-
       </div>
-
     </div>
   );
 };
