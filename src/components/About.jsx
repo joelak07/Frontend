@@ -22,11 +22,10 @@ function About() {
   return (
     <div className="aboutcontainer"> 
       <div className="aboutcon">
-        {/* <div className="aboutheader">
-          <h1>Welcome to Sunrise Healthcare</h1>
-          <p>Providing Care with Compassion</p>
-        </div> */}
+        <div className="aboutheader">
         <h1>About us</h1>
+        </div>
+        
 
         <div className="aboutcontent">
           <div className="ourstory">

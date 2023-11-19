@@ -27,16 +27,16 @@
   font-size: 4rem;
   font-family: "Arial", sans-serif;
   color: #06244a; 
+  background-color: #d2d2d2;
+  max-width:fit-content;
+  padding:15px 50px 15px 50px;
+  border-radius: 10px;
 }
 
-/* .aboutheader {
-  text-align: center;
-  padding: 50px 0px 10px 50px;
-  font-family: "Arial", sans-serif;
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
-} */
+.aboutheader {
+display:flex;
+justify-content: center;
+}
 
 .aboutcontent h2{
   font-size: 3rem;
