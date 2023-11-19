@@ -84,6 +84,15 @@
   background-color: green;
 }
 
+.testsubdiv1, 
+.testsubdiv2,
+.testsubdiv3,
+.testsubdiv4,
+.testsubdiv5,
+.testsubdiv6,
+.testsubdiv7 {
+  padding: 10px;
+}
 
 .spinnertest {
   border: 4px solid rgba(0, 0, 0, 0.1);
