@@ -9,7 +9,7 @@ const AdminNav = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('admindbtoken');
-    
+
     // Update the login status
     setIsLoggedIn(false);
 
@@ -20,9 +20,9 @@ const AdminNav = () => {
   return (
     <div className='docnavbar'>
       <div className="titledoc">
-        <Link to="/" style={{ textDecoration: "none", fontSize: "12px" }}>
-          <div className='tt'><h1>Sunrise</h1><h2 style={{color:"#9BA4B5"}}>Healthcare</h2></div>
-        </Link>
+
+        <div className='tt'><h1>Sunrise</h1><h2 style={{ color: "#9BA4B5" }}>Healthcare</h2></div>
+
       </div>
       <div className="links">
         <ul>

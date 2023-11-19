@@ -8,20 +8,20 @@
 }
 
 .maindoc{
-  background-color: #e3e3e3;
+  /* background-color: #e3e3e3; */
+  background-color: white;
    height: 140vh;
 }
 .maindoctit{
   text-align: right;
   margin-right: 20px;
-  margin-top: 20px;
   font-size: 2.5rem;
   color: #0C356A;
   font-family: 'Almarai', sans-serif;
 }
 
 .maindoctit span{
-  font-size: 1.7rem;
+  font-size: 2.5rem;
   color: #476185;
   font-family: 'Almarai', sans-serif;
 }
@@ -88,6 +88,17 @@
     border-radius: 10px;
     padding: 10px;
   }
-  
 
+  .docdashheader{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
+  .docdashheader h2{
+    font-size: 2.5rem;
+    color: #0C356A;
+    font-family: 'Almarai', sans-serif;
+    margin-left: 20px;
+  }
