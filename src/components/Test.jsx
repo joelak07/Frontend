@@ -151,7 +151,7 @@ const Test = () => {
                 </select>
               </div>
               <div className="subdiv2">
-                <label htmlFor="patientName" className="testlbl">
+                <label htmlFor="patientName" className="testlbla">
                   Patient Name:
                 </label>
                 <input
@@ -161,7 +161,7 @@ const Test = () => {
                   value={patientName}
                   onChange={handleChange}
                   required
-                  className="testinp"
+                  className="testname"
                   placeholder="Enter Patient Name"
                 />
               </div>
@@ -181,7 +181,7 @@ const Test = () => {
                 />
               </div>
               <div className="subdiv4">
-                <label htmlFor="dob" className="testlbl">
+                <label htmlFor="dob" className="testlbla">
                   Date of Birth:
                 </label>
                 <input
@@ -207,12 +207,12 @@ const Test = () => {
                   value={address}
                   onChange={handleChange}
                   required
-                  className="testinp"
+                  className="testadd"
                   placeholder="Enter Patient Address"
                 />
               </div>
               <div className="subdiv6">
-                <label htmlFor="testDate" className="testlbl">
+                <label htmlFor="testDate" className="testlbla">
                   Test Date:
                 </label>
                 <input
