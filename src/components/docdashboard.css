@@ -93,11 +93,11 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     align-items: center;
   }
   
   .docdashheader h2{
-    font-size: 2.5rem;
     color: #0C356A;
     font-family: 'Almarai', sans-serif;
     margin-left: 20px;

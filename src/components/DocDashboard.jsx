@@ -96,7 +96,7 @@ const DocDashboard = () => {
     <div className={`maindoc ${greeting.toLowerCase()}`}>
       <DocNav />
       <div className="docdashheader">
-      <h2>Time: {currentTime}</h2>
+      <h2 className='docdashTime'>Time: {currentTime}</h2>
         <h2 className='maindoctit'>Good {greeting} <span>{docName && `${docName.split(' ')[0]} ${docName.split(' ')[1]}!`}</span></h2>
         
       </div>
