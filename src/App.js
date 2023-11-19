@@ -18,6 +18,7 @@ import DocProfile from "./components/DocProfile";
 import Test from "./components/Test";
 import MyAppointments from "./components/MyAppointments";
 import About from "./components/About";
+import PrevStatus from "./components/PrevStatus";
 
 function App() {
   return (
@@ -32,13 +33,14 @@ function App() {
           <Route path="/status" element={<Status />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/*" element={<Error />} />
           <Route path="/patient/otp" element={<Otp />} />
           <Route path="/verifiedStatus" element={<VerifiedStatus />} />
+          <Route path="/previousStatus" element={<PrevStatus />} />
           <Route path="/confirmed" element={<Confirmed />} />
           <Route path="/test" element={<Test />} />
           <Route path="/about" element={<About />} />
           <Route path="/doctor/appointments" element={<MyAppointments />} />
+          <Route path="/*" element={<Error />} />
         </Routes>
         <Footer />
       </HashRouter>

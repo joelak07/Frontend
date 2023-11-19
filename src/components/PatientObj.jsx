@@ -15,6 +15,7 @@ function PatientObj(props) {
   const [patientDetails, setPatientDetails] = useState(null);
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
+  const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] = useState(false);
 
   const cancelAppointment = () => {
     Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
@@ -59,6 +60,7 @@ function PatientObj(props) {
 
     const isBeforePreviousDay = appointmentDateTime < previousDay;
     setIsCancelButtonDisabled(isBeforePreviousDay);
+    setIsRescheduleButtonDisabled(isBeforePreviousDay);
   }, [email, doctorId, patientName, appointmentDate]);
 
   const formatDate = (dateString) => {
@@ -133,7 +135,9 @@ function PatientObj(props) {
         </div>
 
         <div className="griditem7">
-          <button className="patientobjbutton">Reschedule</button>
+          <button className="patientobjbutton" disabled={isRescheduleButtonDisabled}>
+            Reschedule
+          </button>
         </div>
 
         <div className="griditem8">
