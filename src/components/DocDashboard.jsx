@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 const DocDashboard = () => {
   const [arr, setArr] = useState([]);
+  const [currentTime, setCurrentTime] = useState('');
   const navigate = useNavigate();
-  const [docName, setDocName] = useState('');
+  const [docName, setDocName] = useState(null);
   const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
@@ -48,11 +49,16 @@ const DocDashboard = () => {
 
   useEffect(() => {
     const getCurrentTime = () => {
-      const currentTime = new Date().getHours();
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      setCurrentTime(formattedTime);
 
-      if (currentTime >= 5 && currentTime < 12) {
+      if (hours >= 5 && hours < 12) {
         setGreeting('Morning');
-      } else if (currentTime >= 12 && currentTime < 18) {
+      } else if (hours >= 12 && hours < 18) {
         setGreeting('Afternoon');
       } else {
         setGreeting('Evening');
@@ -60,6 +66,13 @@ const DocDashboard = () => {
     };
 
     getCurrentTime();
+
+    // Update the current time every second
+    const intervalId = setInterval(() => {
+      getCurrentTime();
+    }, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const ListItems = () => {
@@ -82,7 +95,11 @@ const DocDashboard = () => {
   return (
     <div className={`maindoc ${greeting.toLowerCase()}`}>
       <DocNav />
-      <h2 className='maindoctit'>Good {greeting} <span>{docName.split(' ')[0]+' '+docName.split(' ')[1]} !</span></h2>
+      <div className="docdashheader">
+      <h2>Time: {currentTime}</h2>
+        <h2 className='maindoctit'>Good {greeting} <span>{docName && `${docName.split(' ')[0]} ${docName.split(' ')[1]}!`}</span></h2>
+        
+      </div>
       <div className="doccontainer">
         <h2>Appointments for the day!</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '80%' }}>
