@@ -24,6 +24,7 @@ const Appointment = () => {
   });
 
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const [selectedDoctorName, setSelectedDoctorName] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -118,10 +119,9 @@ const Appointment = () => {
     event.preventDefault();
     try {
       const availabilityResponse = await checkAvailability();
-
       if (availabilityResponse && availabilityResponse.available) {
         setLoading(true);   
-        const data = {"email":state.email};
+        const data = {"email":state.email, "doctorName":selectedDoctorName};
         const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp",data);
         if (res.status===200) {
           navigate('/patient/otp', {
@@ -134,7 +134,8 @@ const Appointment = () => {
               slot: state.slot,
               reasonforappointment: state.reasonforappointment,
               doctorId: selectedDoctorId,
-              option: "2"
+              option: "2",
+              doctorName: selectedDoctorName
             },
           });
         }
@@ -205,6 +206,7 @@ const Appointment = () => {
                     const selectedDoctor = JSON.parse(event.target.value);
                     handleChange(event);
                     setSelectedDoctorId(selectedDoctor.doctorId);
+                    setSelectedDoctorName(selectedDoctor.doctorName);
                   }}
                   required
                   className="appointselect"
