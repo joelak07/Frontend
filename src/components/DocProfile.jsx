@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './docprofile.css'
 import DocNav from './DocNav';
-
-
+import usePasswordToggle from './usePasswordToggle';
 
 const DocProfile = () => {
   const [doctorDetails, setDoctorDetails] = useState({});
   const [empId, setEmpId] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
+  const [PasswordInputType,ToggleIcon]=usePasswordToggle();
   useEffect(() => {
     const token = localStorage.getItem('doctordbtoken');
     if (token) {
@@ -73,10 +72,6 @@ const DocProfile = () => {
     }
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-  
 
   return (
     <div className="docprofcont">
@@ -107,13 +102,13 @@ const DocProfile = () => {
           <label>Password:</label>
           <div className="password-input">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type={PasswordInputType}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={togglePasswordVisibility}>
-              {showPassword ? 'Hide' : 'Show'}
-            </button>
+            <span className="password-toggle-icon">
+              {ToggleIcon}
+            </span>
           </div>
         </div>
         <br />
