@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const DocDashboard = () => {
   const [arr, setArr] = useState([]);
   const navigate = useNavigate();
-  const [docName, setDocName] = useState(null);
+  const [docName, setDocName] = useState('');
   const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const DocDashboard = () => {
   return (
     <div className={`maindoc ${greeting.toLowerCase()}`}>
       <DocNav />
-      <h2 className='maindoctit'>Good {greeting} <span>{docName} !</span></h2>
+      <h2 className='maindoctit'>Good {greeting} <span>{docName.split(' ')[0]+' '+docName.split(' ')[1]} !</span></h2>
       <div className="doccontainer">
         <h2>Appointments for the day!</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '80%' }}>
