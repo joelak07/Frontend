@@ -128,7 +128,7 @@ const Test = () => {
           </div>
           <div className="testBookingForm">
             <form onSubmit={handleSubmit}>
-              <div className="subdiv1">
+              <div className="testsubdiv1">
                 <label htmlFor="testName" className="testlbl">
                   Select Test:
                 </label>
@@ -150,8 +150,8 @@ const Test = () => {
                   <option value="Corona Test">Corona Test</option>
                 </select>
               </div>
-              <div className="subdiv2">
-                <label htmlFor="patientName" className="testlbla">
+              <div className="testsubdiv2">
+                <label htmlFor="patientName" className="testlbl">
                   Patient Name:
                 </label>
                 <input
@@ -161,11 +161,11 @@ const Test = () => {
                   value={patientName}
                   onChange={handleChange}
                   required
-                  className="testname"
+                  className="testinp"
                   placeholder="Enter Patient Name"
                 />
               </div>
-              <div className="subdiv3">
+              <div className="testsubdiv3">
                 <label htmlFor="email" className="testlbl">
                   Email:
                 </label>
@@ -180,8 +180,8 @@ const Test = () => {
                   placeholder="Enter Patient Email"
                 />
               </div>
-              <div className="subdiv4">
-                <label htmlFor="dob" className="testlbla">
+              <div className="testsubdiv4">
+                <label htmlFor="dob" className="testlbl">
                   Date of Birth:
                 </label>
                 <input
@@ -196,7 +196,7 @@ const Test = () => {
                   placeholder="Select Date of Birth"
                 />
               </div>
-              <div className="subdiv5">
+              <div className="testsubdiv5">
                 <label htmlFor="address" className="testlbl">
                   Address:
                 </label>
@@ -207,18 +207,18 @@ const Test = () => {
                   value={address}
                   onChange={handleChange}
                   required
-                  className="testadd"
+                  className="testinp"
                   placeholder="Enter Patient Address"
                 />
               </div>
-              <div className="subdiv6">
-                <label htmlFor="testDate" className="testlbla">
+              <div className="testsubdiv6">
+                <label htmlFor="testDate" className="testlbl">
                   Test Date:
                 </label>
                 <input
                   type="date"
                   id="testDate"
-                  name="testDate"
+                  name="testdate"
                   value={testDate}
                   min={today}
                   onChange={handleChange}
@@ -227,7 +227,7 @@ const Test = () => {
                   placeholder="Select Test Date"
                 />
               </div>
-              <div className="subdiv7">
+              <div className="testsubdiv7">
                 <label htmlFor="selectedSlot" className="testlbl">
                   Time Slot:
                 </label>
@@ -252,7 +252,7 @@ const Test = () => {
                 </select>
               </div>
 
-              <div className="subdiv10">
+              <div className="testsubdiv8">
                 <button className="testButton" type="submit" disabled={loading}>
                   {loading ? <div className="spinnertest"></div> : 'Book Test'}
                 </button>
