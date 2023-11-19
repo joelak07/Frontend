@@ -10,12 +10,13 @@
     transition: all 0.3s;
     font-size: 1.2rem;
     margin: 8px;
+
   }
   
   .butc:hover {
-    background-color: tomato;
     color: white;
     border: none;
+    transform: scale(1.1);
   }
 
   .docnavbar{

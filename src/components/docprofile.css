@@ -52,7 +52,7 @@
   .docprofile button:hover {
     background-color: #45a049;
   }
-  .password-toggle-icon {
+  .password-toggle-iconprof {
     position: relative;
     bottom: 41px;
     left: calc(100% - 30px); 

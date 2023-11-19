@@ -106,7 +106,7 @@ const DocProfile = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <span className="password-toggle-icon">
+            <span className="password-toggle-iconprof">
               {ToggleIcon}
             </span>
           </div>

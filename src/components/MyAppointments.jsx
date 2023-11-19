@@ -53,7 +53,7 @@ const MyAppointments = () => {
   return (
     <div className='myappscont'>
       <DocNav />
-      <h2>My Appointments</h2>
+      <h2 className='myapptit'>My Appointments</h2>
       <div className="myappsbox">
         <div className="searchcont">
           <div className="flexingsearch">
@@ -67,14 +67,15 @@ const MyAppointments = () => {
               />
             </div>
             <div className="patnamesearch">
-              <label htmlFor="searchPatient">Search by Patient Name:</label>
+              <label htmlFor="searchPatient">Patient Name:</label>
               <input
                 type="text"
                 id="searchPatient"
+                placeholder='Enter patient name'
               />
             </div>
+            <button onClick={handleSubmit} className='myappbutt'>Search</button>
           </div>
-          <button onClick={handleSubmit}>Search Appointments</button>
         </div>
 
 
