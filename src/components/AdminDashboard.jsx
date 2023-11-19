@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminNav from "./AdminNav";
 import './admindashboard.css'
+import { toast, ToastContainer } from 'react-toastify';
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ function AdminDashboard() {
 
       if (response.ok) {
         // If the doctor is created successfully, fetch the updated list
-        console.log("Doctor created successfully!");
+        toast.success("Doctor profile created");
         await fetchDoctors();
         // Clear the form fields
         setNewDoctor({
@@ -109,9 +110,11 @@ function AdminDashboard() {
         });
       } else {
         console.error("Error creating doctor:", await response.json());
+        toast.error("Error in creating profile");
       }
     } catch (error) {
       console.error("Error creating doctor:", error);
+      toast.error("Error in creating profile");
     }
   };
 
@@ -130,6 +133,7 @@ function AdminDashboard() {
 
       if (response.ok) {
         // If the doctor is updated successfully, fetch the updated list
+        toast.success("Doctor updated");
         await fetchDoctors();
         // Hide the update form after successful update
         setDisplayUpdateForm(false);
@@ -141,9 +145,11 @@ function AdminDashboard() {
           qualification: "",
         });
       } else {
+        toast.error("Error in updation");
         console.error("Error updating doctor:", await response.json());
       }
     } catch (error) {
+      toast.error("Error in updation");
       console.error("Error updating doctor:", error);
     }
   };
@@ -182,11 +188,14 @@ function AdminDashboard() {
 
       if (response.ok) {
         // If the doctor is deleted successfully, fetch the updated list
+        toast.success("Doctor deleted");
         await fetchDoctors();
       } else {
         console.error("Error deleting doctor:", await response.json());
+        toast.error("Deletion error");
       }
     } catch (error) {
+      toast.error("Deletion error");
       console.error("Error deleting doctor:", error);
     }
   };
@@ -419,6 +428,7 @@ function AdminDashboard() {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 }
