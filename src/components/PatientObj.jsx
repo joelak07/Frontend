@@ -62,8 +62,8 @@ function PatientObj(props) {
   }, [email, doctorId, patientName, appointmentDate]);
 
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString("en-US", options);
+    const options = { day: "numeric", month: "numeric", year: "numeric" };
+    return new Date(dateString).toLocaleDateString("en-GB", options);
   };
 
   return (

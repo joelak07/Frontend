@@ -218,7 +218,7 @@ const Test = () => {
                 <input
                   type="date"
                   id="testDate"
-                  name="testdate"
+                  name="testDate"
                   value={testDate}
                   min={today}
                   onChange={handleChange}
