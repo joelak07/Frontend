@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const DocDashboard = () => {
   const [arr, setArr] = useState([]);
   const navigate = useNavigate();
+  const [docName, setDocName] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +17,12 @@ const DocDashboard = () => {
         if (token) {
           const decodedToken = decodeToken(token);
           if (decodedToken && decodedToken.empId) {
+            const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+              params: { doctorId: decodedToken.empId }
+            });
+            if (docData.status===200) {
+              setDocName(docData.data[0].doctorName);
+            }
             const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorToday", {
               params: { doctorId: decodedToken.empId }
             });
@@ -39,9 +46,8 @@ const DocDashboard = () => {
   }, [navigate]);
 
   const ListItems = () => {
-    // Check if arr is an array before mapping
     if (!Array.isArray(arr)) {
-      return []; // or any other handling you prefer when arr is not an array
+      return [];
     }
 
     return arr.map((val, ind) => {
@@ -59,6 +65,7 @@ const DocDashboard = () => {
   return (
     <div className='maindoc'>
       <DocNav />
+      <p>Hello {docName}</p>
       <div className="doccontainer">
         <h2>Appointments for the day!</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '80%' }}>
