@@ -2,8 +2,23 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./about.css";
+import doctors1 from "../Assets/doctors1.jpg";
+import doctors2 from "../Assets/doctors2.jpg";
+import doctors3 from "../Assets/doctors3.jpg";
+import { useState } from "react";
 
 function About() {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [doctors1, doctors2, doctors3];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <div className="aboutcontainer">
       <div className="aboutcon">
@@ -51,7 +66,9 @@ function About() {
             through our doors. Our doctors, nurses, and staff work tirelessly to
             ensure your well-being.
           </p>
-          <img src="" alt="" />
+          <div className="imgcont">
+            <img src={images[currentImage]} alt={`Image ${currentImage}`} />
+          </div>
 
           <h2>Get in Touch</h2>
           <p>
