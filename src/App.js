@@ -10,13 +10,14 @@ import Error from "./components/Error";
 import Otp from "./components/Otp";
 import VerifiedStatus from "./components/VerifiedStatus";
 import Confirmed from "./components/Confirmed";
-import AdminDashboard from './components/AdminDashboard';
+import AdminDashboard from "./components/AdminDashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocDashboard from "./components/DocDashboard";
 import DocProfile from "./components/DocProfile";
 import Test from "./components/Test";
-import MyAppointments from './components/MyAppointments';
+import MyAppointments from "./components/MyAppointments";
+import About from "./components/About";
 
 function App() {
   return (
@@ -26,8 +27,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/doctor/profile" element={<DocProfile/>} />
-          <Route path="/doctor/dashboard" element={<DocDashboard/>} />
+          <Route path="/doctor/profile" element={<DocProfile />} />
+          <Route path="/doctor/dashboard" element={<DocDashboard />} />
           <Route path="/status" element={<Status />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -36,6 +37,7 @@ function App() {
           <Route path="/verifiedStatus" element={<VerifiedStatus />} />
           <Route path="/confirmed" element={<Confirmed />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/about" element={<About />} />
           <Route path="/doctor/appointments" element={<MyAppointments />} />
         </Routes>
         <Footer />
