@@ -144,10 +144,16 @@ const Test = () => {
                   <option value="" disabled>
                     Select Test
                   </option>
-                  <option value="Sugar Test">Sugar Test</option>
-                  <option value="BP Test">BP Test</option>
-                  <option value="Cholesterol Test">Cholesterol Test</option>
-                  <option value="Corona Test">Corona Test</option>
+                  <option value="Lipid Profile">Lipid Profile</option>
+                  <option value="Renal Profile">Renal Profile</option>
+                  <option value="SGOT">SGOT</option>
+                  <option value="SGPT">SGPT</option>
+                  <option value="HbA1C">HbA1C</option>
+                  <option value="Blood Routine">Blood Routine</option>
+                  <option value="Urine Routine">Urine Routine</option>
+                  <option value="T3">T3</option>
+                  <option value="T4">T4</option>
+                  <option value="TSH">TSH</option>
                 </select>
               </div>
               <div className="testsubdiv2">
