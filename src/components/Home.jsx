@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import BannerImage from "../Assets/hospital.jpg";
 import "../components/home.css";
 import "./home.css";
+import About from "./About";
 
 function Home() {
   useEffect(() => {
@@ -46,6 +47,7 @@ function Home() {
           <Link to="/appointment" className="linkh">Book Your <br /> Appointment Now</Link>
         </div>
       </div>
+      <About />
     </div>
   );
 
