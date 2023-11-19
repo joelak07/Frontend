@@ -120,8 +120,8 @@ const Test = () => {
   const { testName, patientName, email, dob, address, testDate } = state;
 
   return (
-    <div className="appcont">
-      <div className="appcon">
+    <div className="testcont">
+      <div className="testcon">
         <div className="testBookingContainer">
           <div className="heading">
             <h1>Book A Test</h1>

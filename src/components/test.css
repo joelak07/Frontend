@@ -1,3 +1,28 @@
+.testcon {
+  display: contents;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #eceeef;
+  border-radius: 30px;
+  opacity: 0.9;
+  gap: 0px;
+}
+
+.testcont {
+  align-items: center;
+  padding: 80px;
+  background-image: linear-gradient(#aaa,black), url("../Assets/test.jpg");
+  background-blend-mode: screen;
+}
+
 .testBookingForm {
   background-color: #eed6bb;
   border: 1px solid #ced4da;
