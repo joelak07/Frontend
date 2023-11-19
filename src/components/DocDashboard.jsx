@@ -9,6 +9,7 @@ const DocDashboard = () => {
   const [arr, setArr] = useState([]);
   const navigate = useNavigate();
   const [docName, setDocName] = useState(null);
+  const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,7 @@ const DocDashboard = () => {
             const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
               params: { doctorId: decodedToken.empId }
             });
-            if (docData.status===200) {
+            if (docData.status === 200) {
               setDocName(docData.data[0].doctorName);
             }
             const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorToday", {
@@ -45,6 +46,22 @@ const DocDashboard = () => {
     fetchData();
   }, [navigate]);
 
+  useEffect(() => {
+    const getCurrentTime = () => {
+      const currentTime = new Date().getHours();
+
+      if (currentTime >= 5 && currentTime < 12) {
+        setGreeting('Morning');
+      } else if (currentTime >= 12 && currentTime < 18) {
+        setGreeting('Afternoon');
+      } else {
+        setGreeting('Evening');
+      }
+    };
+
+    getCurrentTime();
+  }, []);
+
   const ListItems = () => {
     if (!Array.isArray(arr)) {
       return [];
@@ -63,13 +80,13 @@ const DocDashboard = () => {
   };
 
   return (
-    <div className='maindoc'>
+    <div className={`maindoc ${greeting.toLowerCase()}`}>
       <DocNav />
-      <p>Hello {docName}</p>
+      <h2 className='maindoctit'>Good {greeting} <span>{docName} !</span></h2>
       <div className="doccontainer">
         <h2>Appointments for the day!</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '80%' }}>
-          {arr.length===0 ? (
+          {arr.length === 0 ? (
             <p style={{ color: 'gray', textAlign: 'center' }}>No appointments for the day</p>
           ) : (
             ListItems()
