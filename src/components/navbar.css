@@ -38,7 +38,6 @@
 
 .tt{
     display: flex;
-    align-items: baseline;
     gap: 10px;
 }
 .title h1{
@@ -53,6 +52,8 @@
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    margin: 0;
+    padding-top: 32px;
 }
 
 #loginNav {

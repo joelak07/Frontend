@@ -47,7 +47,7 @@
     transform: scale(1.1);
     color: #0C356A;
     border: 1px solid #FFD099;
-}   
+} 
 
 .titledoc h1{
   color:  #F1F6F9;
@@ -61,4 +61,6 @@
   font-size: 2rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
+  margin: 0;
+  padding-top: 32px;
 }

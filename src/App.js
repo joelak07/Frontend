@@ -11,7 +11,6 @@ import Otp from "./components/Otp";
 import VerifiedStatus from "./components/VerifiedStatus";
 import Confirmed from "./components/Confirmed";
 import AdminDashboard from "./components/AdminDashboard";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DocDashboard from "./components/DocDashboard";
 import DocProfile from "./components/DocProfile";
