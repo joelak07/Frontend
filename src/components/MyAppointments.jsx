@@ -80,29 +80,29 @@ const MyAppointments = () => {
           if (docData.status === 200) {
             setDocName(docData.data[0].doctorName);
           }
-  
+
           // Fetch appointments for the specified date and patient name
           const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByDateAndPatient", {
             params: { doctorId: decodedToken.empId, date: selectedDate, patientName }
           });
-  
+
           if (response.status === 200) {
             const allAppointments = response.data;
-  
+
             // Filter upcoming and ongoing appointments
             const today = new Date().toISOString().split('T')[0];
             const upcoming = allAppointments.filter(appointment => new Date(appointment.appointmentDate) > new Date(today));
             const ongoing = allAppointments.filter(appointment => {
               const appointmentDate = new Date(appointment.appointmentDate);
               const todayDate = new Date(today);
-              
+
               return (
                 appointmentDate.getFullYear() === todayDate.getFullYear() &&
                 appointmentDate.getMonth() === todayDate.getMonth() &&
                 appointmentDate.getDate() === todayDate.getDate()
               );
             });
-  
+
             setUpcomingAppointments(upcoming);
             setOngoingAppointments(ongoing);
           } else {
@@ -117,97 +117,97 @@ const MyAppointments = () => {
       alert("An error occurred while fetching data");
     }
   };
-  
-
-const fetchAppointmentsByPatientName = async () => {
-  try {
-    const token = localStorage.getItem('doctordbtoken');
-    if (token) {
-      const decodedToken = decodeToken(token);
-      if (decodedToken && decodedToken.empId) {
-        const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
-          params: { doctorId: decodedToken.empId }
-        });
-        if (docData.status === 200) {
-          setDocName(docData.data[0].doctorName);
-        }
-
-        // Fetch appointments for the specified date and patient name
-        const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByPatientName", {
-          params: { doctorId: decodedToken.empId,patientName }
-        });
-
-        if (response.status === 200) {
-          const allAppointments = response.data;
-
-          // Filter upcoming and ongoing appointments
-          const today = new Date().toISOString().split('T')[0];
-          const upcoming = allAppointments.filter(appointment => new Date(appointment.appointmentDate) > new Date(today));
-          const ongoing = allAppointments.filter(appointment => {
-            const appointmentDate = new Date(appointment.appointmentDate);
-            const todayDate = new Date(today);
-            
-            return (
-              appointmentDate.getFullYear() === todayDate.getFullYear() &&
-              appointmentDate.getMonth() === todayDate.getMonth() &&
-              appointmentDate.getDate() === todayDate.getDate()
-            );
-          });
-
-          setUpcomingAppointments(upcoming);
-          setOngoingAppointments(ongoing);
-        } else {
-          console.error("Failed to fetch data");
-        }
-      }
-    } else {
-      navigate("*");
-    }
-  } catch (error) {
-    console.error(error);
-    alert("An error occurred while fetching data");
-  }
-};
 
 
-  const fetchDataAll = async () => {
+  const fetchAppointmentsByPatientName = async () => {
     try {
       const token = localStorage.getItem('doctordbtoken');
-  
       if (token) {
         const decodedToken = decodeToken(token);
-  
         if (decodedToken && decodedToken.empId) {
           const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
             params: { doctorId: decodedToken.empId }
           });
-  
           if (docData.status === 200) {
             setDocName(docData.data[0].doctorName);
           }
-  
-          // Fetch all appointments for the logged-in doctor using the patientName route
+
+          // Fetch appointments for the specified date and patient name
           const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByPatientName", {
-            params: { doctorId: decodedToken.empId, patientName: null }
+            params: { doctorId: decodedToken.empId, patientName }
           });
-  
+
           if (response.status === 200) {
             const allAppointments = response.data;
-  
+
             // Filter upcoming and ongoing appointments
             const today = new Date().toISOString().split('T')[0];
             const upcoming = allAppointments.filter(appointment => new Date(appointment.appointmentDate) > new Date(today));
             const ongoing = allAppointments.filter(appointment => {
               const appointmentDate = new Date(appointment.appointmentDate);
               const todayDate = new Date(today);
-            
+
               return (
                 appointmentDate.getFullYear() === todayDate.getFullYear() &&
                 appointmentDate.getMonth() === todayDate.getMonth() &&
                 appointmentDate.getDate() === todayDate.getDate()
               );
             });
-              
+
+            setUpcomingAppointments(upcoming);
+            setOngoingAppointments(ongoing);
+          } else {
+            console.error("Failed to fetch data");
+          }
+        }
+      } else {
+        navigate("*");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while fetching data");
+    }
+  };
+
+
+  const fetchDataAll = async () => {
+    try {
+      const token = localStorage.getItem('doctordbtoken');
+
+      if (token) {
+        const decodedToken = decodeToken(token);
+
+        if (decodedToken && decodedToken.empId) {
+          const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+            params: { doctorId: decodedToken.empId }
+          });
+
+          if (docData.status === 200) {
+            setDocName(docData.data[0].doctorName);
+          }
+
+          // Fetch all appointments for the logged-in doctor using the patientName route
+          const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByPatientName", {
+            params: { doctorId: decodedToken.empId, patientName: null }
+          });
+
+          if (response.status === 200) {
+            const allAppointments = response.data;
+
+            // Filter upcoming and ongoing appointments
+            const today = new Date().toISOString().split('T')[0];
+            const upcoming = allAppointments.filter(appointment => new Date(appointment.appointmentDate) > new Date(today));
+            const ongoing = allAppointments.filter(appointment => {
+              const appointmentDate = new Date(appointment.appointmentDate);
+              const todayDate = new Date(today);
+
+              return (
+                appointmentDate.getFullYear() === todayDate.getFullYear() &&
+                appointmentDate.getMonth() === todayDate.getMonth() &&
+                appointmentDate.getDate() === todayDate.getDate()
+              );
+            });
+
             setUpcomingAppointments(upcoming);
             setOngoingAppointments(ongoing);
           } else {
@@ -222,7 +222,7 @@ const fetchAppointmentsByPatientName = async () => {
       alert('An error occurred while fetching data');
     }
   };
-  
+
 
   useEffect(() => {
     fetchDataAll();
@@ -236,6 +236,16 @@ const fetchAppointmentsByPatientName = async () => {
   const handlePatientNameChange = (event) => {
     const name = event.target.value;
     setPatientName(name);
+  };
+
+  const ListItems = () => {
+    if (!Array.isArray(upcomingAppointments)) {
+      return [];
+    }
+
+    return upcomingAppointments.map((val, ind) => {
+      return <AppointmentObj key={val._id} obj={val} />;
+    });
   };
 
   const handleSearch = () => {
@@ -287,25 +297,24 @@ const fetchAppointmentsByPatientName = async () => {
             </div>
             <button onClick={handleSearch} className='myappbutt'>Search</button>
           </div>
-        
-          <div className="appsearchres-container">
-            <div className="appsearchres">
-              <h3>Upcoming Appointments</h3>
-              <ul>
-                {upcomingAppointments.map((appointment) => (
-                  <AppointmentObj key={appointment._id} obj={appointment} />
-                ))}
-              </ul>
-            </div>
-            <div className="appsearchres">
+
+          <div className="appsearchres">
+            {upcomingAppointments.length === 0 ? (
+              <p style={{ color: 'gray', textAlign: 'center', margin: '120px', fontSize: '1.9rem' }}>Awwww, you are free for the day :D</p>
+            ) : (
+              ListItems()
+            )}
+
+          </div>
+          {/* <div className="appsearchres">
               <h3>Ongoing Appointments</h3>
               <ul>
                 {ongoingAppointments.map((appointment) => (
                   <AppointmentObj key={appointment._id} obj={appointment} />
                 ))}
               </ul>
-            </div>
-          </div>
+            </div> */}
+
 
           {upcomingAppointments.length === 0 && ongoingAppointments.length === 0 && (
             <p>No appointments found</p>
