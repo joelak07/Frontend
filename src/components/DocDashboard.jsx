@@ -50,10 +50,15 @@ const DocDashboard = () => {
   useEffect(() => {
     const getCurrentTime = () => {
       const now = new Date();
-      const hours = now.getHours();
+      let hours = now.getHours();
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
-      const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert hours to 12-hour format
+      hours = hours % 12 || 12;
+
+      const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds} ${ampm}`;
       setCurrentTime(formattedTime);
 
       if (hours >= 5 && hours < 12) {
@@ -96,15 +101,15 @@ const DocDashboard = () => {
     <div className={`maindoc ${greeting.toLowerCase()}`}>
       <DocNav />
       <div className="docdashheader">
-      <h2 className='docdashTime'>Time: {currentTime}</h2>
+        <h2 className='docdashTime'>Time: {currentTime}</h2>
         <h2 className='maindoctit'>Good {greeting} <span>{docName && `${docName.split(' ')[0]} ${docName.split(' ')[1]}!`}</span></h2>
-        
+
       </div>
       <div className="doccontainer">
         <h2>Appointments for the day!</h2>
         <div className="dailyap" style={{ overflowY: 'auto', maxHeight: '80%' }}>
           {arr.length === 0 ? (
-            <p style={{ color: 'gray', textAlign: 'center', margin:'120px', fontSize:'1.9rem' }}>Awwww, you are free for the day :D</p>
+            <p style={{ color: 'gray', textAlign: 'center', margin: '120px', fontSize: '1.9rem' }}>Awwww, you are free for the day :D</p>
           ) : (
             ListItems()
           )}
