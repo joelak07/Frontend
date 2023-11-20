@@ -15,12 +15,13 @@ function PatientObj(props) {
   const [patientDetails, setPatientDetails] = useState(null);
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
-  const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] = useState(false);
+  const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] =
+    useState(false);
   const [showRescheduleBox, setShowRescheduleBox] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
 
   const [state, setState] = useState({
     appointmentDate: "",
@@ -35,18 +36,21 @@ function PatientObj(props) {
     doctors: [],
     doctorOptions: [],
     bookedSlots: [],
-    specialty: ""
+    specialty: "",
   });
 
   const checkAvailability = async () => {
     try {
-      const availabilityResponse = await Axios.get("http://localhost:4000/appointment/checkAvailability", {
-        params: {
-          doctorId: doctorId,
-          appointmentDate: selectedDate, // Use selectedDate instead of state.appointmentDate
-          slot: selectedSlot, // Use selectedSlot instead of state.slot
-        },
-      });
+      const availabilityResponse = await Axios.get(
+        "http://localhost:4000/appointment/checkAvailability",
+        {
+          params: {
+            doctorId: doctorId,
+            appointmentDate: selectedDate, // Use selectedDate instead of state.appointmentDate
+            slot: selectedSlot, // Use selectedSlot instead of state.slot
+          },
+        }
+      );
       if (availabilityResponse.status === 200) {
         const { available, message } = availabilityResponse.data;
         return { available, message };
@@ -58,17 +62,15 @@ function PatientObj(props) {
       throw error;
     }
   };
-  
+
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
     setSelectedDate(selectedDate); // Update selectedDate state for rescheduling
   };
-  
+
   const handleSlotChange = (event) => {
     setSelectedSlot(event.target.value); // Update selectedSlot state for rescheduling
   };
-
-  
 
   const cancelAppointment = () => {
     Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
@@ -97,15 +99,18 @@ function PatientObj(props) {
   const confirmReschedule = async () => {
     try {
       const availabilityResponse = await checkAvailability(); // Use checkAvailability function
-  
+
       if (availabilityResponse.available) {
         // Slot is available, proceed with updating the appointment
         try {
-          const rescheduleResponse = await Axios.put(`http://localhost:4000/appointment/updateAppointment/${_id}`, {
-            appointmentDate: selectedDate,
-            slot: selectedSlot,
-          });
-  
+          const rescheduleResponse = await Axios.put(
+            `http://localhost:4000/appointment/updateAppointment/${_id}`,
+            {
+              appointmentDate: selectedDate,
+              slot: selectedSlot,
+            }
+          );
+
           if (rescheduleResponse.status === 200) {
             // Appointment rescheduled successfully
             alert("Appointment rescheduled successfully");
@@ -175,7 +180,9 @@ function PatientObj(props) {
       "10:20 AM - 10:40 AM",
       "10:40 AM - 11:00 AM",
     ];
-    const availableTimeSlots = allTimeSlots.filter((slot) => !bookedSlots.includes(slot));
+    const availableTimeSlots = allTimeSlots.filter(
+      (slot) => !bookedSlots.includes(slot)
+    );
     return availableTimeSlots.map((slot, index) => (
       <option key={index} value={slot}>
         {slot}
@@ -183,7 +190,6 @@ function PatientObj(props) {
     ));
   };
 
-  
   return (
     <div className="appointment-details">
       <div className="headingappoint">
@@ -251,29 +257,31 @@ function PatientObj(props) {
         </div>
 
         <div className="griditem7">
-        <button
-          className="patientobjbutton"
-          disabled={isRescheduleButtonDisabled}
-          onClick={handleRescheduleClick} // Trigger reschedule box
-        >
-          Reschedule
-        </button>
-        {showRescheduleBox && (
-          <div className="reschedule-box">
-            {/* Date and slot selectors */}
-            <input type="date" onChange={handleDateChange} min={today}/>
-            <select onChange={handleSlotChange} defaultValue="">
-            <option value="" disabled>
-                    Select a Time Slot
-                  </option>
-                  {generateTimeSlots()}
-            </select>
-            {/* Confirm and cancel reschedule buttons */}
-            <button onClick={confirmReschedule}>Confirm Reschedule</button>
-            <button onClick={handleCancelReschedule}>Cancel Reschedule</button>
-          </div>
-        )}
-      </div>
+          <button
+            className="patientobjbutton"
+            disabled={isRescheduleButtonDisabled}
+            onClick={handleRescheduleClick} // Trigger reschedule box
+          >
+            Reschedule
+          </button>
+          {showRescheduleBox && (
+            <div className="reschedule-box">
+              {/* Date and slot selectors */}
+              <input type="date" onChange={handleDateChange} min={today} />
+              <select onChange={handleSlotChange} defaultValue="">
+                <option value="" disabled>
+                  Select a Time Slot
+                </option>
+                {generateTimeSlots()}
+              </select>
+              {/* Confirm and cancel reschedule buttons */}
+              <button onClick={confirmReschedule}>Confirm Reschedule</button>
+              <button onClick={handleCancelReschedule}>
+                Cancel Reschedule
+              </button>
+            </div>
+          )}
+        </div>
 
         <div className="griditem8">
           <button

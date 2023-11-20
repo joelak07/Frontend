@@ -1,55 +1,52 @@
 .admindash {
-    background-color: #e3e3e3;
-    padding-bottom: 10px;
+  background-color: #e3e3e3;
+  padding-bottom: 10px;
 }
 
 .admindash h2 {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #0C356A;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #0c356a;
 }
 
 .createdoc {
-    margin: 20px;
-    width: 95%;
-    background-color: #cac9c9;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 95%;
+  background-color: #cac9c9;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .createdoc h3 {
-    margin-left: 10px;
-    font-size: 1.5rem;
-    color: #0C356A;
-    ;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: #0c356a;
 }
 
 .createdoc label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #0C356A;
-
+  display: block;
+  margin: 10px 0 5px;
+  color: #0c356a;
 }
 
 .createdoc input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
 
 .crdoc-row1,
 .crdoc-row2 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .crdoc1,
@@ -57,252 +54,254 @@
 .crdoc3,
 .crdoc4,
 .crdoc5 {
-    width: 100%;
-    margin: 10px;
+  width: 100%;
+  margin: 10px;
 }
 
 .createdoc button {
-    background-color: #0C356A;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
+  background-color: #0c356a;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .createdoc button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 .dispdoc {
-    width: 95%;
-    background-color: #cac9c9;
-    margin: 0px 20px 20px 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  background-color: #cac9c9;
+  margin: 0px 20px 20px 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .dispdoc h3 {
-    margin-left: 10px;
-    font-size: 1.5rem;
-    color: #0C356A;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: #0c356a;
 }
 
 .disphead {
-    margin-top: 30px;
-    background-color: #0C356A;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
+  margin-top: 30px;
+  background-color: #0c356a;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
 .disphead :hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 .dispdocin {
-    margin: 20px 10px 20px 10px;
-    max-height: 300px; 
-    overflow-y: auto;
+  margin: 20px 10px 20px 10px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .dispdocin ul {
-    list-style-type: none;
-    padding: 0;
-    height: auto;
+  list-style-type: none;
+  padding: 0;
+  height: auto;
 }
 
 .dispdocin li {
-    background-color: #ddd;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 20px;
-    align-items: center;
-    box-sizing: border-box;
-    /* height: 40px; */
+  background-color: #ddd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
+  align-items: center;
+  box-sizing: border-box;
+  /* height: 40px; */
 }
-
 
 .dispdocin {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
-
 .docupd {
-    position: relative;
-    bottom: 5px;
-    background-color: #4caf50;
-    color: white;
-    padding: 8px 16px;
-    margin-right: 10px;
-    font-size: 14px;
-    margin-left: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
+  position: relative;
+  bottom: 5px;
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  margin-right: 10px;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
 }
 
 .docupd:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 .docdel {
-    position: relative;
-    bottom: 5px;
-    float: right;
-    background-color: red;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    margin-left: 0px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
+  position: relative;
+  bottom: 5px;
+  float: right;
+  background-color: red;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-left: 0px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
 }
 
 .docdel:hover {
-    background-color: tomato;
+  background-color: tomato;
 }
 
-.dispdocinbut{
-    float: right;
+.dispdocinbut {
+  float: right;
 }
 
-.updtdoc{
-    width: 95%;
-    background-color: #cac9c9;
-    margin: 0px 20px 20px 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.updtdoc {
+  width: 95%;
+  background-color: #cac9c9;
+  margin: 0px 20px 20px 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.updtdoc h3{
-    margin-left: 10px;
-    font-size: 1.5rem;
-    color: #0C356A;
+.updtdoc h3 {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: #0c356a;
 }
 
-.updrow-1, .updrow-2{
-    display: flex;
-    justify-content: space-between;
+.updrow-1,
+.updrow-2 {
+  display: flex;
+  justify-content: space-between;
 }
 
-.updsub1,.updsub2,.updsub3,.updsub4{
-    width: 100%;
-    margin: 10px;
+.updsub1,
+.updsub2,
+.updsub3,
+.updsub4 {
+  width: 100%;
+  margin: 10px;
 }
 
-.updtdoc label{
-    display: block;
-    margin: 10px 0 5px;
-    color: #0C356A;
+.updtdoc label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #0c356a;
 }
 
-.updtdoc input{
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.updtdoc input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.updclose{
-    position: relative;
-    bottom: 5px;
-    background-color:tomato;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    margin-left: 0px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
+.updclose {
+  position: relative;
+  bottom: 5px;
+  background-color: tomato;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-left: 0px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
 }
 
-.patcont{
-    width: 95%;
-    background-color: #cac9c9;
-    margin: 0px 20px 20px 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.patcont {
+  width: 95%;
+  background-color: #cac9c9;
+  margin: 0px 20px 20px 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.patcont h3{
-    margin-left: 10px;
-    font-size: 1.5rem;
-    color: #0C356A;
-    margin-bottom: 20px;
+.patcont h3 {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  color: #0c356a;
+  margin-bottom: 20px;
 }
 
 .patcont input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  
-  .patsearch {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 16px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 20px;
-  }
-  
-  .patsearch:hover {
-    background-color: #45a049;
-  }
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
- .patbtn{
-    background-color: #0C356A;
-    color: white;
-    padding: 10px 16px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 20px;
- }
- 
- .patdetails{
-    margin-top: 20px;
-    max-height: 300px; 
-    overflow-y: auto;
- }
+.patsearch {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 20px;
+}
 
- .patdetails ul{
-    list-style-type: none;
-    padding: 0;
-    height: auto;
- }
+.patsearch:hover {
+  background-color: #45a049;
+}
 
- .patdetails li{
-    background-color: #ddd;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 20px;
-    align-items: center;
-    box-sizing: border-box;
- }
+.patbtn {
+  background-color: #0c356a;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.patdetails {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.patdetails ul {
+  list-style-type: none;
+  padding: 0;
+  height: auto;
+}
+
+.patdetails li {
+  background-color: #ddd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
+  align-items: center;
+  box-sizing: border-box;
+}

@@ -17,7 +17,7 @@ function VerifiedStatus() {
         console.log("User valid");
         console.log(location.state);
         Axios.get("http://localhost:4000/appointment/getAppointment", {
-          params: { email: location.state, isCompleted:false },
+          params: { email: location.state, isCompleted: false },
         })
           .then((res) => {
             if (res.status === 200) {
@@ -27,8 +27,8 @@ function VerifiedStatus() {
             }
           })
           .catch((err) => alert(err));
-          Axios.get("http://localhost:4000/test/getTestAppointments", {
-          params: { email: location.state, option:1 },
+        Axios.get("http://localhost:4000/test/getTestAppointments", {
+          params: { email: location.state, option: 1 },
         })
           .then((res) => {
             if (res.status === 200) {
@@ -55,12 +55,14 @@ function VerifiedStatus() {
       return <TestObj key={val._id} obj={val} />;
     });
   };
-  const goPrev = () =>{
-    navigate('/previousStatus', {state: location.state});
-  }
+  const goPrev = () => {
+    navigate("/previousStatus", { state: location.state });
+  };
   return (
     <div className="verifiedcont">
-      <button onClick={goPrev}>Previous</button>
+      <button className="gotoprevbutton" onClick={goPrev}>
+        Previous
+      </button>
       <div className="verifiedcon">
         <div className="headingverified">
           <h1>View your Appointments</h1>
