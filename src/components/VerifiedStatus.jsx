@@ -68,11 +68,11 @@ function VerifiedStatus() {
     <div className="verifiedcont">
       <div className="verifiedcon">
         <button className="gotoprevbutton" onClick={goPrev}>
-          Previous 
+          Previous
         </button>
         <div className="headingverified">
-          <button onClick={() => setShowAppointments(true)}><h1>Appointments</h1></button>
-          <button onClick={() => setShowAppointments(false)}><h1>Tests</h1></button>
+          <button onClick={() => setShowAppointments(true)}  className={`vesbuta ${showAppointments ? 'clickity' : ''}`}><h1>Appointments</h1></button>
+          <button onClick={() => setShowAppointments(false)} className={`vesbutt ${!showAppointments ? 'clickity' : ''}`}><h1>Tests</h1></button>
         </div>
 
         <div className="appos" style={{ display: showAppointments ? 'block' : 'none' }}>
