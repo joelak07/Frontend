@@ -38,7 +38,6 @@ function App() {
           <Route path="/previousStatus" element={<PrevStatus />} />
           <Route path="/confirmed" element={<Confirmed />} />
           <Route path="/test" element={<Test />} />
-          <Route path="/about" element={<About />} />
           <Route path="/doctor/appointments" element={<MyAppointments />} />
           <Route path="/*" element={<Error />} />
         </Routes>
