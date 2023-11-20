@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../components/navbar.css';
 import './docnav.css';
+import logo from '../Assets/logoDoc.png';
 
 const DocNav = () => {
   const navigate = useNavigate();
@@ -19,9 +20,9 @@ const DocNav = () => {
 
   return (
     <div className='docnavbar'>
-      <div className="titledoc">
+      <div className="titledoc" style={{height:"103px"}}>
         <Link to="/doctor/dashboard" style={{ textDecoration: "none", fontSize: "12px" }}>
-          <div className='tt'><h1>Sunrise</h1><h2>Healthcare</h2></div>
+          <div className='tt'><img src={logo} alt="Logo" style={{ width: '55px', height: '55px', marginTop:'20px', marginRight: '15px' }} /><h1>Sunrise</h1><h2 className='h2Center'>Healthcare</h2></div>
         </Link>
       </div>
       <div className="links">
