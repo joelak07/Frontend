@@ -8,7 +8,7 @@ const DocProfile = () => {
   const [empId, setEmpId] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [PasswordInputType,ToggleIcon]=usePasswordToggle();
+  const [PasswordInputType, ToggleIcon] = usePasswordToggle();
   useEffect(() => {
     const token = localStorage.getItem('doctordbtoken');
     if (token) {
@@ -51,7 +51,7 @@ const DocProfile = () => {
 
   const handleChangePassword = async () => {
     try {
-      const token = localStorage.getItem('doctordbtoken'); 
+      const token = localStorage.getItem('doctordbtoken');
 
       const response = await fetch('http://localhost:4000/doctor/changePassword', {
         method: 'POST',
@@ -76,44 +76,47 @@ const DocProfile = () => {
   return (
     <div className="docprofcont">
       <DocNav />
-      <div className="docprofile">
-        <h2>My Profile</h2>
-        <div>
-          <label>Doctor ID:</label>
-          <p>{empId}</p>
-        </div>
-        <br />
-        <div>
-          <label>Name:</label>
-          <p>{doctorDetails.doctorName}</p>
-        </div>
-        <br />
-        <div>
-          <label>Speciality:</label>
-          <p>{doctorDetails.specialization}</p>
-        </div>
-        <br />
-        <div>
-          <label>Qualification:</label>
-          <p>{doctorDetails.qualification}</p>
-        </div>
-        <br />
-        <div>
-          <label>Password:</label>
-          <div className="password-input">
-            <input
-              type={PasswordInputType}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <span className="password-toggle-iconprof">
-              {ToggleIcon}
-            </span>
+      <div className="docprofbase">
+        <div className="docprofile">
+          <h2>My Profile</h2>
+          <div>
+            <label>Doctor ID:</label>
+            <p>{empId}</p>
           </div>
+          <br />
+          <div>
+            <label>Name:</label>
+            <p>{doctorDetails.doctorName}</p>
+          </div>
+          <br />
+          <div>
+            <label>Speciality:</label>
+            <p>{doctorDetails.specialization}</p>
+          </div>
+          <br />
+          <div>
+            <label>Qualification:</label>
+            <p>{doctorDetails.qualification}</p>
+          </div>
+          <br />
+          <div>
+            <label>Password:</label>
+            <div className="password-input">
+              <input
+                type={PasswordInputType}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className="password-toggle-iconprof">
+                {ToggleIcon}
+              </span>
+            </div>
+          </div>
+          <br />
+          <button onClick={handleChangePassword}>Change Password</button>
         </div>
-        <br />
-        <button onClick={handleChangePassword}>Change Password</button>
       </div>
+
     </div>
   );
 };

@@ -1,15 +1,19 @@
 /* Add this CSS to your styles.css or App.css file */
-
+.docprofbase{
+  display: flex;
+  justify-content: center;
+  background-color: #e3e3e3;
+}
 
 .docprofile {
-    max-width: 95%;
+    width: 70%;
     height: auto;
     margin: 50px;
-    padding: 20px;
+    padding: 20px 50px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background-color: #F1F6F9;
   }
   
   .docprofile h2 {
