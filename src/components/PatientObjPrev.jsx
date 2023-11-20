@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import "./patientObjPrev.css";
 
 function PatientObjPrev(props) {
+  const [isShown, setIsShown] = useState(false);
   const {
     _id,
     appointmentDate,
@@ -14,7 +16,8 @@ function PatientObjPrev(props) {
   const [patientDetails, setPatientDetails] = useState(null);
   const [doctorDetails, setDoctorDetails] = useState(null);
   const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
-  const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] = useState(false);
+  const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] =
+    useState(false);
   const [isDetailsVisible, setIsDetailsVisible] = useState(false);
 
   const cancelAppointment = () => {
@@ -69,83 +72,57 @@ function PatientObjPrev(props) {
   };
 
   return (
-    <div className="appointment-details">
-      <div className="headingappoint">
-        <p className="section-title">
-          <b> Appointment Details</b>
-        </p>
-      </div>
-      <div className="gridcontainer">
-        <div className="">
-          {appointmentDate && (
-            <div className="field">
-              Appointment Date: {formatDate(appointmentDate)}
-            </div>
-          )}
-        </div>
-        <div className="">
-          {patientDetails && (
-            <div className="patient-details">
-              {patientDetails.patientName && (
-                <div className="field">
-                  Patient Name: {patientDetails.patientName}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {isDetailsVisible && (
-          <>
-            <div className="">
-              {slot && <div className="field">Slot: {slot}</div>}
-            </div>
-
-            <div className="">
-              {doctorDetails && (
-                <div className="doctor-details">
-                  {doctorDetails.doctorName && (
-                    <div className="field">
-                      Doctor Name: {doctorDetails.doctorName}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div className="">
-              {doctorDetails && (
-                <div className="doctor-details">
-                  {doctorDetails.specialization && (
-                    <div className="field">
-                      Specialization: {doctorDetails.specialization}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div className="">
-              {reasonforappointment && (
-                <div className="additional-details">
-                  <div className="field">
-                    Additional Details: {reasonforappointment}
-                  </div>
-                </div>
-              )}
-            </div>
-          </>
+    <div>
+      <td className="apposslotprev">
+        {appointmentDate && (
+          <div>
+            Date: {formatDate(appointmentDate)}
+            {isShown && <div> {slot && <div> Slot: {slot}</div>}</div>}
+          </div>
         )}
-
-        <div className="">
-          <button onClick={() => setIsDetailsVisible(!isDetailsVisible)}>
-            {isDetailsVisible ? "Hide Details" : "View Details"}
-          </button>
-        </div>
-
-      </div>
-
-      <br />
+      </td>
+      <td className="apposnameprev">
+        {patientName && (
+          <div>
+            Patient Name: {patientName}
+            {isShown && (
+              <div>
+                {doctorDetails && (
+                  <div className="doctordetailsprev">
+                    {doctorDetails.doctorName && (
+                      <div className="fieldprev">
+                        Doctor Name: {doctorDetails.doctorName}
+                      </div>
+                    )}
+                  </div>
+                )}
+                {doctorDetails && (
+                  <div className="doctordetailsprev">
+                    {doctorDetails.specialization && (
+                      <div className="fieldprev">
+                        Specialization: {doctorDetails.specialization}
+                      </div>
+                    )}
+                  </div>
+                )}
+                {reasonforappointment && (
+                  <div className="additionaldetailsprev">
+                    <div className="fieldprev">
+                      {" "}
+                      Additional Details: {reasonforappointment}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </td>
+      <td>
+        <button className="hideviewtest" onClick={() => setIsShown(!isShown)}>
+          {isShown ? "Hide" : "View"}
+        </button>
+      </td>
     </div>
   );
 }

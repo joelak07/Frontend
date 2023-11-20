@@ -53,14 +53,18 @@ function PrevStatus() {
 
   const ListItems1 = () => {
     return arr1.map((val, ind) => {
-      return <PatientObjPrev key={val._id} obj={val} />;
+      return (
+        <tr className="apposrowprev">
+          <PatientObjPrev key={val._id} obj={val} />
+        </tr>
+      );
     });
   };
 
   const ListItems2 = () => {
     return arr2.map((val, ind) => {
       return (
-        <tr>
+        <tr className="testrowprev">
           <TestObjPrev key={val._id} obj={val} />
         </tr>
       );
@@ -69,21 +73,28 @@ function PrevStatus() {
 
   return (
     <div className="previouscont">
-      <button className="gotoupcombutton" onClick={goToUpcoming}>
-        Upcoming
-      </button>
       <div className="previouscon">
+        <button className="gotoupcombutton" onClick={goToUpcoming}>
+          Upcoming
+        </button>
         <div className="headingprevious">
-          <h1>View your Appointments</h1>
+          <button>
+            <h1>Appointments</h1>
+          </button>
+          <button>
+            <h1>Tests</h1>
+          </button>
         </div>
-        <div>{ListItems1()}</div>
+        <div className="previousconinside">
+          <table className="apposprev"> {ListItems1()}</table>
+        </div>
       </div>
-      <div className="previouscon">
+      {/* <div className="previouscon">
         <div className="headingprevious">
           <h1>Test Booked</h1>
         </div>
-        <table>{ListItems2()}</table>
-      </div>
+        // <div>{ListItems2()}</div>
+      </div> */}
     </div>
   );
 }

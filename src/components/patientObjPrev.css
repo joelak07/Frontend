@@ -1,0 +1,97 @@
+.appointmentdetailsprev {
+  width: 98%;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f8ffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.patientobjbuttonprev {
+  position: relative;
+  top: 10px;
+  background-color: #0c356a;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 24px 0;
+  transition: background-color 0.3s ease;
+  width: 95%;
+}
+.patientobjbuttonprev:hover {
+  background-color: green;
+}
+
+.sectiontitleprev {
+  font-size: 30px;
+  font-weight: 600;
+  background-color: #201f1f;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.fieldprev {
+  color: #777;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
+}
+
+.gridcontainer1prev,
+.gridcontainer2prev {
+  width: 100%;
+}
+
+.gridcontainer3prev {
+  display: flex;
+}
+
+.griditem1prev {
+  grid-column: 1;
+  grid-row: 1;
+}
+.griditem2prev {
+  grid-column: 2;
+  grid-row: 1;
+}
+.griditem3prev {
+  grid-column: 1;
+  grid-row: 2;
+}
+.griditem4prev {
+  grid-column: 2;
+  grid-row: 2;
+}
+.griditem5prev {
+  grid-column: 1;
+  grid-row: 3;
+}
+.griditem6 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.apposnameprev {
+  color: #777;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
+  width: 550px;
+}
+.apposslotprev {
+  color: #777;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
+  width: 550px;
+}
