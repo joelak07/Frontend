@@ -20,6 +20,7 @@ function PatientObj(props) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const today = new Date().toISOString().split('T')[0];
 
   const [state, setState] = useState({
     appointmentDate: "",
@@ -41,9 +42,9 @@ function PatientObj(props) {
     try {
       const availabilityResponse = await Axios.get("http://localhost:4000/appointment/checkAvailability", {
         params: {
-          doctorId: doctorId, // Use the doctorId from props or wherever it's coming from
-          appointmentDate: state.appointmentDate,
-          slot: state.slot,
+          doctorId: doctorId,
+          appointmentDate: selectedDate, // Use selectedDate instead of state.appointmentDate
+          slot: selectedSlot, // Use selectedSlot instead of state.slot
         },
       });
       if (availabilityResponse.status === 200) {
@@ -57,6 +58,17 @@ function PatientObj(props) {
       throw error;
     }
   };
+  
+  const handleDateChange = (event) => {
+    const selectedDate = event.target.value;
+    setSelectedDate(selectedDate); // Update selectedDate state for rescheduling
+  };
+  
+  const handleSlotChange = (event) => {
+    setSelectedSlot(event.target.value); // Update selectedSlot state for rescheduling
+  };
+
+  
 
   const cancelAppointment = () => {
     Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
@@ -69,14 +81,6 @@ function PatientObj(props) {
         }
       })
       .catch((err) => alert(err));
-  };
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
-
-  const handleSlotChange = (event) => {
-    setSelectedSlot(event.target.value);
   };
 
   const handleCancelReschedule = () => {
@@ -257,7 +261,7 @@ function PatientObj(props) {
         {showRescheduleBox && (
           <div className="reschedule-box">
             {/* Date and slot selectors */}
-            <input type="date" onChange={handleDateChange} />
+            <input type="date" onChange={handleDateChange} min={today}/>
             <select onChange={handleSlotChange} defaultValue="">
             <option value="" disabled>
                     Select a Time Slot

@@ -18,6 +18,7 @@ function TestObj(props) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [isTestRescheduleButtonDisabled, setIsTestRescheduleButtonDisabled] = useState(false);
+  const today = new Date().toISOString().split('T')[0];
 
 
 
@@ -164,7 +165,7 @@ function TestObj(props) {
         </button>
         {showTestAppointmentRescheduleBox && (
           <div className="test-reschedule-box">
-            <input type="date" onChange={handleDateChange} defaultValue="" />
+            <input type="date" onChange={handleDateChange} min={today} />
             <select onChange={handleSlotChange} defaultValue="">
               <option value="" disabled hidden>
                 Select Slot
