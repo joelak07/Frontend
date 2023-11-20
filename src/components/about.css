@@ -21,28 +21,28 @@
   border: 1px double #000;
 }
 
-.aboutcon h1{
+.aboutcon h1 {
   text-align: center;
   margin-top: 40px;
   font-size: 4rem;
   font-family: "Arial", sans-serif;
-  color: #06244a; 
+  color: #06244a;
   background-color: #d2d2d2;
-  max-width:fit-content;
-  padding:15px 50px 15px 50px;
+  max-width: fit-content;
+  padding: 15px 50px 15px 50px;
   border-radius: 10px;
 }
 
 .aboutheader {
-display:flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.aboutcontent h2{
+.aboutcontent h2 {
   font-size: 3rem;
   margin-bottom: 40px;
   font-family: "Arial", sans-serif;
-  color: #0C356A;
+  color: #0c356a;
 }
 
 .aboutcontent {
@@ -52,7 +52,7 @@ justify-content: center;
   margin-bottom: 20px;
 }
 
-.ourstory{
+.ourstory {
   margin-top: 40px;
   background-color: #d2d2d2;
   border-radius: 10px;
@@ -69,7 +69,7 @@ justify-content: center;
   margin-left: 20px;
 }
 
-.ourstory ul{
+.ourstory ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -112,11 +112,11 @@ justify-content: center;
   grid-row: 2;
 }
 .gridabout li {
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
   padding: 10px;
   text-align: center;
-  border-radius: 10px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* .aboutbutton {
@@ -135,7 +135,7 @@ justify-content: center;
   background-color: green;
 } */
 
-.ourstoryy{
+.ourstoryy {
   display: flex;
   justify-content: center;
 }
