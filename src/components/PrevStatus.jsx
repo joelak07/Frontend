@@ -53,7 +53,11 @@ function PrevStatus() {
 
   const ListItems1 = () => {
     return arr1.map((val, ind) => {
-      return <PatientObjPrev key={val._id} obj={val} />;
+      return (
+        <tr>
+          <PatientObjPrev key={val._id} obj={val} />
+        </tr>
+      )
     });
   };
 
@@ -76,7 +80,7 @@ function PrevStatus() {
         <div className="headingprevious">
           <h1>View your Appointments</h1>
         </div>
-        <div>{ListItems1()}</div>
+        <table>{ListItems1()}</table>
       </div>
       <div className="previouscon">
         <div className="headingprevious">

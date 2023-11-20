@@ -1,16 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Axios from "axios";
 
-function TestObjPrev(props) {
-  const [isShown, setIsShown] = useState(false);
+function PatientObjPrev(props) {
   const {
-    testName,
+    appointmentDate,
     email,
-    testDate,
-    slot,
-    dob,
     patientName,
-    address
+    slot,
+    doctorId,
+    reasonforappointment,
   } = props.obj;
+  const [patientDetails, setPatientDetails] = useState(null);
+  const [doctorDetails, setDoctorDetails] = useState(null);
+  const [isDetailsVisible, setIsDetailsVisible] = useState(false);
+
+  useEffect(() => {
+    Axios.get("http://localhost:4000/patient/getPatient", {
+      params: { email: email, patientName: patientName },
+    })
+      .then((res) => {
+        if (res.status === 200 && res.data.length > 0) {
+          setPatientDetails(res.data[0]);
+        }
+      })
+      .catch((err) => console.error("Error fetching patient details:", err));
+
+    Axios.get("http://localhost:4000/doctor/getDoctor", {
+      params: { doctorId: doctorId },
+    })
+      .then((res) => {
+        if (res.status === 200 && res.data.length > 0) {
+          setDoctorDetails(res.data[0]);
+        }
+      })
+      .catch((err) => console.error("Error fetching doctor details:", err));
+  }, [email, doctorId, patientName, appointmentDate]);
 
   const formatDate = (dateString) => {
     const options = { day: "numeric", month: "numeric", year: "numeric" };
@@ -18,41 +42,45 @@ function TestObjPrev(props) {
   };
 
   return (
-    <div>
+    <tr>
       <td>
-        {testDate && (
-          <div>
-            {formatDate(testDate)}
-            {isShown && (
-                <div>
-                    {slot && <div>{slot}</div>}
-                </div>
-            )}
-          </div>
+        {appointmentDate && (
+          <>
+            {formatDate(appointmentDate)}
+            {isDetailsVisible && slot && <div>{slot}</div>}
+          </>
         )}
       </td>
+
       <td>
-        {testName && (
-          <div>
-            {testName}
-            {isShown && (
-              <div>
-                {patientName && <div>{patientName}</div>}
-                {dob && <div>{formatDate(dob)}</div>}
-                {address && <div>{address}</div>}
-                {email && <div>{email}</div>}
-              </div>
-            )}
-          </div>
+        {patientDetails && (
+          <>
+            {patientDetails.patientName && <div>{patientDetails.patientName}</div>}
+          </>
         )}
       </td>
+
       <td>
-        <button onClick={() => setIsShown(!isShown)}>
-          {isShown ? "Hide" : "View"}
+        {doctorDetails && (
+          <>
+            {doctorDetails.doctorName && <div>{doctorDetails.doctorName}</div>}
+            {isDetailsVisible && doctorDetails.specialization && (
+              <div>{doctorDetails.specialization}</div>
+            )}
+            {isDetailsVisible && reasonforappointment && (
+              <div>{reasonforappointment}</div>
+            )}
+          </>
+        )}
+      </td>
+
+      <td>
+        <button onClick={() => setIsDetailsVisible(!isDetailsVisible)}>
+          {isDetailsVisible ? "Hide Details" : "View Details"}
         </button>
       </td>
-    </div>
+    </tr>
   );
 }
 
-export default TestObjPrev;
+export default PatientObjPrev;

@@ -3,7 +3,6 @@ import Axios from "axios";
 
 function PatientObjPrev(props) {
   const {
-    _id,
     appointmentDate,
     email,
     patientName,
@@ -13,22 +12,7 @@ function PatientObjPrev(props) {
   } = props.obj;
   const [patientDetails, setPatientDetails] = useState(null);
   const [doctorDetails, setDoctorDetails] = useState(null);
-  const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
-  const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] = useState(false);
   const [isDetailsVisible, setIsDetailsVisible] = useState(false);
-
-  const cancelAppointment = () => {
-    Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Deleted successfully");
-          window.location.reload();
-        } else {
-          Promise.reject();
-        }
-      })
-      .catch((err) => alert(err));
-  };
 
   useEffect(() => {
     Axios.get("http://localhost:4000/patient/getPatient", {
@@ -50,17 +34,6 @@ function PatientObjPrev(props) {
         }
       })
       .catch((err) => console.error("Error fetching doctor details:", err));
-
-    const previousDay = new Date();
-    previousDay.setDate(previousDay.getDate() - 1);
-    previousDay.setHours(0, 0, 0, 0);
-
-    const appointmentDateTime = new Date(appointmentDate);
-    appointmentDateTime.setHours(0, 0, 0, 0);
-
-    const isBeforePreviousDay = appointmentDateTime < previousDay;
-    setIsCancelButtonDisabled(isBeforePreviousDay);
-    setIsRescheduleButtonDisabled(isBeforePreviousDay);
   }, [email, doctorId, patientName, appointmentDate]);
 
   const formatDate = (dateString) => {
@@ -69,83 +42,58 @@ function PatientObjPrev(props) {
   };
 
   return (
-    <div className="appointment-details">
-      <div className="headingappoint">
-        <p className="section-title">
-          <b> Appointment Details</b>
-        </p>
-      </div>
-      <div className="gridcontainer">
-        <div className="">
-          {appointmentDate && (
-            <div className="field">
-              Appointment Date: {formatDate(appointmentDate)}
-            </div>
-          )}
-        </div>
-        <div className="">
-          {patientDetails && (
-            <div className="patient-details">
-              {patientDetails.patientName && (
-                <div className="field">
-                  Patient Name: {patientDetails.patientName}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {isDetailsVisible && (
-          <>
-            <div className="">
-              {slot && <div className="field">Slot: {slot}</div>}
-            </div>
-
-            <div className="">
-              {doctorDetails && (
-                <div className="doctor-details">
-                  {doctorDetails.doctorName && (
-                    <div className="field">
-                      Doctor Name: {doctorDetails.doctorName}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div className="">
-              {doctorDetails && (
-                <div className="doctor-details">
-                  {doctorDetails.specialization && (
-                    <div className="field">
-                      Specialization: {doctorDetails.specialization}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            <div className="">
-              {reasonforappointment && (
-                <div className="additional-details">
-                  <div className="field">
-                    Additional Details: {reasonforappointment}
-                  </div>
-                </div>
-              )}
-            </div>
-          </>
+    <div>
+      <td>
+        {appointmentDate && (
+          <div>
+            {formatDate(appointmentDate)}
+            {isDetailsVisible && slot && <p>{slot}</p>}
+          </div>
         )}
+      </td>
 
-        <div className="">
-          <button onClick={() => setIsDetailsVisible(!isDetailsVisible)}>
-            {isDetailsVisible ? "Hide Details" : "View Details"}
-          </button>
-        </div>
+      <td>
+        {patientName && (
+          <div>
+            {patientName}
+            {isDetailsVisible && (
+              <div>
+                {patientDetails && patientDetails.dob && (
+                  <p>{formatDate(patientDetails.dob)}</p>
+                )}
+                {patientDetails && patientDetails.address && (
+                  <p>{patientDetails.address}</p>
+                )}
+                {email && <p>{email}</p>}
+              </div>
+            )}
+          </div>
+        )}
+      </td>
 
-      </div>
+      <td>
+        {doctorDetails && doctorDetails.doctorName && (
+          <div>
+            {doctorDetails.doctorName}
+            {isDetailsVisible && (
+              <div>
+                {doctorDetails.specialization && (
+                  <p>{doctorDetails.specialization}</p>
+                )}
+                {reasonforappointment && (
+                  <p>{reasonforappointment}</p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </td>
 
-      <br />
+      <td>
+        <button onClick={() => setIsDetailsVisible(!isDetailsVisible)}>
+          {isDetailsVisible ? "Hide Details" : "View Details"}
+        </button>
+      </td>
     </div>
   );
 }
