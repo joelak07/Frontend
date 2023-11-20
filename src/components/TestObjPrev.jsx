@@ -32,16 +32,17 @@ function TestObjPrev(props) {
                 {email && <div>Email: {email}</div>}
               </div>
             )}
-          </div>
+          </>
         )}
       </td>
+
       <td>
         <button className="hideviewtest" onClick={() => setIsShown(!isShown)}>
           {isShown ? "Hide" : "View"}
         </button>
       </td>
-    </div>
+    </tr>
   );
 }
 
-export default TestObjPrev;
+export default PatientObjPrev;

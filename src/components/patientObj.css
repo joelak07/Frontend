@@ -1,18 +1,18 @@
 .appointment-details {
-  justify-content: space-between;
-  width: 94%;
+  width: 97%;
   border: 1px solid #ced4da;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #e3fdfd;
-  border-radius: 30px;
+  padding: 20px;
+  padding-bottom: 0px;
+  background-color: #f8ffff;
   margin-bottom: 20px;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
 .patientobjbutton {
+  position: relative;
+  top: 10px;
   background-color: #0c356a;
   color: #fff;
   padding: 12px 20px;
@@ -23,6 +23,30 @@
   margin: 24px 0;
   transition: background-color 0.3s ease;
   width: 95%;
+}
+
+.appsflexin{
+  display: flex;
+  justify-content: space-between;
+}
+
+.patientobjbuttons{
+  position: relative;
+  top: 10px;
+  background-color: #0c356a;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 24px 0;
+  transition: background-color 0.3s ease;
+  width: 95%;
+}
+
+.patientobjbuttons:hover{
+  background-color: red;
 }
 .patientobjbutton:hover {
   background-color: green;
@@ -42,38 +66,59 @@
 .field {
   color: #777;
   font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
 }
 
-.gridcontainer {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: auto auto;
-  gap: 10px;
+.gridcontainer1, .gridcontainer2{
+  width: 100%;
+}
+
+.gridcontainer3{
+  display: flex;
+}
+
+.reschedule-box{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  padding-top: 0;
+  border-radius: 10px;
+}
+
+.reschedule-box h2{
+  text-align: left;
+  font-size: 1.4rem;
+  color: green;
+
+}
+
+.reschedule-box input,
+.reschedule-box select {
+  width: 36.4%;
+  margin-right: 10px;
+  padding: 10px;
   margin-bottom: 10px;
-  margin-left: 20px;
+  box-sizing: border-box;
 }
 
-.griditem1 {
-  grid-column: 1;
-  grid-row: 1;
+.reschedule-box button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.griditem2 {
-  grid-column: 2;
-  grid-row: 1;
+
+.reschedule-box button:hover {
+  background-color: #45a049;
 }
-.griditem3 {
-  grid-column: 1;
-  grid-row: 2;
+
+.reschedule-box button + button {
+  margin-left: 10px;
+  background-color: #f44336;
 }
-.griditem4 {
-  grid-column: 2;
-  grid-row: 2;
-}
-.griditem5 {
-  grid-column: 1;
-  grid-row: 3;
-}
-.griditem6 {
-  grid-column: 2;
-  grid-row: 3;
+
+.reschedule-box button + button:hover {
+  background-color: #d32f2f;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './docdashboard.css';
-import {toast,ToastContainer} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import Axios from 'axios';
 
 const AppointmentObj = (props) => {
@@ -48,39 +48,41 @@ const AppointmentObj = (props) => {
     setDiagnosisMessage(event.target.value);
   };
 
-  const sendDiagnosis = async() =>{
-    try{
-      const response = await Axios.post(`http://localhost:4000/appointment/sendDiagnosis/${_id}`, { message: diagnosisMessage })
-      if (response.status===200) {
-        toast.success("Diagnosis sent successfully");
-        setDiagnosisMessage('');
-      }
-      else {
-        toast.error("Failed to send");
-      }
-    }
-    catch (err) {
-      toast.error("Failed to send");
-    }
-  }
+  const sendDiagnosis = async () => {
+    try {
+      const formattedMessage = diagnosisMessage.replace(/[\r\n]+/g, '<br/>');
 
-  const completeAppointment = async() => {
-    try{
+      const response = await Axios.post(
+        `http://localhost:4000/appointment/sendDiagnosis/${_id}`,
+        { message: formattedMessage }
+      );
+
+      if (response.status === 200) {
+        toast.success('Diagnosis sent successfully');
+        setDiagnosisMessage('');
+      } else {
+        toast.error('Failed to send');
+      }
+    } catch (err) {
+      toast.error('Failed to send');
+    }
+  };
+
+  const completeAppointment = async () => {
+    try {
       const response = await Axios.put(`http://localhost:4000/appointment/completeAppointment/${_id}`);
-      if (response.status===200) {
-        toast.success("Appointment completed");
-        setTimeout(()=>{
+      if (response.status === 200) {
+        toast.success('Appointment completed');
+        setTimeout(() => {
           window.location.reload();
-        },3000);
+        }, 3000);
+      } else {
+        toast.error('Error has occurred');
       }
-      else {
-        toast.error("Error has occured");
-      }
+    } catch (err) {
+      toast.error('Error has occurred');
     }
-    catch(err){
-      toast.error("Error has occured")
-    }
-  }
+  };
 
   useEffect(() => {
     Axios.get('http://localhost:4000/patient/getPatient', {
@@ -104,10 +106,20 @@ const AppointmentObj = (props) => {
   return (
     <div className='appobj'>
       <h3>Patient Name: {patientName}</h3>
-      <p><b>Age: </b>{patientAge !== null ? patientAge : 'N/A'}</p>
-      <p><b>Reason for Appointment:</b> {reasonforappointment}</p>
-      <p><b>Appointment Date: </b>{new Date(appointmentDate).toLocaleDateString('en-GB')}</p>
-      <p><b>Slot Time:</b> {slot}</p>
+      <p>
+        <b>Age: </b>
+        {patientAge !== null ? patientAge : 'N/A'}
+      </p>
+      <p>
+        <b>Reason for Appointment:</b> {reasonforappointment}
+      </p>
+      <p>
+        <b>Appointment Date: </b>
+        {new Date(appointmentDate).toLocaleDateString('en-GB')}
+      </p>
+      <p>
+        <b>Slot Time:</b> {slot}
+      </p>
 
       {showDiagnosis && (
         <div className='diag'>

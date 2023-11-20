@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import DocNav from './DocNav';
-import AppointmentObj from './AppointmentObj';
+import MyAppointmentObj from './myAppointmentObj';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './myappointments.css';
@@ -244,7 +244,7 @@ const MyAppointments = () => {
     }
 
     return upcomingAppointments.map((val, ind) => {
-      return <AppointmentObj key={val._id} obj={val} />;
+      return <MyAppointmentObj key={val._id} obj={val} />;
     });
   };
 
@@ -273,7 +273,7 @@ const MyAppointments = () => {
     <div className='myappscont'>
       <DocNav />
       <h2 className='myapptit'>My Appointments</h2>
-      <div className="myappsbox">
+      <div className="myappsbox" style={{margin:"50px 20px 75px 20px"}}>
         <div className="searchcont">
           <div className="flexingsearch">
             <div className="datesearch">

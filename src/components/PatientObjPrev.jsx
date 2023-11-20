@@ -5,7 +5,6 @@ import "./patientObjPrev.css";
 function PatientObjPrev(props) {
   const [isShown, setIsShown] = useState(false);
   const {
-    _id,
     appointmentDate,
     email,
     patientName,
@@ -19,19 +18,6 @@ function PatientObjPrev(props) {
   const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] =
     useState(false);
   const [isDetailsVisible, setIsDetailsVisible] = useState(false);
-
-  const cancelAppointment = () => {
-    Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
-      .then((res) => {
-        if (res.status === 200) {
-          alert("Deleted successfully");
-          window.location.reload();
-        } else {
-          Promise.reject();
-        }
-      })
-      .catch((err) => alert(err));
-  };
 
   useEffect(() => {
     Axios.get("http://localhost:4000/patient/getPatient", {
@@ -53,17 +39,6 @@ function PatientObjPrev(props) {
         }
       })
       .catch((err) => console.error("Error fetching doctor details:", err));
-
-    const previousDay = new Date();
-    previousDay.setDate(previousDay.getDate() - 1);
-    previousDay.setHours(0, 0, 0, 0);
-
-    const appointmentDateTime = new Date(appointmentDate);
-    appointmentDateTime.setHours(0, 0, 0, 0);
-
-    const isBeforePreviousDay = appointmentDateTime < previousDay;
-    setIsCancelButtonDisabled(isBeforePreviousDay);
-    setIsRescheduleButtonDisabled(isBeforePreviousDay);
   }, [email, doctorId, patientName, appointmentDate]);
 
   const formatDate = (dateString) => {

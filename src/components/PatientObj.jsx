@@ -192,111 +192,114 @@ function PatientObj(props) {
 
   return (
     <div className="appointment-details">
-      <div className="headingappoint">
-        <p className="section-title">
-          <b> Appointment Details</b>
-        </p>
-      </div>
-      <div className="gridcontainer">
-        <div className="griditem1">
-          {appointmentDate && (
-            <div className="field">
-              Appointment Date: {formatDate(appointmentDate)}
-            </div>
-          )}
-        </div>
-        <div className="griditem2">
-          {slot && <div className="field">Slot: {slot}</div>}
-        </div>
-
-        <div className="griditem3">
-          {patientDetails && (
-            <div className="patient-details">
-              {patientDetails.patientName && (
-                <div className="field">
-                  Patient Name: {patientDetails.patientName}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="griditem4">
-          {doctorDetails && (
-            <div className="doctor-details">
-              {doctorDetails.doctorName && (
-                <div className="field">
-                  Doctor Name: {doctorDetails.doctorName}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="griditem5">
-          {doctorDetails && (
-            <div className="doctor-details">
-              {doctorDetails.specialization && (
-                <div className="field">
-                  Specialization: {doctorDetails.specialization}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        <div className="griditem6">
-          {reasonforappointment && (
-            <div className="additional-details">
+      <div className="appsflexin">
+        <div className="gridcontainer1">
+          <div className="griditem1">
+            {appointmentDate && (
               <div className="field">
-                {" "}
-                Additional Details: {reasonforappointment}
+                <b style={{ fontSize: "1.4rem", color: "#0c356a" }}>Appointment Date: {formatDate(appointmentDate)}</b>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+          <div className="griditem3">
+            {patientDetails && (
+              <div className="patient-details">
+                {patientDetails.patientName && (
+                  <div className="field">
+                    Patient Name: {patientDetails.patientName}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <div className="griditem4">
+            {doctorDetails && (
+              <div className="doctor-details">
+                {doctorDetails.doctorName && (
+                  <div className="field">
+                    Doctor Name: {doctorDetails.doctorName}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
 
-        <div className="griditem7">
-          <button
-            className="patientobjbutton"
-            disabled={isRescheduleButtonDisabled}
-            onClick={handleRescheduleClick} // Trigger reschedule box
-          >
-            Reschedule
-          </button>
-          {showRescheduleBox && (
-            <div className="reschedule-box">
-              {/* Date and slot selectors */}
-              <input type="date" onChange={handleDateChange} min={today} />
-              <select onChange={handleSlotChange} defaultValue="">
-                <option value="" disabled>
-                  Select a Time Slot
-                </option>
-                {generateTimeSlots()}
-              </select>
-              {/* Confirm and cancel reschedule buttons */}
-              <button onClick={confirmReschedule}>Confirm Reschedule</button>
-              <button onClick={handleCancelReschedule}>
-                Cancel Reschedule
-              </button>
-            </div>
-          )}
-        </div>
 
-        <div className="griditem8">
-          <button
-            onClick={cancelAppointment}
-            disabled={isCancelButtonDisabled}
-            className="patientobjbutton"
-          >
-            Cancel Appointment
-          </button>
+
+        </div>
+        <div className="gridcontainer2">
+          <div className="griditem2">
+            {slot && <div className="field"><b style={{ fontSize: "1.4rem", color: "#0c356a" }}>Slot: {slot}</b></div>}
+          </div>
+
+
+          <div className="griditem5">
+            {doctorDetails && (
+              <div className="doctor-details">
+                {doctorDetails.specialization && (
+                  <div className="field">
+                    Specialization: {doctorDetails.specialization}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div className="griditem6">
+            {reasonforappointment && (
+              <div className="additional-details">
+                <div className="field">
+                  {" "}
+                  Additional Details: {reasonforappointment}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="gridcontainer3">
+          <div className="griditem7">
+            <button
+              className="patientobjbutton"
+              disabled={isRescheduleButtonDisabled}
+              onClick={handleRescheduleClick} // Trigger reschedule box
+            >
+              Reschedule
+            </button>
+          </div>
+
+          <div className="griditem8">
+            <button
+              onClick={cancelAppointment}
+              disabled={isCancelButtonDisabled}
+              className="patientobjbuttons"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
-
+      {showRescheduleBox && (
+        <div className="reschedule-box">
+          <h2>Reschedule Appointment</h2>
+          {/* Date and slot selectors */}
+          <input type="date" onChange={handleDateChange} min={today} />
+          <select onChange={handleSlotChange} defaultValue="">
+            <option value="" disabled>
+              Select a Time Slot
+            </option>
+            {generateTimeSlots()}
+          </select>
+          {/* Confirm and cancel reschedule buttons */}
+          <button onClick={confirmReschedule}>Confirm Reschedule</button>
+          <button onClick={handleCancelReschedule}>
+            Cancel Reschedule
+          </button>
+        </div>
+      )}
       <br />
     </div>
   );
 }
 
 export default PatientObj;
+
