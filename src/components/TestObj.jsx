@@ -14,6 +14,13 @@ function TestObj(props) {
   } = props.obj;
   const [isCancelButtonDisabled, setIsCancelButtonDisabled] = useState(false);
   const [isRescheduleButtonDisabled, setIsRescheduleButtonDisabled] = useState(false);
+  const [showTestAppointmentRescheduleBox, setShowTestAppointmentRescheduleBox] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [isTestRescheduleButtonDisabled, setIsTestRescheduleButtonDisabled] = useState(false);
+  const today = new Date().toISOString().split('T')[0];
+
+
 
   const cancelTest = () => {
     Axios.delete(`http://localhost:4000/test/deleteTestAppointment/${_id}`)
@@ -22,10 +29,58 @@ function TestObj(props) {
           alert("Deleted successfully");
           window.location.reload();
         } else {
-          Promise.reject();
+          alert("Failed to delete test appointment");
         }
       })
       .catch((err) => alert(err));
+  };
+
+  const handleTestRescheduleClick = () => {
+    setShowTestAppointmentRescheduleBox(true);
+  };
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const handleSlotChange = (event) => {
+    setSelectedSlot(event.target.value);
+  };
+
+  const handleCancelReschedule = () => {
+    setShowTestAppointmentRescheduleBox(false);
+    setSelectedDate(null);
+    setSelectedSlot(null);
+  };
+
+  const confirmReschedule = async () => {
+    try {
+      if (!selectedDate || !selectedSlot) {
+        alert("Please select a date and slot for rescheduling.");
+        return;
+      }
+  
+      const isAvailable = await checkTestAvailability(selectedSlot);
+  
+      if (isAvailable) {
+        const rescheduleResponse = await Axios.put(`http://localhost:4000/test/updateTestAppointment/${_id}`, {
+          testDate: selectedDate,
+          slot: selectedSlot,
+        });
+  
+        if (rescheduleResponse.status === 200) {
+          alert("Test appointment rescheduled successfully");
+          window.location.reload();
+        } else {
+          alert("Failed to reschedule test appointment");
+        }
+      } else {
+        alert("Slot not available for this test at this time");
+      }
+    } catch (error) {
+      console.error("Error rescheduling test appointment:", error);
+      alert("Error rescheduling test appointment");
+    }
   };
 
   useEffect(() => {
@@ -40,6 +95,26 @@ function TestObj(props) {
     setIsCancelButtonDisabled(isBeforePreviousDay);
     setIsRescheduleButtonDisabled(isBeforePreviousDay);
   }, [email, patientName, testDate]);
+
+  const checkTestAvailability = async (selectedSlot) => {
+    try {
+      const response = await Axios.get("http://localhost:4000/test/checkAvailability", {
+        params: {
+          testDate: selectedDate,
+          slot: selectedSlot,
+        },
+      });
+
+      if (response.status === 200) {
+        return response.data.available;
+      } else {
+        throw new Error("Failed to check test availability");
+      }
+    } catch (error) {
+      console.error("Error checking test availability:", error);
+      throw error;
+    }
+  };
 
   const formatDate = (dateString) => {
     const options = { day: "numeric", month: "numeric", year: "numeric" };
@@ -80,11 +155,33 @@ function TestObj(props) {
                 </div>
               )}
         </div>
-        <div className="griditem7">
-          <button className="patientobjbutton" disabled={isRescheduleButtonDisabled}>
-            Reschedule
-          </button>
-        </div>
+        <div className="test-griditem7">
+        <button
+          className="patientobjbutton"
+          disabled={isTestRescheduleButtonDisabled}
+          onClick={handleTestRescheduleClick}
+        >
+          Reschedule Test
+        </button>
+        {showTestAppointmentRescheduleBox && (
+          <div className="test-reschedule-box">
+            <input type="date" onChange={handleDateChange} min={today} />
+            <select onChange={handleSlotChange} defaultValue="">
+              <option value="" disabled hidden>
+                Select Slot
+              </option>
+              <option value="08:00">08:00 - 08:10</option>
+              <option value="08:10">08:10 - 08:20</option>
+              <option value="08:20">08:20 - 08:30</option>
+              <option value="08:30">08:30 - 08:40</option>
+              <option value="08:40">08:40 - 08:50</option>
+              <option value="08:50">08:50 - 09:00</option>
+            </select>
+            <button onClick={confirmReschedule}>Confirm Reschedule</button>
+            <button onClick={handleCancelReschedule}>Cancel Reschedule</button>
+          </div>
+        )}
+      </div>
 
         <div className="griditem8">
           <button

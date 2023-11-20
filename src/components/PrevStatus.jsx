@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import PatientObjPrev from "./PatientObjPrev";
 import TestObjPrev from "./TestObjPrev";
+import "./prevStatus.css";
 
 function PrevStatus() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function PrevStatus() {
   const [arr2, setArr2] = useState([]);
 
   const goToUpcoming = () => {
-    navigate('/verifiedStatus', { state: location.state });
+    navigate("/verifiedStatus", { state: location.state });
   };
 
   useEffect(() => {
@@ -58,13 +59,19 @@ function PrevStatus() {
 
   const ListItems2 = () => {
     return arr2.map((val, ind) => {
-      return <tr><TestObjPrev key={val._id} obj={val} /></tr>;
+      return (
+        <tr>
+          <TestObjPrev key={val._id} obj={val} />
+        </tr>
+      );
     });
   };
 
   return (
     <div className="previouscont">
-      <button onClick={goToUpcoming}>Upcoming</button>
+      <button className="gotoupcombutton" onClick={goToUpcoming}>
+        Upcoming
+      </button>
       <div className="previouscon">
         <div className="headingprevious">
           <h1>View your Appointments</h1>
@@ -75,9 +82,7 @@ function PrevStatus() {
         <div className="headingprevious">
           <h1>Test Booked</h1>
         </div>
-        <table>
-          {ListItems2()}
-        </table>
+        <table>{ListItems2()}</table>
       </div>
     </div>
   );

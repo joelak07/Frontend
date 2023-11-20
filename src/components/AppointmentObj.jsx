@@ -9,7 +9,8 @@ const AppointmentObj = (props) => {
     patientName,
     email,
     slot,
-    reasonforappointment
+    reasonforappointment,
+    appointmentDate
   } = props.obj;
   const [showDiagnosis, setShowDiagnosis] = useState(false);
   const [patientDetails, setPatientDetails] = useState(null);
@@ -105,6 +106,7 @@ const AppointmentObj = (props) => {
       <h3>Patient Name: {patientName}</h3>
       <p><b>Age: </b>{patientAge !== null ? patientAge : 'N/A'}</p>
       <p><b>Reason for Appointment:</b> {reasonforappointment}</p>
+      <p><b>Appointment Date: </b>{new Date(appointmentDate).toLocaleDateString('en-GB')}</p>
       <p><b>Slot Time:</b> {slot}</p>
 
       {showDiagnosis && (

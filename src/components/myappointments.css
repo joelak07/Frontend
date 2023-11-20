@@ -3,7 +3,7 @@
     margin-top: 50px;
     background-color: #cac9c9;
     border-radius: 5px;
-    height: 100vh;
+    height: 700px;
     opacity: 0.9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -60,17 +60,17 @@
 .myappbutt:hover{
   transform: scale(1.1);
 }
-
+.appsearchres-container{
+  background-color: blue;
+}
 .appsearchres {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
+  max-width: 100%;
+  margin: 20px;
+  height: 75%;
+  overflow-y: auto;
+  border-radius: 8px;
+}
+
   .appsearchres ul {
     list-style: none;
     padding: 0;
@@ -102,3 +102,10 @@
     background-color: #f9f9f9;
   }
   
+  .mwuah{
+    background-color: red;
+  }
+
+  .searchcont{
+    height: 700px;
+  }
