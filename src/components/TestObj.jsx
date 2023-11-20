@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import './testobj.css'
 
 function TestObj(props) {
   const {
@@ -59,15 +60,15 @@ function TestObj(props) {
         alert("Please select a date and slot for rescheduling.");
         return;
       }
-  
+
       const isAvailable = await checkTestAvailability(selectedSlot);
-  
+
       if (isAvailable) {
         const rescheduleResponse = await Axios.put(`http://localhost:4000/test/updateTestAppointment/${_id}`, {
           testDate: selectedDate,
           slot: selectedSlot,
         });
-  
+
         if (rescheduleResponse.status === 200) {
           alert("Test appointment rescheduled successfully");
           window.location.reload();
@@ -122,77 +123,78 @@ function TestObj(props) {
   };
 
   return (
-    <div className="appointment-details">
-      <div className="headingappoint">
-        <p className="section-title">
-          <b> Test Details</b>
-        </p>
-      </div>
-      <div className="gridcontainer">
-        <div className="griditem1">
-          {testDate && (
-            <div className="field">
-              Appointment Date: {formatDate(testDate)}
+    <div className="test-detailss">
+      <div className="testflex">
+        <div className="testcont1">
+            <div className="griditem4">
+              {testName && (
+                <div className="field">
+                  <b  style={{ fontSize: "1.4rem", color: "#0c356a" }}>Test Name: {testName}</b>
+                </div>
+              )}
             </div>
-          )}
-        </div>
-        <div className="griditem2">
-          {slot && <div className="field">Slot: {slot}</div>}
-        </div>
-
-        <div className="griditem3">
+            <div className="griditem3">
               {patientName && (
                 <div className="field">
                   Patient Name: {patientName}
                 </div>
               )}
-        </div>
-
-        <div className="griditem4">
-              {testName && (
+            </div>
+          </div>
+          <div className="testcont2">
+            <div className="griditem1">
+              {testDate && (
                 <div className="field">
-                  Test Name: {testName}
+                  <b style={{ fontSize: "1.4rem", color: "#0c356a" }}>Appointment Date: {formatDate(testDate)}</b>
                 </div>
               )}
-        </div>
-        <div className="test-griditem7">
-        <button
-          className="patientobjbutton"
-          disabled={isTestRescheduleButtonDisabled}
-          onClick={handleTestRescheduleClick}
-        >
-          Reschedule Test
-        </button>
-        {showTestAppointmentRescheduleBox && (
-          <div className="test-reschedule-box">
-            <input type="date" onChange={handleDateChange} min={today} />
-            <select onChange={handleSlotChange} defaultValue="">
-              <option value="" disabled hidden>
-                Select Slot
-              </option>
-              <option value="08:00">08:00 - 08:10</option>
-              <option value="08:10">08:10 - 08:20</option>
-              <option value="08:20">08:20 - 08:30</option>
-              <option value="08:30">08:30 - 08:40</option>
-              <option value="08:40">08:40 - 08:50</option>
-              <option value="08:50">08:50 - 09:00</option>
-            </select>
-            <button onClick={confirmReschedule}>Confirm Reschedule</button>
-            <button onClick={handleCancelReschedule}>Cancel Reschedule</button>
+            </div>
+            <div className="griditem2">
+              {slot && <div className="field">Slot: {slot}</div>}
+            </div>
           </div>
-        )}
-      </div>
+          <div className="testcont3">
 
-        <div className="griditem8">
-          <button
-            onClick={cancelTest}
-            disabled={isCancelButtonDisabled}
-            className="patientobjbutton"
-          >
-            Cancel
-          </button>
+            <div className="test-griditem7">
+              <button
+                className="testobjbutton"
+                disabled={isTestRescheduleButtonDisabled}
+                onClick={handleTestRescheduleClick}
+              >
+                Reschedule
+              </button>
+            </div>
+
+            <div className="griditem8">
+              <button
+                onClick={cancelTest}
+                disabled={isCancelButtonDisabled}
+                className="testobjbutton"
+              >
+                Cancel
+              </button>
+            </div>
         </div>
       </div>
+      {showTestAppointmentRescheduleBox && (
+                <div className="reschedule-box">
+                  <h2>Reschedule Test</h2>
+                  <input type="date" onChange={handleDateChange} min={today} />
+                  <select onChange={handleSlotChange} defaultValue="">
+                    <option value="" disabled hidden>
+                      Select Slot
+                    </option>
+                    <option value="08:00">08:00 - 08:10</option>
+                    <option value="08:10">08:10 - 08:20</option>
+                    <option value="08:20">08:20 - 08:30</option>
+                    <option value="08:30">08:30 - 08:40</option>
+                    <option value="08:40">08:40 - 08:50</option>
+                    <option value="08:50">08:50 - 09:00</option>
+                  </select>
+                  <button onClick={confirmReschedule}>Confirm Reschedule</button>
+                  <button onClick={handleCancelReschedule}>Cancel Reschedule</button>
+                </div>
+              )}
 
       <br />
     </div>

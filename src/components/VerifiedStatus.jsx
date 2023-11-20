@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import PatientObj from "./PatientObj";
@@ -10,6 +10,8 @@ function VerifiedStatus() {
   const location = useLocation();
   const [arr1, setArr1] = useState([]);
   const [arr2, setArr2] = useState([]);
+  const [showAppointments, setShowAppointments] = useState(true);
+
   useEffect(() => {
     const patientValid = () => {
       let token = localStorage.getItem("patientdbtoken");
@@ -40,40 +42,46 @@ function VerifiedStatus() {
           .catch((err) => alert(err));
       } else {
         console.log("invalid details");
-        navigate("*");
+        // navigate("*");
       }
     };
     patientValid();
   }, [navigate, location.state]);
+
   const ListItems1 = () => {
     return arr1.map((val, ind) => {
       return <PatientObj key={val._id} obj={val} />;
     });
   };
+
   const ListItems2 = () => {
     return arr2.map((val, ind) => {
       return <TestObj key={val._id} obj={val} />;
     });
   };
+
   const goPrev = () => {
     navigate("/previousStatus", { state: location.state });
   };
+
   return (
     <div className="verifiedcont">
-      <button className="gotoprevbutton" onClick={goPrev}>
-        Previous
-      </button>
       <div className="verifiedcon">
+        <button className="gotoprevbutton" onClick={goPrev}>
+          Previous
+        </button>
         <div className="headingverified">
-          <h1>View your Appointments</h1>
+          <button onClick={() => setShowAppointments(true)}  className={`vesbuta ${showAppointments ? 'clickity' : ''}`}><h1>Appointments</h1></button>
+          <button onClick={() => setShowAppointments(false)} className={`vesbutt ${!showAppointments ? 'clickity' : ''}`}><h1>Tests</h1></button>
         </div>
-        <div>{ListItems1()}</div>
-      </div>
-      <div className="verifiedcon">
-        <div className="headingverified">
-          <h1>Test Booked</h1>
+
+        <div className="appos" style={{ display: showAppointments ? 'block' : 'none' }}>
+          {ListItems1()}
         </div>
-        <div>{ListItems2()}</div>
+
+        <div className="testos" style={{ display: showAppointments ? 'none' : 'block' }}>
+          {ListItems2()}
+        </div>
       </div>
     </div>
   );
