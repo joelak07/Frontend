@@ -79,3 +79,27 @@
     padding: 0 25px;
   }
 }
+
+.vesbuta{
+  color: #0c356a;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+}
+
+.vesbutt{
+  color: #0c356a;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 10px;
+}
+
+.clickity{
+  background-color: #fff7ee;
+  border: none;
+  transform: scale(1.01);
+}
