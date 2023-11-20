@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import PatientObj from "./PatientObj";
 import TestObj from "./TestObj";
@@ -55,9 +55,12 @@ function VerifiedStatus() {
       return <TestObj key={val._id} obj={val} />;
     });
   };
+  const goPrev = () =>{
+    navigate('/previousStatus', {state: location.state});
+  }
   return (
     <div className="verifiedcont">
-      <Link to="/previousStatus">Previous</Link>
+      <button onClick={goPrev}>Previous</button>
       <div className="verifiedcon">
         <div className="headingverified">
           <h1>View your Appointments</h1>

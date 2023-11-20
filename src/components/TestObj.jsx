@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import "./patientObj.css";
 
-function PatientObj(props) {
+function TestObj(props) {
   const {
     _id,
     testName,
@@ -103,4 +102,4 @@ function PatientObj(props) {
   );
 }
 
-export default PatientObj;
+export default TestObj;
