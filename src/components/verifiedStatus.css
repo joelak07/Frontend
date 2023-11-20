@@ -1,7 +1,7 @@
 .verifiedcont {
   height: 100vh;
   align-items: center;
-  background-color:#efefef;
+  background-color: #efefef;
   padding-bottom: 20px;
   padding-top: 20px;
 }
@@ -18,18 +18,18 @@
   padding: 20px 20px 0px 20px;
 }
 
-.headingverified{
+.headingverified {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
 
-.headingverified button{
+.headingverified button {
   width: 100%;
   padding: 20px;
 }
 
-.appos{
+.appos {
   background-color: #fff7ee;
   padding: 20px;
   height: 68%;
@@ -37,7 +37,7 @@
   margin-bottom: 10px;
 }
 
-.testos{
+.testos {
   background-color: #fff7ee;
   padding: 20px;
   height: 68%;
@@ -80,7 +80,7 @@
   }
 }
 
-.vesbuta{
+.vesbuta {
   color: #0c356a;
   cursor: pointer;
   border-radius: 3px;
@@ -90,7 +90,7 @@
   border-top-left-radius: 10px;
 }
 
-.vesbutt{
+.vesbutt {
   color: #0c356a;
   cursor: pointer;
   border-radius: 3px;
@@ -100,7 +100,7 @@
   border-top-right-radius: 10px;
 }
 
-.clickity{
+.clickity {
   background-color: #fff7ee;
   border: none;
   transform: scale(1.01);
