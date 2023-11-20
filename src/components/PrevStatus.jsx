@@ -4,12 +4,14 @@ import Axios from "axios";
 import PatientObjPrev from "./PatientObjPrev";
 import TestObjPrev from "./TestObjPrev";
 import "./prevStatus.css";
+import { border } from "@mui/system";
 
 function PrevStatus() {
   const navigate = useNavigate();
   const location = useLocation();
   const [arr1, setArr1] = useState([]);
   const [arr2, setArr2] = useState([]);
+  const [showAppointments, setShowAppointments] = useState(true);
 
   const goToUpcoming = () => {
     navigate("/verifiedStatus", { state: location.state });
@@ -53,21 +55,13 @@ function PrevStatus() {
 
   const ListItems1 = () => {
     return arr1.map((val, ind) => {
-      return (
-        <tr className="apposrowprev">
-          <PatientObjPrev key={val._id} obj={val} />
-        </tr>
-      );
+      return <PatientObjPrev key={val._id} obj={val} />;
     });
   };
 
   const ListItems2 = () => {
     return arr2.map((val, ind) => {
-      return (
-        <tr className="testrowprev">
-          <TestObjPrev key={val._id} obj={val} />
-        </tr>
-      );
+      return <TestObjPrev key={val._id} obj={val} />;
     });
   };
 
@@ -78,23 +72,44 @@ function PrevStatus() {
           Upcoming
         </button>
         <div className="headingprevious">
-          <button>
+          <button
+            onClick={() => setShowAppointments(true)}
+            className={`vesbuta ${showAppointments ? "clickity" : ""}`}
+          >
             <h1>Appointments</h1>
           </button>
-          <button>
+          <button
+            onClick={() => setShowAppointments(false)}
+            className={`vesbutt ${!showAppointments ? "clickity" : ""}`}
+          >
             <h1>Tests</h1>
           </button>
         </div>
+
         <div className="previousconinside">
-          <table className="apposprev"> {ListItems1()}</table>
+          <table
+            className="apposprev"
+            style={
+              ({ borderSpacing: "10px" },
+              { display: showAppointments ? "block" : "none" })
+            }
+          >
+            {ListItems1()}
+          </table>
+        </div>
+
+        <div className="testconinside">
+          <table
+            className="testisprev"
+            style={
+              ({ borderSpacing: "10px" },
+              { display: showAppointments ? "none" : "block" })
+            }
+          >
+            {ListItems2()}
+          </table>
         </div>
       </div>
-      {/* <div className="previouscon">
-        <div className="headingprevious">
-          <h1>Test Booked</h1>
-        </div>
-        // <div>{ListItems2()}</div>
-      </div> */}
     </div>
   );
 }

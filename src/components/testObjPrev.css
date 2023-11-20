@@ -59,12 +59,18 @@
 }
 
 .dateslotprev {
-  width: 550px;
-  color: #2b3499;
-  font-size: 1.3rem;
+  color: #777;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
+  vertical-align: baseline;
+  width: 675px;
 }
 .testnameprev {
-  width: 550px;
-  color: #2b3499;
-  font-size: 1.3rem;
+  color: #777;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
+  vertical-align: baseline;
+  width: 675px;
 }

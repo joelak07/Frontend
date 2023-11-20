@@ -9,7 +9,7 @@
 .previouscon {
   align-items: center;
   height: 100%;
-  justify-content: space-between;
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #d2d2d2;
   border-radius: 10px;
@@ -67,25 +67,56 @@
   }
 }
 
-.previousconinside {
+.previousconinside,
+.testconinside {
   background-color: #fff7ee;
   padding: 20px;
-  height: 100vh;
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 525px;
+  overflow-x: auto;
 }
 
-.apposprev {
-  border: 1px;
+.apposprev,
+.testisprev {
   border-radius: 20px;
   padding: 10px;
-  background-color: #faf6f0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+  background-color: #f8ffff;
+  box-shadow: 0 4px 8px #0000001a;
   width: 100%;
+  border-collapse: collapse;
 }
 
-.apposrowprev {
-  margin-bottom: 30px;
+td {
+  padding: 8px 16px;
+
+  border-bottom: 2px solid olive;
+}
+
+.clickity {
+  background-color: #fff7ee;
+  border: none;
+  transform: scale(1.01);
+}
+
+.vesbuta {
+  color: #0c356a;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+}
+
+.vesbutt {
+  color: #0c356a;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 10px;
 }

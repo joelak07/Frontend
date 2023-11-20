@@ -1,5 +1,5 @@
 .appointmentdetailsprev {
-  width: 98%;
+  width: 100%;
   border: 1px solid #ced4da;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -86,12 +86,22 @@
   font-size: 1.2rem;
   padding: 5px;
   margin: 0;
-  width: 550px;
+  width: 675px;
+  vertical-align: baseline;
 }
 .apposslotprev {
   color: #777;
   font-size: 1.2rem;
   padding: 5px;
   margin: 0;
-  width: 550px;
+  width: 675px;
+  vertical-align: baseline;
+}
+
+.apposmainprev {
+  margin-bottom: 30px;
+}
+
+.Patientheads {
+  font-family: "Poppins", sans-serif;
 }

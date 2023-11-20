@@ -12,11 +12,19 @@ function TestObjPrev(props) {
   };
 
   return (
-    <div>
+    <tr className="testrowprevmain">
       <td className="dateslotprev">
         {testDate && (
           <div>
-            Date: {formatDate(testDate)}
+            <div
+              style={{
+                fontSize: "1.4rem",
+                color: "#0c356a",
+                fontWeight: "bold",
+              }}
+            >
+              Date: {formatDate(testDate)}
+            </div>
             {isShown && <div> {slot && <div> Slot: {slot}</div>}</div>}
           </div>
         )}
@@ -24,7 +32,15 @@ function TestObjPrev(props) {
       <td className="testnameprev">
         {testName && (
           <div>
-            Test name: {testName}
+            <div
+              style={{
+                fontSize: "1.4rem",
+                color: "#0c356a",
+                fontWeight: "bold",
+              }}
+            >
+              Test name: {testName}
+            </div>
             {isShown && (
               <div>
                 {patientName && <div>Patient name: {patientName}</div>}
@@ -32,7 +48,7 @@ function TestObjPrev(props) {
                 {email && <div>Email: {email}</div>}
               </div>
             )}
-          </>
+          </div>
         )}
       </td>
 
@@ -45,4 +61,4 @@ function TestObjPrev(props) {
   );
 }
 
-export default PatientObjPrev;
+export default TestObjPrev;

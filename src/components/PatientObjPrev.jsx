@@ -47,11 +47,19 @@ function PatientObjPrev(props) {
   };
 
   return (
-    <div>
+    <tr className="newrowprevmain">
       <td className="apposslotprev">
         {appointmentDate && (
           <div>
-            Date: {formatDate(appointmentDate)}
+            <div
+              style={{
+                fontSize: "1.4rem",
+                color: "#0c356a",
+                fontWeight: "bold",
+              }}
+            >
+              Date: {formatDate(appointmentDate)}
+            </div>
             {isShown && <div> {slot && <div> Slot: {slot}</div>}</div>}
           </div>
         )}
@@ -59,7 +67,17 @@ function PatientObjPrev(props) {
       <td className="apposnameprev">
         {patientName && (
           <div>
-            Patient Name: {patientName}
+            <div
+              style={{
+                fontSize: "1.4rem",
+                color: "#0c356a",
+                marginLeft: "4px",
+                fontWeight: "bold",
+              }}
+            >
+              {" "}
+              Patient Name: {patientName}
+            </div>
             {isShown && (
               <div>
                 {doctorDetails && (
@@ -93,12 +111,12 @@ function PatientObjPrev(props) {
           </div>
         )}
       </td>
-      <td>
+      <td className="hideviewapposenior">
         <button className="hideviewtest" onClick={() => setIsShown(!isShown)}>
           {isShown ? "Hide" : "View"}
         </button>
       </td>
-    </div>
+    </tr>
   );
 }
 
