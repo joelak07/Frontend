@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './docprofile.css'
 import DocNav from './DocNav';
 import usePasswordToggle from './usePasswordToggle';
+import { useNavigate } from 'react-router-dom';
 
 const DocProfile = () => {
   const [doctorDetails, setDoctorDetails] = useState({});
@@ -9,6 +10,7 @@ const DocProfile = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [PasswordInputType, ToggleIcon] = usePasswordToggle();
+  const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('doctordbtoken');
     if (token) {
@@ -17,6 +19,9 @@ const DocProfile = () => {
         setEmpId(decodedToken.empId);
         fetchDoctorDetails(decodedToken.empId);
       }
+    }
+    if (!token) {
+      navigate("/login");
     }
   }, []);
 
