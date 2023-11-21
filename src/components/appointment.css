@@ -96,8 +96,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 200px;
-  margin-right: 0px;
+  margin-left: 160px;
+  margin-right: 50px;
 }
 
 .heading {
@@ -213,6 +213,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
