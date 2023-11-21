@@ -23,7 +23,7 @@ function TestObjPrev(props) {
                 fontWeight: "bold",
               }}
             >
-              Date: {formatDate(testDate)}
+              {formatDate(testDate)}
             </div>
             {isShown && <div> {slot && <div> Slot: {slot}</div>}</div>}
           </div>
@@ -39,7 +39,7 @@ function TestObjPrev(props) {
                 fontWeight: "bold",
               }}
             >
-              Test name: {testName}
+              {testName}
             </div>
             {isShown && (
               <div>
@@ -52,7 +52,7 @@ function TestObjPrev(props) {
         )}
       </td>
 
-      <td>
+      <td className="testhideview">
         <button className="hideviewtest" onClick={() => setIsShown(!isShown)}>
           {isShown ? "Hide" : "View"}
         </button>

@@ -58,7 +58,7 @@ function PatientObjPrev(props) {
                 fontWeight: "bold",
               }}
             >
-              Date: {formatDate(appointmentDate)}
+              {formatDate(appointmentDate)}
             </div>
             {isShown && <div> {slot && <div> Slot: {slot}</div>}</div>}
           </div>

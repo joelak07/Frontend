@@ -90,8 +90,8 @@
 }
 
 td {
-  padding: 8px 16px;
-
+  padding: 16px 24px;
+  vertical-align: baseline;
   border-bottom: 2px solid olive;
 }
 

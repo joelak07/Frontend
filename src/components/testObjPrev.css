@@ -61,7 +61,6 @@
 .dateslotprev {
   color: #777;
   font-size: 1.2rem;
-  padding: 5px;
   margin: 0;
   vertical-align: baseline;
   width: 675px;
@@ -69,8 +68,11 @@
 .testnameprev {
   color: #777;
   font-size: 1.2rem;
-  padding: 5px;
   margin: 0;
   vertical-align: baseline;
   width: 675px;
+}
+
+.testhideview {
+  text-align: right;
 }
