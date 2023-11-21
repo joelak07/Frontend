@@ -30,7 +30,7 @@ const MyAppointmentObj = (props) => {
   };
 
   const cancelAppointment = () => {
-    Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
+    Axios.delete(`https://hospital-appointment-backend.onrender.com/appointment/deleteAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
           alert('Deleted successfully');
@@ -43,7 +43,7 @@ const MyAppointmentObj = (props) => {
   };
 
   useEffect(() => {
-    Axios.get('http://localhost:4000/patient/getPatient', {
+    Axios.get('https://hospital-appointment-backend.onrender.com/patient/getPatient', {
       params: { email: email, patientName: patientName },
     })
       .then((res) => {
