@@ -68,9 +68,11 @@ function PrevStatus() {
   return (
     <div className="previouscont">
       <div className="previouscon">
-        <button className="gotoupcombutton" onClick={goToUpcoming}>
+        <div style={{width:"100%", display:"flex", justifyContent:"space-between"}}>
+        <button className="gotoupcombutton" onClick={goToUpcoming} style={{marginLeft:"auto"}}>
           Upcoming
         </button>
+        </div>
         <div className="headingprevious">
           <button
             onClick={() => setShowAppointments(true)}
