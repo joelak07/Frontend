@@ -49,11 +49,14 @@ const DocDashboard = () => {
 
   useEffect(() => {
     const getCurrentTime = () => {
+      let newhours=0;
       const now = new Date();
       let hours = now.getHours();
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
       const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      newhours=hours;
 
       // Convert hours to 12-hour format
       hours = hours % 12 || 12;
@@ -61,9 +64,9 @@ const DocDashboard = () => {
       const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds} ${ampm}`;
       setCurrentTime(formattedTime);
 
-      if (hours >= 5 && hours < 12) {
+      if (newhours >= 5 && newhours < 12) {
         setGreeting('Morning');
-      } else if (hours >= 12 && hours < 18) {
+      } else if (newhours >= 12 && newhours < 18) {
         setGreeting('Afternoon');
       } else {
         setGreeting('Evening');
