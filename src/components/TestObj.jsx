@@ -25,7 +25,7 @@ function TestObj(props) {
 
 
   const cancelTest = () => {
-    Axios.delete(`http://localhost:4000/test/deleteTestAppointment/${_id}`)
+    Axios.delete(`https://hospital-appointment-backend.onrender.com/test/deleteTestAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
           toast.success("Test cancelled")
@@ -67,7 +67,7 @@ function TestObj(props) {
       const isAvailable = await checkTestAvailability(selectedSlot);
 
       if (isAvailable) {
-        const rescheduleResponse = await Axios.put(`http://localhost:4000/test/updateTestAppointment/${_id}`, {
+        const rescheduleResponse = await Axios.put(`https://hospital-appointment-backend.onrender.com/test/updateTestAppointment/${_id}`, {
           testDate: selectedDate,
           slot: selectedSlot,
         });
@@ -104,7 +104,7 @@ function TestObj(props) {
 
   const checkTestAvailability = async (selectedSlot) => {
     try {
-      const response = await Axios.get("http://localhost:4000/test/checkAvailability", {
+      const response = await Axios.get("https://hospital-appointment-backend.onrender.com/test/checkAvailability", {
         params: {
           testDate: selectedDate,
           slot: selectedSlot,

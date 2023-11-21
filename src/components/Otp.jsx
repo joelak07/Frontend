@@ -57,7 +57,7 @@ const Otp = () => {
         option: location.state.option
       };
       try {
-        const response = await Axios.post('http://localhost:4000/patientOtp/status', data);
+        const response = await Axios.post('https://hospital-appointment-backend.onrender.com/patientOtp/status', data);
         if (response.status === 200) {
           if (location.state.option === "1") {
             localStorage.setItem('patientdbtoken', response.data.userToken);
@@ -68,14 +68,14 @@ const Otp = () => {
             }, 2000);
           }
           else if (location.state.option === "2") {
-            const patientResponse = await Axios.post("http://localhost:4000/patient/createPatient", {
+            const patientResponse = await Axios.post("https://hospital-appointment-backend.onrender.com/patient/createPatient", {
               patientName: location.state.patientName,
               email: location.state.email,
               dob: location.state.dob,
               address: location.state.address,
             });
             if (patientResponse.status === 200) {
-              const appointmentResponse = await Axios.post("http://localhost:4000/appointment/createAppointment", {
+              const appointmentResponse = await Axios.post("https://hospital-appointment-backend.onrender.com/appointment/createAppointment", {
                 appointmentDate: location.state.appointmentDate,
                 patientName: location.state.patientName,
                 email: location.state.email,
@@ -102,7 +102,7 @@ const Otp = () => {
             }
           }
           else if (location.state.option==="3") {
-            const testResponse = await Axios.post("http://localhost:4000/test/createTestAppointment", {
+            const testResponse = await Axios.post("https://hospital-appointment-backend.onrender.com/test/createTestAppointment", {
               testName:location.state.testName,
               email:location.state.email,
               testDate: location.state.testDate,

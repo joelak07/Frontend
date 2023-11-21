@@ -20,7 +20,7 @@ function PatientObjPrev(props) {
   const [isDetailsVisible, setIsDetailsVisible] = useState(false);
 
   useEffect(() => {
-    Axios.get("http://localhost:4000/patient/getPatient", {
+    Axios.get("https://hospital-appointment-backend.onrender.com/patient/getPatient", {
       params: { email: email, patientName: patientName },
     })
       .then((res) => {
@@ -30,7 +30,7 @@ function PatientObjPrev(props) {
       })
       .catch((err) => console.error("Error fetching patient details:", err));
 
-    Axios.get("http://localhost:4000/doctor/getDoctor", {
+    Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
       params: { doctorId: doctorId },
     })
       .then((res) => {

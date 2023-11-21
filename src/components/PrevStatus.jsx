@@ -23,7 +23,7 @@ function PrevStatus() {
       if (token) {
         console.log("User valid");
         console.log(location.state);
-        Axios.get("http://localhost:4000/appointment/getAppointment", {
+        Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointment", {
           params: { email: location.state, isCompleted: true },
         })
           .then((res) => {
@@ -34,7 +34,7 @@ function PrevStatus() {
             }
           })
           .catch((err) => alert(err));
-        Axios.get("http://localhost:4000/test/getTestAppointments", {
+        Axios.get("https://hospital-appointment-backend.onrender.com/test/getTestAppointments", {
           params: { email: location.state, option: 2 },
         })
           .then((res) => {

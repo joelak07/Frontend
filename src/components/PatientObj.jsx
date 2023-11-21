@@ -43,7 +43,7 @@ function PatientObj(props) {
   const checkAvailability = async () => {
     try {
       const availabilityResponse = await Axios.get(
-        "http://localhost:4000/appointment/checkAvailability",
+        "https://hospital-appointment-backend.onrender.com/appointment/checkAvailability",
         {
           params: {
             doctorId: doctorId,
@@ -74,7 +74,7 @@ function PatientObj(props) {
   };
 
   const cancelAppointment = () => {
-    Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
+    Axios.delete(`https://hospital-appointment-backend.onrender.com/appointment/deleteAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
           toast.success("Appointment cancelled")
@@ -107,7 +107,7 @@ function PatientObj(props) {
         // Slot is available, proceed with updating the appointment
         try {
           const rescheduleResponse = await Axios.put(
-            `http://localhost:4000/appointment/updateAppointment/${_id}`,
+            `https://hospital-appointment-backend.onrender.com/appointment/updateAppointment/${_id}`,
             {
               appointmentDate: selectedDate,
               slot: selectedSlot,
@@ -136,7 +136,7 @@ function PatientObj(props) {
     }
   };
   useEffect(() => {
-    Axios.get("http://localhost:4000/patient/getPatient", {
+    Axios.get("https://hospital-appointment-backend.onrender.com/patient/getPatient", {
       params: { email: email, patientName: patientName },
     })
       .then((res) => {
@@ -147,7 +147,7 @@ function PatientObj(props) {
       .catch((err) => console.error("Error fetching patient details:", err));
 
     // Fetch doctor details using the doctorId
-    Axios.get("http://localhost:4000/doctor/getDoctor", {
+    Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
       params: { doctorId: doctorId }, // Use doctorId from props or wherever it's coming from
     })
       .then((res) => {

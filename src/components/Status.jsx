@@ -24,7 +24,7 @@ const Status = () => {
       const data = { "email": email };
       console.log(data);
       try {
-        const res = await Axios.post("http://localhost:4000/patientOtp/sendOtp", data);
+        const res = await Axios.post("https://hospital-appointment-backend.onrender.com/patientOtp/sendOtp", data);
         if (res.status === 200) {
           toast.success("OTP has been sent");
           navigate("/patient/otp", { state: {email:email, option:"1"} });

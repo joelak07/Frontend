@@ -44,7 +44,7 @@ const Test = () => {
       const formattedTestDate = new Date(testDate).toISOString();
       const formattedDOB = new Date(dob).toISOString();
 
-      const response = await Axios.get("http://localhost:4000/test/checkAvailability", {
+      const response = await Axios.get("https://hospital-appointment-backend.onrender.com/test/checkAvailability", {
         params: {
           testName,
           testDate: formattedTestDate,
@@ -72,7 +72,7 @@ const Test = () => {
         option: "3"
       };
       const data = { "email": email };
-      const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp", data);
+      const res = await Axios.post("https://hospital-appointment-backend.onrender.com/patientOtp/appointment/sendOtp", data);
       if (res.status === 200) {
         navigate('/patient/otp', { state: dataToSend });
       }
@@ -91,7 +91,7 @@ const Test = () => {
       const formattedTestDate = new Date(testDate).toISOString();
       const formattedDOB = new Date(dob).toISOString();
 
-      const response = await Axios.get("http://localhost:4000/test/checkAvailability", {
+      const response = await Axios.get("https://hospital-appointment-backend.onrender.com/test/checkAvailability", {
         params: {
           testName,
           testDate: formattedTestDate,
