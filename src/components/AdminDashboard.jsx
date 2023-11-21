@@ -238,7 +238,7 @@ function AdminDashboard() {
   return (
     <div className="admindash">
       <AdminNav />
-      <h2>Admin Dashboard</h2>
+      <h2 className="admh2">Admin Dashboard</h2>
       <div className="createdoc">
         <h3>Create New Doctor</h3>
         <div className="crdoc-row1">
