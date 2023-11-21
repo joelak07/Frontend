@@ -87,9 +87,9 @@ function Login() {
               {ToggleIcon}
             </span>
           </div>
-          <br />
           {error && <div style={{ color: 'red' }}>{error}</div>}
           <div>
+            <br />
             <button type="submit" className="loginbtn">
               Login
             </button>
