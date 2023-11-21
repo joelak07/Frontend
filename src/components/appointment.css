@@ -96,8 +96,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 160px;
-  margin-right: 50px;
+  margin: auto;
 }
 
 .heading {
