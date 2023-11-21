@@ -76,7 +76,7 @@ function PatientObjPrev(props) {
               }}
             >
               {" "}
-              Doctor Name: {doctorDetails && (<div>{doctorDetails.doctorName}</div>)}
+              {doctorDetails && (<div>{doctorDetails.doctorName}</div>)}
             </div>
             {isShown && (
               <div>
