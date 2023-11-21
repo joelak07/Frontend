@@ -165,7 +165,7 @@ function AdminDashboard() {
     setDisplayUpdateForm(true);
     setDisplayDoctors(false);
   };
-  
+
   const handleCancelUpdate = () => {
     setUpdatingDoctor({
       doctorId: "",
@@ -233,7 +233,16 @@ function AdminDashboard() {
     }
   };
 
-
+  const ListItems = () => {
+    if (!Array.isArray(patients)) {
+      return [];
+    }
+    return patients.map((patient) => {
+      return <li key={patient._id}>
+        {patient.patientName} - {patient.email}
+      </li>
+    });
+  };
 
   return (
     <div className="admindash">
@@ -419,11 +428,11 @@ function AdminDashboard() {
         {showDetails && (
           <div className="patdetails">
             <ul>
-              {patients.map((patient) => (
-                <li key={patient._id}>
-                  {patient.patientName} - {patient.email}
-                </li>
-              ))}
+              {patients.length === 0 ? (
+                <p style={{ color: '#000', textAlign: 'center', margin: '120px', fontSize: '1.9rem' }}>No patients</p>
+              ) : (
+                ListItems()
+              )}
             </ul>
           </div>
         )}
