@@ -76,13 +76,13 @@ function PrevStatus() {
         <div className="headingprevious">
           <button
             onClick={() => setShowAppointments(true)}
-            className={`vesbuta ${showAppointments ? "clickity" : ""}`}
+            className={` ${showAppointments ? "clickity" : "vesbuta"}`}
           >
             <h1>Appointments</h1>
           </button>
           <button
             onClick={() => setShowAppointments(false)}
-            className={`vesbutt ${!showAppointments ? "clickity" : ""}`}
+            className={` ${!showAppointments ? "testity" : "vesbutt"}`}
           >
             <h1>Tests</h1>
           </button>

@@ -42,7 +42,7 @@ function VerifiedStatus() {
           .catch((err) => alert(err));
       } else {
         console.log("invalid details");
-        // navigate("*");
+        navigate("*");
       }
     };
     patientValid();
@@ -77,13 +77,13 @@ function VerifiedStatus() {
         <div className="headingverified">
           <button
             onClick={() => handleButtonClick(true)}
-            className={`vesbuta ${showAppointments ? 'clickity' : ''}`}
+            className={` ${showAppointments ? 'clickity' : 'vesbuta'}`}
           >
             <h1>Appointments</h1>
           </button>
           <button
             onClick={() => handleButtonClick(false)}
-            className={`vesbutt ${!showAppointments ? 'clickity' : ''}`}
+            className={`${!showAppointments ? 'testity' : 'vesbutt'}`}
           >
             <h1>Tests</h1>
           </button>

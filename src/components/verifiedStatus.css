@@ -103,5 +103,12 @@
 .clickity {
   background-color: #fff7ee;
   border: none;
-  transform: scale(1.01);
+  border-top-left-radius: 10px;
 }
+
+.testity{
+  background-color: #fff7ee;
+  border: none;
+  border-top-right-radius: 10px;
+}
+
