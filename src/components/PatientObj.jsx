@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import {toast, ToastContainer} from 'react-toastify';
 import "./patientObj.css";
 
 function PatientObj(props) {
@@ -76,8 +77,10 @@ function PatientObj(props) {
     Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
-          alert("Deleted successfully");
-          window.location.reload();
+          toast.success("Appointment cancelled")
+          setTimeout(()=>{
+            window.location.reload();
+          }, 2000);
         } else {
           Promise.reject();
         }
@@ -113,18 +116,19 @@ function PatientObj(props) {
 
           if (rescheduleResponse.status === 200) {
             // Appointment rescheduled successfully
-            alert("Appointment rescheduled successfully");
-            window.location.reload();
+            toast.success("Appointment rescheduled");
+            setTimeout(()=>{
+              window.location.reload();
+            }, 2000);
           } else {
-            alert("Failed to reschedule appointment");
+            toast.error("Error in rescheduling");
           }
         } catch (error) {
-          console.error("Error rescheduling appointment:", error);
-          alert("Error rescheduling appointment");
+          toast.error("Error in rescheduling");
         }
       } else {
         // Slot is not available, display a message to the user
-        alert(availabilityResponse.message);
+        toast.error("Slot not available");
       }
     } catch (error) {
       console.error("Error checking availability:", error);
@@ -297,6 +301,7 @@ function PatientObj(props) {
         </div>
       )}
       <br />
+      <ToastContainer />
     </div>
   );
 }

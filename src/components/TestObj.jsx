@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import {toast, ToastContainer} from 'react-toastify';
 import './testobj.css'
 
 function TestObj(props) {
@@ -27,10 +28,12 @@ function TestObj(props) {
     Axios.delete(`http://localhost:4000/test/deleteTestAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
-          alert("Deleted successfully");
-          window.location.reload();
+          toast.success("Test cancelled")
+          setTimeout(()=>{
+            window.location.reload();
+          }, 2000);
         } else {
-          alert("Failed to delete test appointment");
+          toast.error("Failed to delete test appointment");
         }
       })
       .catch((err) => alert(err));
@@ -70,13 +73,15 @@ function TestObj(props) {
         });
 
         if (rescheduleResponse.status === 200) {
-          alert("Test appointment rescheduled successfully");
-          window.location.reload();
+          toast.success("Test rescheduled");
+          setTimeout(()=>{
+            window.location.reload();
+          }, 2000);
         } else {
-          alert("Failed to reschedule test appointment");
+          toast.error("error in rescheduling");
         }
       } else {
-        alert("Slot not available for this test at this time");
+        toast.error("Slot not available");
       }
     } catch (error) {
       console.error("Error rescheduling test appointment:", error);
@@ -197,6 +202,7 @@ function TestObj(props) {
               )}
 
       <br />
+      <ToastContainer />
     </div>
   );
 }
