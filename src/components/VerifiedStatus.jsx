@@ -48,6 +48,10 @@ function VerifiedStatus() {
     patientValid();
   }, [navigate, location.state]);
 
+  const handleButtonClick = (isAppointments) => {
+    setShowAppointments(isAppointments);
+  };
+
   const ListItems1 = () => {
     return arr1.map((val, ind) => {
       return <PatientObj key={val._id} obj={val} />;
@@ -71,8 +75,18 @@ function VerifiedStatus() {
           Previous
         </button>
         <div className="headingverified">
-          <button onClick={() => setShowAppointments(true)}  className={`vesbuta ${showAppointments ? 'clickity' : ''}`}><h1>Appointments</h1></button>
-          <button onClick={() => setShowAppointments(false)} className={`vesbutt ${!showAppointments ? 'clickity' : ''}`}><h1>Tests</h1></button>
+          <button
+            onClick={() => handleButtonClick(true)}
+            className={`vesbuta ${showAppointments ? 'clickity' : ''}`}
+          >
+            <h1>Appointments</h1>
+          </button>
+          <button
+            onClick={() => handleButtonClick(false)}
+            className={`vesbutt ${!showAppointments ? 'clickity' : ''}`}
+          >
+            <h1>Tests</h1>
+          </button>
         </div>
 
         <div className="appos" style={{ display: showAppointments ? 'block' : 'none' }}>
