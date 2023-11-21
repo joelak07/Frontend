@@ -84,7 +84,6 @@
 .apposnameprev {
   color: #777;
   font-size: 1.2rem;
-  padding: 5px;
   margin: 0;
   width: 675px;
   vertical-align: baseline;
@@ -92,10 +91,13 @@
 .apposslotprev {
   color: #777;
   font-size: 1.2rem;
-  padding: 5px;
   margin: 0;
   width: 675px;
   vertical-align: baseline;
+}
+
+.hideviewapposenior {
+  text-align: right;
 }
 
 .apposmainprev {
@@ -104,4 +106,8 @@
 
 .Patientheads {
   font-family: "Poppins", sans-serif;
+}
+
+.newrowprevmain {
+  width: 100%;
 }
