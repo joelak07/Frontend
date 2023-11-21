@@ -32,7 +32,7 @@ const AppointmentObj = (props) => {
   };
 
   const cancelAppointment = () => {
-    Axios.delete(`http://localhost:4000/appointment/deleteAppointment/${_id}`)
+    Axios.delete(`https://hospital-appointment-backend.onrender.com/appointment/deleteAppointment/${_id}`)
       .then((res) => {
         if (res.status === 200) {
           alert('Deleted successfully');
@@ -53,7 +53,7 @@ const AppointmentObj = (props) => {
       const formattedMessage = diagnosisMessage.replace(/[\r\n]+/g, '<br/>');
 
       const response = await Axios.post(
-        `http://localhost:4000/appointment/sendDiagnosis/${_id}`,
+        `https://hospital-appointment-backend.onrender.com/appointment/sendDiagnosis/${_id}`,
         { message: formattedMessage }
       );
 
@@ -70,7 +70,7 @@ const AppointmentObj = (props) => {
 
   const completeAppointment = async () => {
     try {
-      const response = await Axios.put(`http://localhost:4000/appointment/completeAppointment/${_id}`);
+      const response = await Axios.put(`https://hospital-appointment-backend.onrender.com/appointment/completeAppointment/${_id}`);
       if (response.status === 200) {
         toast.success('Appointment completed');
         setTimeout(() => {
@@ -85,7 +85,7 @@ const AppointmentObj = (props) => {
   };
 
   useEffect(() => {
-    Axios.get('http://localhost:4000/patient/getPatient', {
+    Axios.get('https://hospital-appointment-backend.onrender.com/patient/getPatient', {
       params: { email: email, patientName: patientName },
     })
       .then((res) => {
