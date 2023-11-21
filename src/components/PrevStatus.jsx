@@ -85,30 +85,30 @@ function PrevStatus() {
             <h1>Tests</h1>
           </button>
         </div>
-
+        { showAppointments &&
         <div className="previousconinside">
           <table
             className="apposprev"
             style={
-              ({ borderSpacing: "10px" },
-              { display: showAppointments ? "block" : "none" })
+              ({ borderSpacing: "10px" })
             }
           >
             {ListItems1()}
           </table>
         </div>
-
+        }
+        { !showAppointments &&
         <div className="testconinside">
           <table
             className="testisprev"
             style={
-              ({ borderSpacing: "10px" },
-              { display: showAppointments ? "none" : "block" })
+              ({ borderSpacing: "10px" })
             }
           >
             {ListItems2()}
           </table>
         </div>
+        }
       </div>
     </div>
   );
