@@ -76,15 +76,15 @@ function PatientObjPrev(props) {
               }}
             >
               {" "}
-              Patient Name: {patientName}
+              Doctor Name: {doctorDetails && (<div>{doctorDetails.doctorName}</div>)}
             </div>
             {isShown && (
               <div>
-                {doctorDetails && (
+                {patientName && (
                   <div className="doctordetailsprev">
-                    {doctorDetails.doctorName && (
+                    {patientName && (
                       <div className="fieldprev">
-                        Doctor Name: {doctorDetails.doctorName}
+                        Patient Name: {patientName}
                       </div>
                     )}
                   </div>
@@ -93,7 +93,7 @@ function PatientObjPrev(props) {
                   <div className="doctordetailsprev">
                     {doctorDetails.specialization && (
                       <div className="fieldprev">
-                        Specialization: {doctorDetails.specialization}
+                        Department: {doctorDetails.specialization}
                       </div>
                     )}
                   </div>
