@@ -1,34 +1,49 @@
 .verifiedcont {
-  height: 100%;
+  height: 100vh;
   align-items: center;
-  padding: 80px;
-  background-color: #a6e3e9;
-  background-size: cover;
+  background-color: #efefef;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .verifiedcon {
   align-items: center;
+  height: 97vh;
   justify-content: space-between;
-  border: 1px solid #ced4da;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding-right: 40px;
-  padding-left: 100px;
-
-  padding-bottom: 20px;
-  background-color: #cbf1f5;
-  border-radius: 30px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  background-color: #d2d2d2;
+  border-radius: 10px;
   opacity: 0.9;
+  margin: 0px 20px;
+  padding: 20px 20px 0px 20px;
 }
 
 .headingverified {
-  text-align: center;
-  padding: 50px 0px 10px 50px;
-  font-family: "Arial", sans-serif;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
+.headingverified button {
+  width: 100%;
+  padding: 20px;
+}
+
+.appos {
+  background-color: #fff7ee;
+  padding: 20px;
+  height: 68%;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.testos {
+  background-color: #fff7ee;
+  padding: 20px;
+  height: 68%;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
 .gotoprevbutton {
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -63,4 +78,30 @@
     min-width: 120px;
     padding: 0 25px;
   }
+}
+
+.vesbuta {
+  color: #0c356a;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 10px;
+}
+
+.vesbutt {
+  color: #0c356a;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 10px;
+}
+
+.clickity {
+  background-color: #fff7ee;
+  border: none;
+  transform: scale(1.01);
 }
