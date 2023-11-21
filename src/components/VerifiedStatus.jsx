@@ -18,7 +18,7 @@ function VerifiedStatus() {
       if (token) {
         console.log("User valid");
         console.log(location.state);
-        Axios.get("http://localhost:4000/appointment/getAppointment", {
+        Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointment", {
           params: { email: location.state, isCompleted: false },
         })
           .then((res) => {
@@ -29,7 +29,7 @@ function VerifiedStatus() {
             }
           })
           .catch((err) => alert(err));
-        Axios.get("http://localhost:4000/test/getTestAppointments", {
+        Axios.get("https://hospital-appointment-backend.onrender.com/test/getTestAppointments", {
           params: { email: location.state, option: 1 },
         })
           .then((res) => {

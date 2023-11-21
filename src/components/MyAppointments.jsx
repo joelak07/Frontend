@@ -34,7 +34,7 @@ const MyAppointments = () => {
       if (token) {
         const decodedToken = decodeToken(token);
         if (decodedToken && decodedToken.empId) {
-          const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+          const docData = await Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
             params: { doctorId: decodedToken.empId }
           });
           if (docData.status === 200) {
@@ -42,7 +42,7 @@ const MyAppointments = () => {
           }
 
           // Fetch appointments for the specified date
-          const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByDate", {
+          const response = await Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointmentForDoctorByDate", {
             params: { doctorId: decodedToken.empId, date: selectedDate }
           });
 
@@ -74,7 +74,7 @@ const MyAppointments = () => {
       if (token) {
         const decodedToken = decodeToken(token);
         if (decodedToken && decodedToken.empId) {
-          const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+          const docData = await Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
             params: { doctorId: decodedToken.empId }
           });
           if (docData.status === 200) {
@@ -82,7 +82,7 @@ const MyAppointments = () => {
           }
 
           // Fetch appointments for the specified date and patient name
-          const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByDateAndPatient", {
+          const response = await Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointmentForDoctorByDateAndPatient", {
             params: { doctorId: decodedToken.empId, date: selectedDate, patientName }
           });
 
@@ -125,7 +125,7 @@ const MyAppointments = () => {
       if (token) {
         const decodedToken = decodeToken(token);
         if (decodedToken && decodedToken.empId) {
-          const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+          const docData = await Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
             params: { doctorId: decodedToken.empId }
           });
           if (docData.status === 200) {
@@ -133,7 +133,7 @@ const MyAppointments = () => {
           }
 
           // Fetch appointments for the specified date and patient name
-          const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByPatientName", {
+          const response = await Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointmentForDoctorByPatientName", {
             params: { doctorId: decodedToken.empId, patientName }
           });
 
@@ -178,7 +178,7 @@ const MyAppointments = () => {
         const decodedToken = decodeToken(token);
 
         if (decodedToken && decodedToken.empId) {
-          const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+          const docData = await Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
             params: { doctorId: decodedToken.empId }
           });
 
@@ -187,7 +187,7 @@ const MyAppointments = () => {
           }
 
           // Fetch all appointments for the logged-in doctor using the patientName route
-          const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorByPatientName", {
+          const response = await Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointmentForDoctorByPatientName", {
             params: { doctorId: decodedToken.empId, patientName: null }
           });
 

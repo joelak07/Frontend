@@ -33,7 +33,7 @@ const Appointment = () => {
   const today = new Date().toISOString().split("T")[0];
   const fetchSpecialties = async () => {
     try {
-      const response = await fetch("http://localhost:4000/doctor/specialties");
+      const response = await fetch("https://hospital-appointment-backend.onrender.com/doctor/specialties");
       if (response.ok) {
         const specialties = await response.json();
         setState((prevState) => ({ ...prevState, specialties }));
@@ -47,7 +47,7 @@ const Appointment = () => {
 
   const fetchDoctorsBySpecialty = async (selectedSpecialty) => {
     try {
-      const response = await fetch(`http://localhost:4000/doctor/specialty/${selectedSpecialty}`);
+      const response = await fetch(`https://hospital-appointment-backend.onrender.com/doctor/specialty/${selectedSpecialty}`);
       if (response.ok) {
         const doctors = await response.json();
         setState((prevState) => ({ ...prevState, doctors, doctorOptions: [], selectedDoctorId: null }));
@@ -97,7 +97,7 @@ const Appointment = () => {
 
   const checkAvailability = async () => {
     try {
-      const availabilityResponse = await Axios.get("http://localhost:4000/appointment/checkAvailability", {
+      const availabilityResponse = await Axios.get("https://hospital-appointment-backend.onrender.com/appointment/checkAvailability", {
         params: {
           doctorId: selectedDoctorId,
           appointmentDate: state.appointmentDate,
@@ -122,7 +122,7 @@ const Appointment = () => {
       if (availabilityResponse && availabilityResponse.available) {
         setLoading(true);   
         const data = {"email":state.email, "doctorName":selectedDoctorName};
-        const res = await Axios.post("http://localhost:4000/patientOtp/appointment/sendOtp",data);
+        const res = await Axios.post("https://hospital-appointment-backend.onrender.com/patientOtp/appointment/sendOtp",data);
         if (res.status===200) {
           navigate('/patient/otp', {
             state: {

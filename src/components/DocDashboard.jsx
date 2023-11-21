@@ -19,13 +19,13 @@ const DocDashboard = () => {
         if (token) {
           const decodedToken = decodeToken(token);
           if (decodedToken && decodedToken.empId) {
-            const docData = await Axios.get("http://localhost:4000/doctor/getDoctor", {
+            const docData = await Axios.get("https://hospital-appointment-backend.onrender.com/doctor/getDoctor", {
               params: { doctorId: decodedToken.empId }
             });
             if (docData.status === 200) {
               setDocName(docData.data[0].doctorName);
             }
-            const response = await Axios.get("http://localhost:4000/appointment/getAppointmentForDoctorToday", {
+            const response = await Axios.get("https://hospital-appointment-backend.onrender.com/appointment/getAppointmentForDoctorToday", {
               params: { doctorId: decodedToken.empId }
             });
 

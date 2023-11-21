@@ -60,7 +60,7 @@ function AdminDashboard() {
 
   const fetchDoctors = async () => {
     try {
-      const response = await fetch("http://localhost:4000/doctor");
+      const response = await fetch("https://hospital-appointment-backend.onrender.com/doctor");
       const data = await response.json();
       setDoctors(data);
     } catch (error) {
@@ -70,7 +70,7 @@ function AdminDashboard() {
 
   const fetchAllPatients = async () => {
     try {
-      const response = await fetch("http://localhost:4000/patient");
+      const response = await fetch("https://hospital-appointment-backend.onrender.com/patient");
       const data = await response.json();
       setPatients(data);
     } catch (error) {
@@ -86,7 +86,7 @@ function AdminDashboard() {
   const handleCreateDoctor = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/doctor/createDoctor",
+        "https://hospital-appointment-backend.onrender.com/doctor/createDoctor",
         {
           method: "POST",
           headers: {
@@ -121,7 +121,7 @@ function AdminDashboard() {
   const handleUpdateDoctor = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/doctor/updateDoctor/${updatingDoctor._id}`,
+        `https://hospital-appointment-backend.onrender.com/doctor/updateDoctor/${updatingDoctor._id}`,
         {
           method: "PUT",
           headers: {
@@ -180,7 +180,7 @@ function AdminDashboard() {
   const handleDeleteDoctor = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/doctor/deleteDoctor/${id}`,
+        `https://hospital-appointment-backend.onrender.com/doctor/deleteDoctor/${id}`,
         {
           method: "DELETE",
         }
@@ -204,7 +204,7 @@ function AdminDashboard() {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/patient/getPatient?patientName=${searchCriteria}`
+        `https://hospital-appointment-backend.onrender.com/patient/getPatient?patientName=${searchCriteria}`
       );
       const data = await response.json();
       setPatients(data);

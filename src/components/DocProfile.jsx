@@ -29,7 +29,7 @@ const DocProfile = () => {
 
   const fetchDoctorDetails = async (doctorId) => {
     try {
-      const response = await fetch(`http://localhost:4000/doctor/getDoctor?doctorId=${doctorId}`, {
+      const response = await fetch(`https://hospital-appointment-backend.onrender.com/doctor/getDoctor?doctorId=${doctorId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const DocProfile = () => {
     try {
       const token = localStorage.getItem('doctordbtoken');
 
-      const response = await fetch('http://localhost:4000/doctor/changePassword', {
+      const response = await fetch('https://hospital-appointment-backend.onrender.com/doctor/changePassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
