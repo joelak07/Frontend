@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 import usePasswordToggle from './usePasswordToggle';
@@ -8,13 +7,16 @@ function Login() {
   const [empId, setEmpId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [PasswordInputType,ToggleIcon]=usePasswordToggle();
+  const [PasswordInputType, ToggleIcon] = usePasswordToggle();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setLoading(true); // Move setLoading(true) here to show the spinner immediately
+
       const response = await fetch('https://hospital-appointment-backend.onrender.com/login', {
         method: 'POST',
         headers: {
@@ -36,13 +38,9 @@ function Login() {
         console.error('Server error:', data);
         navigate('/error');
       } else if (response.status === 200) {
-        // Successful login
         const { token, role } = data;
-
-        // Store the token and role in a secure way (e.g., localStorage, cookies)
         localStorage.setItem('doctordbtoken', token);
 
-        // Redirect based on the user's role
         if (role === 'admin') {
           navigate('/admin/dashboard');
         } else if (role === 'doctor') {
@@ -51,8 +49,9 @@ function Login() {
       }
     } catch (error) {
       console.error('An error occurred during login:', error);
-      // Redirect to Error.jsx if an unexpected error occurs
       navigate('/error');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,7 +68,7 @@ function Login() {
               onChange={(e) => setEmpId(e.target.value)}
               required
               className="loginipt"
-              placeholder='Enter Employee ID'
+              placeholder="Enter Employee ID"
             />
           </div>
           <br />
@@ -81,17 +80,15 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className="loginipt"
-              placeholder='Enter Password'
+              placeholder="Enter Password"
             />
-            <span className="password-toggle-icon">
-              {ToggleIcon}
-            </span>
+            <span className="password-toggle-icon">{ToggleIcon}</span>
           </div>
           {error && <div style={{ color: 'red' }}>{error}</div>}
           <div>
             <br />
-            <button type="submit" className="loginbtn">
-              Login
+            <button type="submit" className="loginbtn" disabled={loading}>
+              {loading ? <div className="spinlog"></div> : 'Login'}
             </button>
           </div>
         </form>
